@@ -14,12 +14,12 @@ namespace ITnetworkProjekt.Controllers
 
 
         // GET: InsuredPersons
-        public async Task<IActionResult> Index(int ?page)
+        public async Task<IActionResult> Index(int? page)
         {
             if (User.IsInRole(UserRoles.Admin))
             {
                 var insuredPersons = await _insuredPersonService.GetAllInsuredPersonsAsync();
-                
+
                 var pageNumber = page ?? 1;
                 var onePageOfInsuredPersons = insuredPersons.ToPagedList(pageNumber, 4);
 
@@ -115,7 +115,7 @@ namespace ITnetworkProjekt.Controllers
                     {
                         return NotFound();
                     }
-                        throw;
+                    throw;
                 }
                 return RedirectToAction(nameof(Index));
             }

@@ -17,7 +17,7 @@ namespace ITnetworkProjekt.Models
 
         [Required(ErrorMessage = "Vyplňte typ pojištění")]
         [Display(Name = "Typ pojištění:")]
-        public string PolicyType { get; set; } = "";    
+        public string PolicyType { get; set; } = "";
 
         [Required(ErrorMessage = "Vyplňte datum začátek od:")]
         [DataType(DataType.Date)]

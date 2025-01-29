@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "g+nWvKJZhRua4PYwiTA8BkWLpVl6HwQBlJIzA6le5ks=",
+  "Hash": "q+mNN0f4LpCxDXX+276PBi+5kqsxb4UU5Fqv+xwdfzQ=",
   "Source": "ITnetworkProjekt",
   "BasePath": "_content/ITnetworkProjekt",
   "Mode": "Default",
@@ -1333,8 +1333,8 @@
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
-      "Fingerprint": "7nsuj2o68n",
-      "Integrity": "fdjaU8G/tVbq+6MglPiu1BjTvnjt315ByK8NUGEcItw=",
+      "Fingerprint": "m90eamu7q8",
+      "Integrity": "JgWatQw5mYCsUH90WdBSgd9FdoaaLdghK+pmHly6Kzc=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\css\\site.css"
@@ -2623,51 +2623,6 @@
   ],
   "Endpoints": [
     {
-      "Route": "css/site.7nsuj2o68n.css",
-      "AssetFile": "C:\\Users\\nitzk\\source\\repos\\MarioNitzke\\my-first\\ITnetworkProjekt\\ITnetworkProjekt\\wwwroot\\css\\site.css",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "2508"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "text/css"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"fdjaU8G/tVbq+6MglPiu1BjTvnjt315ByK8NUGEcItw=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Sun, 26 Jan 2025 22:07:58 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=31536000, immutable"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "fingerprint",
-          "Value": "7nsuj2o68n"
-        },
-        {
-          "Name": "label",
-          "Value": "css/site.css"
-        },
-        {
-          "Name": "integrity",
-          "Value": "sha256-fdjaU8G/tVbq+6MglPiu1BjTvnjt315ByK8NUGEcItw="
-        }
-      ]
-    },
-    {
       "Route": "css/site.css",
       "AssetFile": "C:\\Users\\nitzk\\source\\repos\\MarioNitzke\\my-first\\ITnetworkProjekt\\ITnetworkProjekt\\wwwroot\\css\\site.css",
       "Selectors": [],
@@ -2678,7 +2633,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "2508"
+          "Value": "2489"
         },
         {
           "Name": "Content-Type",
@@ -2686,11 +2641,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"fdjaU8G/tVbq+6MglPiu1BjTvnjt315ByK8NUGEcItw=\""
+          "Value": "\"JgWatQw5mYCsUH90WdBSgd9FdoaaLdghK+pmHly6Kzc=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sun, 26 Jan 2025 22:07:58 GMT"
+          "Value": "Sun, 26 Jan 2025 22:09:00 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -2700,7 +2655,52 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-fdjaU8G/tVbq+6MglPiu1BjTvnjt315ByK8NUGEcItw="
+          "Value": "sha256-JgWatQw5mYCsUH90WdBSgd9FdoaaLdghK+pmHly6Kzc="
+        }
+      ]
+    },
+    {
+      "Route": "css/site.m90eamu7q8.css",
+      "AssetFile": "C:\\Users\\nitzk\\source\\repos\\MarioNitzke\\my-first\\ITnetworkProjekt\\ITnetworkProjekt\\wwwroot\\css\\site.css",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "2489"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"JgWatQw5mYCsUH90WdBSgd9FdoaaLdghK+pmHly6Kzc=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sun, 26 Jan 2025 22:09:00 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "m90eamu7q8"
+        },
+        {
+          "Name": "label",
+          "Value": "css/site.css"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-JgWatQw5mYCsUH90WdBSgd9FdoaaLdghK+pmHly6Kzc="
         }
       ]
     },
