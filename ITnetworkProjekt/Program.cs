@@ -56,7 +56,29 @@ using (IServiceScope scope = app.Services.CreateScope())
 {
     RoleManager<IdentityRole> roleManager = scope.ServiceProvider.GetRequiredService<RoleManager<IdentityRole>>();
     UserManager<IdentityUser> userManager = scope.ServiceProvider.GetRequiredService<UserManager<IdentityUser>>();
-    IdentityUser? defaultAdminUser = await userManager.FindByEmailAsync("guf@gmail.com");
+    //IdentityUser? defaultAdminUser = await userManager.FindByEmailAsync("nitzkemario@gmail.com");
+    string adminEmail = "nitzkemario@gmail.com";
+    string adminPassword = "Password123+";
+
+    IdentityUser? defaultAdminUser = await userManager.FindByEmailAsync(adminEmail);
+
+    if (defaultAdminUser == null)
+    {
+        defaultAdminUser = new IdentityUser
+        {
+            UserName = adminEmail,
+            Email = adminEmail,
+            NormalizedUserName = adminEmail.ToUpper(),
+            NormalizedEmail = adminEmail.ToUpper(),
+            EmailConfirmed = true
+        };
+
+        IdentityResult result = await userManager.CreateAsync(defaultAdminUser, adminPassword);
+        if (!result.Succeeded)
+        {
+            throw new Exception($"Nepodaøilo se vytvoøit admin úèet: {string.Join(", ", result.Errors.Select(e => e.Description))}");
+        }
+    }
 
     if (!await roleManager.RoleExistsAsync(UserRoles.Admin))
         await roleManager.CreateAsync(new IdentityRole(UserRoles.Admin));

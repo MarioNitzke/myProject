@@ -1,0 +1,106 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\nitzk\\source\\repos\\MarioNitzke\\my-first\\ITnetworkProjekt\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\nitzk\\source\\repos\\MarioNitzke\\my-first\\ITnetworkProjekt\\ITnetworkProjekt\\Data\\Migrations\\20250129132739_Db.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:ITnetworkProjekt\\Data\\Migrations\\20250129132739_Db.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{044CE69D-5C8A-429D-A24F-8AA18FC44947}|ITnetworkProjekt\\ITnetworkProjekt.csproj|c:\\users\\nitzk\\source\\repos\\marionitzke\\my-first\\itnetworkprojekt\\itnetworkprojekt\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{044CE69D-5C8A-429D-A24F-8AA18FC44947}|ITnetworkProjekt\\ITnetworkProjekt.csproj|solutionrelative:itnetworkprojekt\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{044CE69D-5C8A-429D-A24F-8AA18FC44947}|ITnetworkProjekt\\ITnetworkProjekt.csproj|c:\\users\\nitzk\\source\\repos\\marionitzke\\my-first\\itnetworkprojekt\\itnetworkprojekt\\views\\insuredpersons\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{044CE69D-5C8A-429D-A24F-8AA18FC44947}|ITnetworkProjekt\\ITnetworkProjekt.csproj|solutionrelative:itnetworkprojekt\\views\\insuredpersons\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{044CE69D-5C8A-429D-A24F-8AA18FC44947}|ITnetworkProjekt\\ITnetworkProjekt.csproj|c:\\users\\nitzk\\source\\repos\\marionitzke\\my-first\\itnetworkprojekt\\itnetworkprojekt\\views\\insuredpersons\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{044CE69D-5C8A-429D-A24F-8AA18FC44947}|ITnetworkProjekt\\ITnetworkProjekt.csproj|solutionrelative:itnetworkprojekt\\views\\insuredpersons\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{044CE69D-5C8A-429D-A24F-8AA18FC44947}|ITnetworkProjekt\\ITnetworkProjekt.csproj|c:\\users\\nitzk\\source\\repos\\marionitzke\\my-first\\itnetworkprojekt\\itnetworkprojekt\\userroles.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{044CE69D-5C8A-429D-A24F-8AA18FC44947}|ITnetworkProjekt\\ITnetworkProjekt.csproj|solutionrelative:itnetworkprojekt\\userroles.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 1,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedHeight": 297,
+          "SelectedChildIndex": 1,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:128:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "20250129132739_Db.cs",
+              "DocumentMoniker": "C:\\Users\\nitzk\\source\\repos\\MarioNitzke\\my-first\\ITnetworkProjekt\\ITnetworkProjekt\\Data\\Migrations\\20250129132739_Db.cs",
+              "RelativeDocumentMoniker": "ITnetworkProjekt\\Data\\Migrations\\20250129132739_Db.cs",
+              "ToolTip": "C:\\Users\\nitzk\\source\\repos\\MarioNitzke\\my-first\\ITnetworkProjekt\\ITnetworkProjekt\\Data\\Migrations\\20250129132739_Db.cs",
+              "RelativeToolTip": "ITnetworkProjekt\\Data\\Migrations\\20250129132739_Db.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-29T13:27:39.734Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\nitzk\\source\\repos\\MarioNitzke\\my-first\\ITnetworkProjekt\\ITnetworkProjekt\\Program.cs",
+              "RelativeDocumentMoniker": "ITnetworkProjekt\\Program.cs",
+              "ToolTip": "C:\\Users\\nitzk\\source\\repos\\MarioNitzke\\my-first\\ITnetworkProjekt\\ITnetworkProjekt\\Program.cs",
+              "RelativeToolTip": "ITnetworkProjekt\\Program.cs",
+              "ViewState": "AgIAADYAAAAAAAAAAAAYwD8AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-29T13:14:12.371Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "C:\\Users\\nitzk\\source\\repos\\MarioNitzke\\my-first\\ITnetworkProjekt\\ITnetworkProjekt\\Views\\InsuredPersons\\Index.cshtml",
+              "RelativeDocumentMoniker": "ITnetworkProjekt\\Views\\InsuredPersons\\Index.cshtml",
+              "ToolTip": "C:\\Users\\nitzk\\source\\repos\\MarioNitzke\\my-first\\ITnetworkProjekt\\ITnetworkProjekt\\Views\\InsuredPersons\\Index.cshtml",
+              "RelativeToolTip": "ITnetworkProjekt\\Views\\InsuredPersons\\Index.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAMAAAAsAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-01-29T13:05:38.512Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Details.cshtml",
+              "DocumentMoniker": "C:\\Users\\nitzk\\source\\repos\\MarioNitzke\\my-first\\ITnetworkProjekt\\ITnetworkProjekt\\Views\\InsuredPersons\\Details.cshtml",
+              "RelativeDocumentMoniker": "ITnetworkProjekt\\Views\\InsuredPersons\\Details.cshtml",
+              "ToolTip": "C:\\Users\\nitzk\\source\\repos\\MarioNitzke\\my-first\\ITnetworkProjekt\\ITnetworkProjekt\\Views\\InsuredPersons\\Details.cshtml",
+              "RelativeToolTip": "ITnetworkProjekt\\Views\\InsuredPersons\\Details.cshtml",
+              "ViewState": "AgIAACEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-01-29T13:05:31.975Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "UserRoles.cs",
+              "DocumentMoniker": "C:\\Users\\nitzk\\source\\repos\\MarioNitzke\\my-first\\ITnetworkProjekt\\ITnetworkProjekt\\UserRoles.cs",
+              "RelativeDocumentMoniker": "ITnetworkProjekt\\UserRoles.cs",
+              "ToolTip": "C:\\Users\\nitzk\\source\\repos\\MarioNitzke\\my-first\\ITnetworkProjekt\\ITnetworkProjekt\\UserRoles.cs",
+              "RelativeToolTip": "ITnetworkProjekt\\UserRoles.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-29T13:03:09.931Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
