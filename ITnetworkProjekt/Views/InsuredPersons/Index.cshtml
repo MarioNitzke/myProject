@@ -1,0 +1,84 @@
+﻿@model IEnumerable<ITnetworkProjekt.Models.InsuredPerson>
+
+@{
+	ViewData["Title"] = "Seznam pojištěnců";
+}
+@using X.PagedList.Mvc.Core; 
+@using X.PagedList; 
+<link href="/Content/PagedList.css" rel="stylesheet" type="text/css" />
+
+<div class="text-center">
+	<p>
+	<a asp-action="Create" class="btn btn-success">Vytvořit nového pojištěnce</a>
+	</p>
+</div>
+<table class="table align-middle">
+	<thead>
+		<tr>
+			<th>
+				@Html.DisplayNameFor(model => model.FirstName)
+			</th>
+			<th>
+				@Html.DisplayNameFor(model => model.DateOfBirth)
+			</th>
+			<th>
+				@Html.DisplayNameFor(model => model.SocialSecurityNumber)
+			</th>
+			<th>
+				@Html.DisplayNameFor(model => model.PhoneNumber)
+			</th>
+			<th>
+				@Html.DisplayNameFor(model => model.Email)
+			</th>
+			<th>
+				@Html.DisplayNameFor(model => model.Address)
+			</th>
+			<th></th>
+		</tr>
+	</thead>
+	<tbody>
+		@foreach (var insuredPerson in ViewBag.OnePageOfInsuredPersons)
+		{
+								<tr>
+									<td>
+						<a asp-action="Details" asp-route-id="@insuredPerson.Id">
+						@insuredPerson.FirstName @insuredPerson.LastName
+					</a> 
+									</td>
+										<td>
+					@insuredPerson.DateOfBirth
+										</td>
+									<td>
+					@insuredPerson.SocialSecurityNumber
+										</td>
+									<td>
+					@insuredPerson.PhoneNumber
+									</td>
+									<td>
+					@insuredPerson.Email
+									</td>
+									<td>
+					@insuredPerson.Address
+									</td>
+
+									<td>
+	<a asp-action="Edit" asp-route-id="@insuredPerson.Id" class="btn btn-warning">Editovat</a> 
+	<a asp-action="Delete" asp-route-id="@insuredPerson.Id" class="btn btn-danger">Smazat</a>
+									</td>
+								</tr>
+		}
+	</tbody>
+</table>
+<div class="pagination justify-content-center">
+	@Html.PagedListPager(
+				(IPagedList)ViewBag.OnePageOfInsuredPersons,
+				page => Url.Action("Index", new { page = page }),
+				new PagedListRenderOptions
+		{
+			UlElementClasses = new[] { "pagination" },
+			LiElementClasses = new[] { "page-item" },
+			PageClasses = new[] { "page-link" },
+			LinkToPreviousPageFormat = "Předchozí" ,
+			LinkToNextPageFormat = "Další"
+		})
+</div>

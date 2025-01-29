@@ -1,0 +1,66 @@
+﻿@model IEnumerable<ITnetworkProjekt.Models.Insurance>
+
+@{
+    ViewData["Title"] = "Seznam všech pojištění";
+}
+
+
+<div class="text-center mb-8">
+    <a asp-action="Create" class="btn btn-success">Vytvořit nové pojištění</a>
+</div>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.InsuredPerson)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PolicyType)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.StartDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EndDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PremiumAmount)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CreatedDate)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                <a href="~/InsuredPersons/Details/@Html.DisplayFor(modelItem => item.InsuredPerson.Id)">
+                    @Html.DisplayFor(modelItem => item.InsuredPerson.LastName) @Html.DisplayFor(modelItem => item.InsuredPerson.FirstName)
+                </a> 
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PolicyType)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.StartDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EndDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PremiumAmount)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CreatedDate)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id">Upravit</a> |
+                <a asp-action="Details" asp-route-id="@item.Id">Podrobnosti</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">Smazat</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

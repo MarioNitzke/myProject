@@ -1,0 +1,51 @@
+﻿<!DOCTYPE html>
+<html lang="cs">
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta name="author" content="HoBi" />
+	<title>@ViewData["Title"]</title>
+	<link rel="shortcut icon" href="~/images/ikona.ico" />
+	<link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" asp-append-version="true" /> 
+	<link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+	@await RenderSectionAsync("CSS", required: false)
+</head>
+
+<body>
+	<header>
+		<div id="logo">
+			<h1><a asp-controller="Home" asp-action="Index">PojištěníApp</a></h1>
+			<nav>
+				<ul>
+					<li><a asp-controller="InsuredPersons" asp-action="Index">Pojištěnci</a></li>
+					<li><a asp-controller="Insurances" asp-action="Index">Pojištění</a></li>
+					<li><a href="x">Údalosti</a></li>
+					<li><a asp-controller="Home" asp-action="Aboutapplication">O aplikaci....</a></li>
+				</ul>
+			</nav>
+		</div>
+		<div class="login-bar">
+			 <partial name="_LoginPartial" />
+		</div>
+	</header>
+
+	<article>
+		<header>
+			<h1>@ViewData["Title"]</h1>
+		</header>
+
+		<section>
+			@RenderBody()
+		</section>
+	</article>
+	  <footer>
+		ITNetwork projekt vytvořil &copy;Nitzke Mario @DateTime.Now.Year
+	</footer>
+
+	<script src="~/lib/jquery/dist/jquery.min.js"></script>
+	<script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+	<script src="~/js/site.js" asp-append-version="true"></script>
+	@await RenderSectionAsync("Scripts", required: false)
+
+</body>
+</html>
