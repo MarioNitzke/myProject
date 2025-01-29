@@ -3,8 +3,8 @@
   "WorkspaceRootPath": "C:\\Users\\nitzk\\source\\repos\\MarioNitzke\\my-first\\ITnetworkProjekt\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\nitzk\\source\\repos\\MarioNitzke\\my-first\\ITnetworkProjekt\\ITnetworkProjekt\\Data\\Migrations\\20250129132739_Db.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:ITnetworkProjekt\\Data\\Migrations\\20250129132739_Db.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{044CE69D-5C8A-429D-A24F-8AA18FC44947}|ITnetworkProjekt\\ITnetworkProjekt.csproj|c:\\users\\nitzk\\source\\repos\\marionitzke\\my-first\\itnetworkprojekt\\itnetworkprojekt\\data\\migrations\\20250129132739_db.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{044CE69D-5C8A-429D-A24F-8AA18FC44947}|ITnetworkProjekt\\ITnetworkProjekt.csproj|solutionrelative:itnetworkprojekt\\data\\migrations\\20250129132739_db.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{044CE69D-5C8A-429D-A24F-8AA18FC44947}|ITnetworkProjekt\\ITnetworkProjekt.csproj|c:\\users\\nitzk\\source\\repos\\marionitzke\\my-first\\itnetworkprojekt\\itnetworkprojekt\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -57,7 +57,7 @@
               "RelativeDocumentMoniker": "ITnetworkProjekt\\Program.cs",
               "ToolTip": "C:\\Users\\nitzk\\source\\repos\\MarioNitzke\\my-first\\ITnetworkProjekt\\ITnetworkProjekt\\Program.cs",
               "RelativeToolTip": "ITnetworkProjekt\\Program.cs",
-              "ViewState": "AgIAADYAAAAAAAAAAAAYwD8AAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAD8AAAAAAAAAAAAYwD8AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-01-29T13:14:12.371Z",
               "EditorCaption": ""

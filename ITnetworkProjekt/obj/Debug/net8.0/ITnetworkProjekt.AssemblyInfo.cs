@@ -16,7 +16,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("ITnetworkProjekt")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+58655224694315ece1dbb5c6dad27517577c820d")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+b056848ec41e8b01a2266f99926a22c39816f4b1")]
 [assembly: System.Reflection.AssemblyProductAttribute("ITnetworkProjekt")]
 [assembly: System.Reflection.AssemblyTitleAttribute("ITnetworkProjekt")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

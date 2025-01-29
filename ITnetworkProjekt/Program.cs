@@ -56,7 +56,6 @@ using (IServiceScope scope = app.Services.CreateScope())
 {
     RoleManager<IdentityRole> roleManager = scope.ServiceProvider.GetRequiredService<RoleManager<IdentityRole>>();
     UserManager<IdentityUser> userManager = scope.ServiceProvider.GetRequiredService<UserManager<IdentityUser>>();
-    //IdentityUser? defaultAdminUser = await userManager.FindByEmailAsync("nitzkemario@gmail.com");
     string adminEmail = "nitzkemario@gmail.com";
     string adminPassword = "Password123+";
 
