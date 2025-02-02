@@ -273,4 +273,3 @@ C:\Users\nitzk\source\repos\MarioNitzke\my-first\ITnetworkProjekt\ITnetworkProje
 C:\Users\nitzk\source\repos\MarioNitzke\my-first\ITnetworkProjekt\ITnetworkProjekt\obj\Debug\net8.0\ref\ITnetworkProjekt.dll
 C:\Users\nitzk\source\repos\MarioNitzke\my-first\ITnetworkProjekt\ITnetworkProjekt\bin\Debug\net8.0\X.PagedList.dll
 C:\Users\nitzk\source\repos\MarioNitzke\my-first\ITnetworkProjekt\ITnetworkProjekt\bin\Debug\net8.0\X.PagedList.Mvc.Core.dll
-C:\Users\nitzk\source\repos\MarioNitzke\my-first\ITnetworkProjekt\ITnetworkProjekt\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt

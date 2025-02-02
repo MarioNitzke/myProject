@@ -1,5 +1,8 @@
 ﻿using ITnetworkProjekt;
 using ITnetworkProjekt.Data;
+using ITnetworkProjekt.Interfaces;
+using ITnetworkProjekt.Managers;
+using ITnetworkProjekt.Repositories;
 using ITnetworkProjekt.Services;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
@@ -26,8 +29,19 @@ builder.Services.AddIdentity<IdentityUser, IdentityRole>(options =>
 
 
 builder.Services.AddControllersWithViews();
-builder.Services.AddScoped<InsuranceService>();
-builder.Services.AddScoped<InsuredPersonService>();
+//tady to vymazat i komentáře
+//builder.Services.AddScoped<InsuranceService>();
+//builder.Services.AddScoped<InsuredPersonService>();
+
+
+builder.Services.AddAutoMapper(typeof(AutoMapperProfile));
+
+builder.Services.AddScoped<IInsuranceRepository, InsuranceRepository>();
+builder.Services.AddScoped<InsuranceManager>();
+
+builder.Services.AddScoped<IInsuredPersonRepository, InsuredPersonRepository>();
+builder.Services.AddScoped<InsuredPersonManager>();
+
 
 var app = builder.Build();
 

@@ -4,21 +4,21 @@ using ITnetworkProjekt.Models;
 using Microsoft.AspNetCore.Authorization;
 using ITnetworkProjekt.Services;
 using X.PagedList.Extensions;
+using ITnetworkProjekt.Managers;
 
 namespace ITnetworkProjekt.Controllers
 {
     [Authorize]
-    public class InsuredPersonsController(InsuredPersonService insuredPersonService) : Controller
+    public class InsuredPersonsController(InsuredPersonManager insuredPersonManager) : Controller
     {
-        private readonly InsuredPersonService _insuredPersonService = insuredPersonService;
+        private readonly InsuredPersonManager insuredPersonManager = insuredPersonManager;
 
-
-        // GET: InsuredPersons
+        // GET: InsuredPersons/Index with PagedList
         public async Task<IActionResult> Index(int? page)
         {
             if (User.IsInRole(UserRoles.Admin))
             {
-                var insuredPersons = await _insuredPersonService.GetAllInsuredPersonsAsync();
+                var insuredPersons = await insuredPersonManager.GetAllInsuredPersons();
 
                 var pageNumber = page ?? 1;
                 var onePageOfInsuredPersons = insuredPersons.ToPagedList(pageNumber, 4);
@@ -28,12 +28,13 @@ namespace ITnetworkProjekt.Controllers
             }
             else
             {
-                var insuredPerson = await _insuredPersonService.GetInsuredPersonForUserAsync(User);
+                var insuredPerson = await insuredPersonManager.GetInsuredPersonForUserAsync(User);
                 return View("Details", insuredPerson);
             }
         }
 
-        // GET: InsuredPersons/Details
+
+        // GET: InsuredPerson/Details
         [Authorize(Roles = UserRoles.Admin)]
         public async Task<IActionResult> Details(int? id)
         {
@@ -42,40 +43,38 @@ namespace ITnetworkProjekt.Controllers
                 return NotFound();
             }
 
-            var insurance = await _insuredPersonService.GetInsuredPersonByIdAsync(id.Value);
+            var insuredPerson = await insuredPersonManager.FindInsuredPersonById((int)id);
 
-            if (insurance == null)
+            if (insuredPerson == null)
             {
                 return NotFound();
             }
 
-            return View(insurance);
+            return View(insuredPerson);
         }
 
-
-        // GET: InsuredPersons/Create
+        // GET: InsuredPerson/Create
         [Authorize(Roles = UserRoles.Admin)]
         public IActionResult Create()
         {
             return View();
         }
 
-        // POST: InsuredPersons/Create
+        // POST: InsuredPerson/Create
         [Authorize(Roles = UserRoles.Admin)]
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,FirstName,LastName,DateOfBirth,PhoneNumber,Email,Address,CreatedDate,SocialSecurityNumber")] InsuredPerson insuredPerson)
+        public async Task<IActionResult> Create([Bind("Id,FirstName,LastName,DateOfBirth,PhoneNumber,Email,Address,CreatedDate,SocialSecurityNumber")] InsuredPersonViewModel insuredPerson)
         {
             if (ModelState.IsValid)
             {
-                await _insuredPersonService.CreateInsuredPersonAsync(insuredPerson);
+                await insuredPersonManager.AddInsuredPerson(insuredPerson);
                 return RedirectToAction(nameof(Index));
             }
-
             return View(insuredPerson);
         }
 
-        // GET: InsuredPersons/Edit
+        // GET: InsuredPerson/Edit
         [Authorize(Roles = UserRoles.Admin)]
         public async Task<IActionResult> Edit(int? id)
         {
@@ -84,7 +83,7 @@ namespace ITnetworkProjekt.Controllers
                 return NotFound();
             }
 
-            var insuredPerson = await _insuredPersonService.GetInsuredPersonByIdAsync(id.Value);
+            var insuredPerson = await insuredPersonManager.FindInsuredPersonById((int)id);
             if (insuredPerson == null)
             {
                 return NotFound();
@@ -92,11 +91,11 @@ namespace ITnetworkProjekt.Controllers
             return View(insuredPerson);
         }
 
-        // POST: InsuredPersons/Edit
+        // POST: InsuredPerson/Edit
         [Authorize(Roles = UserRoles.Admin)]
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,FirstName,LastName,DateOfBirth,PhoneNumber,Email,Address,CreatedDate,SocialSecurityNumber")] InsuredPerson insuredPerson)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,FirstName,LastName,DateOfBirth,PhoneNumber,Email,Address,CreatedDate,SocialSecurityNumber")] InsuredPersonViewModel insuredPerson)
         {
             if (id != insuredPerson.Id)
             {
@@ -105,24 +104,13 @@ namespace ITnetworkProjekt.Controllers
 
             if (ModelState.IsValid)
             {
-                try
-                {
-                    await _insuredPersonService.UpdateInsuredPersonAsync(insuredPerson);
-                }
-                catch (DbUpdateConcurrencyException)
-                {
-                    if (!await _insuredPersonService.InsuredPersonExistsAsync(insuredPerson.Id))
-                    {
-                        return NotFound();
-                    }
-                    throw;
-                }
-                return RedirectToAction(nameof(Index));
+                var updatedInsuredPerson = await insuredPersonManager.UpdateInsuredPerson(insuredPerson);
+                return updatedInsuredPerson is null ? NotFound() : RedirectToAction(nameof(Index));
             }
             return View(insuredPerson);
         }
 
-        // GET: InsuredPersons/Delete
+        // GET: InsuredPerson/Delete
         [Authorize(Roles = UserRoles.Admin)]
         public async Task<IActionResult> Delete(int? id)
         {
@@ -131,7 +119,7 @@ namespace ITnetworkProjekt.Controllers
                 return NotFound();
             }
 
-            var insuredPerson = await _insuredPersonService.GetInsuredPersonByIdAsync(id.Value);
+            var insuredPerson = await insuredPersonManager.FindInsuredPersonById((int)id);
 
             if (insuredPerson == null)
             {
@@ -141,21 +129,15 @@ namespace ITnetworkProjekt.Controllers
             return View(insuredPerson);
         }
 
-        // POST: InsuredPersons/Delete
+        // POST: InsuredPerson/Delete
         [Authorize(Roles = UserRoles.Admin)]
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            await _insuredPersonService.DeleteInsuredPersonByIdAsync(id);
+            await insuredPersonManager.RemoveInsuredPersonWithId(id);
             return RedirectToAction(nameof(Index));
         }
-
-        private async Task<bool> InsuredPersonExistsAsync(int id)
-        {
-            return await _insuredPersonService.InsuredPersonExistsAsync(id);
-        }
-
     }
 }
 
