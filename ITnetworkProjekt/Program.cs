@@ -1,4 +1,4 @@
-using ITnetworkProjekt;
+ï»¿using ITnetworkProjekt;
 using ITnetworkProjekt.Data;
 using ITnetworkProjekt.Services;
 using Microsoft.AspNetCore.Identity;
@@ -8,8 +8,11 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection") ?? throw new InvalidOperationException("Connection string 'DefaultConnection' not found.");
-builder.Services.AddDbContext<ApplicationDbContext>(options =>
-    options.UseSqlServer(connectionString));
+builder.Services.AddDbContextFactory<ApplicationDbContext>(options =>
+    options.UseSqlServer(connectionString, sqlServerOptionsAction =>
+    {
+        sqlServerOptionsAction.EnableRetryOnFailure();
+    }));
 builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
 //Login informations
@@ -75,7 +78,7 @@ using (IServiceScope scope = app.Services.CreateScope())
         IdentityResult result = await userManager.CreateAsync(defaultAdminUser, adminPassword);
         if (!result.Succeeded)
         {
-            throw new Exception($"Nepodaøilo se vytvoøit admin úèet: {string.Join(", ", result.Errors.Select(e => e.Description))}");
+            throw new Exception($"NepodaÅ™ilo se vytvoÅ™it admin ÃºÄet: {string.Join(", ", result.Errors.Select(e => e.Description))}");
         }
     }
 
@@ -88,3 +91,5 @@ using (IServiceScope scope = app.Services.CreateScope())
 
 
 app.Run();
+
+

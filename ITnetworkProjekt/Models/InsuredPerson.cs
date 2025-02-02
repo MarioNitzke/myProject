@@ -46,3 +46,5 @@ namespace ITnetworkProjekt.Models
         public virtual ICollection<Insurance>? Insurances { get; set; }
     }
 }
+
+

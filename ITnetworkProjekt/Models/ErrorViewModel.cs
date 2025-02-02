@@ -1,4 +1,4 @@
-namespace ITnetworkProjekt.Models
+﻿namespace ITnetworkProjekt.Models
 {
     public class ErrorViewModel
     {
@@ -7,3 +7,5 @@ namespace ITnetworkProjekt.Models
         public bool ShowRequestId => !string.IsNullOrEmpty(RequestId);
     }
 }
+
+

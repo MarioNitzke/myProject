@@ -10,16 +10,16 @@ namespace ITnetworkProjekt.Controllers
     {
         private readonly UserManager<IdentityUser> userManager;
         private readonly SignInManager<IdentityUser> signInManager;
-        private readonly ApplicationDbContext _context;
+        private readonly IDbContextFactory<ApplicationDbContext> contextFactory;
 
         public AccountController
         (
-            ApplicationDbContext context,
+            IDbContextFactory<ApplicationDbContext> contextFactory,
             UserManager<IdentityUser> userManager,
             SignInManager<IdentityUser> signInManager
         )
         {
-            this._context = context ?? throw new ArgumentNullException(nameof(context));
+            this.contextFactory = contextFactory ?? throw new ArgumentNullException(nameof(contextFactory));
             this.userManager = userManager;
             this.signInManager = signInManager;
         }
@@ -74,6 +74,7 @@ namespace ITnetworkProjekt.Controllers
 
             if (ModelState.IsValid)
             {
+                using var _context = await contextFactory.CreateDbContextAsync();
                 //Zkouším najít inusuredPerson pomoci email a RČ
                 var insuredPerson = await _context.InsuredPerson
                 .FirstOrDefaultAsync(m => (m.Email == model.Email && m.SocialSecurityNumber == model.SocialSecurityNumber));
@@ -122,3 +123,5 @@ namespace ITnetworkProjekt.Controllers
 
     }
 }
+
+

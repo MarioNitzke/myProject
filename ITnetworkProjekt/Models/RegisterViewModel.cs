@@ -28,3 +28,5 @@ namespace ITnetworkProjekt.Models
         public string ConfirmPassword { get; set; } = "";
     }
 }
+
+

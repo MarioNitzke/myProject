@@ -1,83 +1,90 @@
 ﻿@model ITnetworkProjekt.Models.InsuredPerson
 
 @{
-	ViewData["Title"] = "Podrobnosti";
+    ViewData["Title"] = "Podrobnosti";
 }
 
 <div class="mb-4">
-	<h3>Pojištěná osoba</h3>
-	<table class="table align-middle"><thead>
-			<tr>
-				<td rowspan="4" class="col-2"><img src="~/images/avatar.png"/></td>
-				<td colspan="2"><h4>@Html.DisplayFor(model => model.FirstName) @Html.DisplayFor(model => model.LastName)</h4></td>
-			</tr>
-			<tr>
-				<td>@Html.DisplayFor(model => model.Address)</td>
-				<td>@Html.DisplayFor(model => model.Email)</td>
-			</tr>
-			<tr>
-				<td>@Html.DisplayFor(model => model.DateOfBirth)</td>
-				<td>@Html.DisplayFor(model => model.PhoneNumber)</td>
-			</tr>
-			<tr>
-				<td>@Html.DisplayFor(model => model.SocialSecurityNumber)</td>
-				<td>@Html.DisplayFor(model => model.CreatedDate)</td>
-			</tr></thead>
-	</table>
+    <h3>Pojištěná osoba</h3>
+    <table class="table align-middle">
+        <thead>
+        <tr>
+            <td rowspan="4" class="col-2">
+                <img src="~/images/avatar.png"/>
+            </td>
+            <td colspan="2">
+                <h4>@Html.DisplayFor(model => model.FirstName) @Html.DisplayFor(model => model.LastName)</h4>
+            </td>
+        </tr>
+        <tr>
+            <td>@Html.DisplayFor(model => model.Address)</td>
+            <td>@Html.DisplayFor(model => model.Email)</td>
+        </tr>
+        <tr>
+            <td>@Html.DisplayFor(model => model.DateOfBirth)</td>
+            <td>@Html.DisplayFor(model => model.PhoneNumber)</td>
+        </tr>
+        <tr>
+            <td>@Html.DisplayFor(model => model.SocialSecurityNumber)</td>
+            <td>@Html.DisplayFor(model => model.CreatedDate)</td>
+        </tr>
+        </thead>
+    </table>
 </div>
 <h3>Sjednané pojistky</h3>
 
 @if (Model.Insurances != null && Model.Insurances.Any())
-{	
-	<div class="mb-10">
-		<table class="table align-middle">
-			<thead>
-				<tr>
-					<th>
-						Pojištění
-					</th>
-					<th>
-						Částka
-					</th>
-					<th></th>
-				</tr>
-			</thead>
-			<tbody>
-				<ul>
-					@foreach (var insurance in Model.Insurances)
-					{
-						<tr>
-							<td>
-								<a asp-controller="Insurances" asp-action="Details" asp-route-id="@insurance.Id">@insurance.PolicyType</a>
-							</td>
-							<td>
-								@insurance.PremiumAmount
-							</td>
-							<td>
-								@if (User.IsInRole(UserRoles.Admin))
-								{
-									<span>
-										<a asp-controller="Insurances" asp-action="Delete" asp-route-id="@insurance.Id" class="btn btn-danger">Odstranit</a>
-										<a asp-controller="Insurances" asp-action="Edit" asp-route-id="@insurance.Id" class="btn btn-warning">Editovat</a>
-									</span>
-								}
-							</td>
-						</tr>
-					}
-			</tbody>
-		</table>
-	</div>
+{
+    <div class="mb-10">
+        <table class="table align-middle">
+            <thead>
+            <tr>
+                <th>
+                    Pojištění
+                </th>
+                <th>
+                    Částka
+                </th>
+                <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <ul>
+                @foreach (var insurance in Model.Insurances)
+                {
+                    <tr>
+                        <td>
+                            <a asp-controller="Insurances" asp-action="Details" asp-route-id="@insurance.Id">@insurance.PolicyType</a>
+                        </td>
+                        <td>
+                            @insurance.PremiumAmount
+                        </td>
+                        <td>
+                            @if (User.IsInRole(UserRoles.Admin))
+                            {
+                                <span>
+                                    <a asp-controller="Insurances" asp-action="Delete" asp-route-id="@insurance.Id" class="btn btn-danger">Odstranit</a>
+                                    <a asp-controller="Insurances" asp-action="Edit" asp-route-id="@insurance.Id" class="btn btn-warning">Editovat</a>
+                                </span>
+                            }
+                        </td>
+                    </tr>
+                }
+            </ul>
+            </tbody>
+        </table>
+    </div>
 }
 else
 {
-	<p>Žádné pojistky nenalezeny.</p>
+    <p>Žádné pojistky nenalezeny.</p>
 }
 @if (User.IsInRole(UserRoles.Admin))
 {
-	<div class="text-center mt-4">
-		<a asp-controller="Insurances" asp-action="Create" asp-route-insuredPersonId="@Model?.Id" class="btn btn-success">Přidat pojištění</a>
-		<a asp-action="Edit" asp-route-id="@Model?.Id" class="btn btn-warning">Editovat pojištěnce</a>
-		<a asp-action="Delete" asp-route-id="@Model?.Id" class="btn btn-danger">Smazat pojištěnce</a>
-		<a asp-action="Index">Zpátky na seznam</a>
-	</div>
+    <div class="text-center mt-4">
+        <a asp-controller="Insurances" asp-action="Create" asp-route-insuredPersonId="@Model?.Id" class="btn btn-success">Přidat pojištění</a>
+        <a asp-action="Edit" asp-route-id="@Model?.Id" class="btn btn-warning">Editovat pojištěnce</a>
+        <a asp-action="Delete" asp-route-id="@Model?.Id" class="btn btn-danger">Smazat pojištěnce</a>
+        <a asp-action="Index">Zpátky na seznam</a>
+    </div>
 }

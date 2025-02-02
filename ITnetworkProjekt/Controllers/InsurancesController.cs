@@ -1,10 +1,7 @@
-﻿using ITnetworkProjekt.Data;
-using ITnetworkProjekt.Models;
+﻿using ITnetworkProjekt.Models;
 using ITnetworkProjekt.Services;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 
 namespace ITnetworkProjekt.Controllers
@@ -176,3 +173,5 @@ namespace ITnetworkProjekt.Controllers
         }
     }
 }
+
+
