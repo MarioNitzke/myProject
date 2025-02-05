@@ -1,9 +1,9 @@
 ﻿using ITnetworkProjekt.Managers;
 using ITnetworkProjekt.Models;
-using ITnetworkProjekt.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using X.PagedList.Extensions;
 
 namespace ITnetworkProjekt.Controllers
 {
@@ -15,8 +15,14 @@ namespace ITnetworkProjekt.Controllers
 
         // GET: Insurances/Index
         [Authorize(Roles = UserRoles.Admin)]
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(int? page)
         {
+            var insurances = await insuranceManager.GetAllInsurances();
+
+            var pageNumber = page ?? 1;
+            var onePageOfInsurances = insurances.ToPagedList(pageNumber, 4);
+
+            ViewBag.OnePageOfInsurances = onePageOfInsurances;
             return View(await insuranceManager.GetAllInsurances());
         }
 
@@ -77,8 +83,6 @@ namespace ITnetworkProjekt.Controllers
             return View(insurance);
         }
 
-
-
         // GET: Insurances/Edit
         [Authorize(Roles = UserRoles.Admin)]
         public async Task<IActionResult> Edit(int? id)
@@ -93,7 +97,7 @@ namespace ITnetworkProjekt.Controllers
             {
                 return NotFound();
             }
-            ViewBag.InsuredPersonID = await insuranceManager.GetInsuredPersonSelectListAsync(id);
+            ViewBag.InsuredPersonID = await insuranceManager.GetInsuredPersonSelectListAsync();
             return View(insurance);
         }
 
@@ -112,7 +116,7 @@ namespace ITnetworkProjekt.Controllers
                 var updatedInsurance = await insuranceManager.UpdateInsurance(insurance);
                 return updatedInsurance is null ? NotFound() : RedirectToAction(nameof(Index));
             }
-            ViewBag.InsuredPersonID = await insuranceManager.GetInsuredPersonSelectListAsync(id);
+            ViewBag.InsuredPersonID = await insuranceManager.GetInsuredPersonSelectListAsync();
             return View(insurance);
         }
 

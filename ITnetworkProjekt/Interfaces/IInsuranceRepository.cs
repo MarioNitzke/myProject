@@ -8,6 +8,7 @@ namespace ITnetworkProjekt.Interfaces
 {
     public interface IInsuranceRepository : IBaseRepository<Insurance>
     {
+        Task<List<Insurance>> GetInsurancesByIdsAsync(List<int> insuranceIds);
         Task<int> GetInsuredPersonIdOfCurrentUserAsync(string userId);
         Task<List<InsuredPerson>> GetInsuredPersonsAsync(int? selectedId = null);
     }

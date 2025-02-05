@@ -2,6 +2,7 @@
 using AutoMapper;
 using ITnetworkProjekt.Interfaces;
 using ITnetworkProjekt.Models;
+using ITnetworkProjekt.Repositories;
 using Microsoft.AspNetCore.Identity;
 
 namespace ITnetworkProjekt.Managers
@@ -59,7 +60,7 @@ namespace ITnetworkProjekt.Managers
 
         public async Task<string?> GetPersonNameById(int id)
         {
-            var insuredPerson = await FindInsuredPersonById(id);
+            InsuredPerson? insuredPerson = await insuredPersonRepository.FindById(id);
             if (insuredPerson != null)
             {
                 return $"{insuredPerson.FirstName} {insuredPerson.LastName}";
@@ -69,13 +70,14 @@ namespace ITnetworkProjekt.Managers
 
         public async Task<InsuredPersonViewModel?> GetInsuredPersonForUserAsync(ClaimsPrincipal user)
         {
-            var currentUserId = await insuredPersonRepository.GetInsuredPersonIdOfCurrentUserAsync(userManager.GetUserId(user));
-            if (currentUserId != null)
+            int? currentUserId = await insuredPersonRepository.GetInsuredPersonIdOfCurrentUserAsync(userManager.GetUserId(user));
+            if (currentUserId is not null)
             {
-                var insuredPerson = await insuredPersonRepository.FindById(currentUserId);
+                InsuredPerson? insuredPerson = await insuredPersonRepository.FindById(currentUserId.Value);
                 return mapper.Map<InsuredPersonViewModel?>(insuredPerson);
             }
             return null;
         }
+
     }
 }

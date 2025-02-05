@@ -1,11 +1,13 @@
 ﻿@model ITnetworkProjekt.Models.InsuredPersonViewModel
+@using Microsoft.AspNetCore.Mvc.Localization
+@inject IViewLocalizer Localizer
 
 @{
-    ViewData["Title"] = "Podrobnosti";
+    ViewData["Title"] = Localizer["DetailsTitle"];
 }
 
 <div class="mb-4">
-    <h3>Pojištěná osoba</h3>
+    <h3>@Localizer["InsuredPersonHeader"]</h3>
     <table class="table align-middle">
         <thead>
         <tr>
@@ -31,60 +33,56 @@
         </thead>
     </table>
 </div>
-<h3>Sjednané pojistky</h3>
 
-@if (Model.Insurances != null && Model.Insurances.Any())
+<h3>@Localizer["InsurancesHeader"]</h3>
+
+@if (ViewBag.Insurances != null && ViewBag.Insurances.Count > 0)
 {
-    <div class="mb-10">
-        <table class="table align-middle">
-            <thead>
-            <tr>
-                <th>
-                    Pojištění
-                </th>
-                <th>
-                    Částka
-                </th>
-                <th></th>
-            </tr>
-            </thead>
-            <tbody>
-            <ul>
-                @foreach (var insurance in Model.Insurances)
-                {
+        <div class="mb-10">
+            <table class="table align-middle">
+                <thead>
                     <tr>
-                        <td>
-                            <a asp-controller="Insurances" asp-action="Details" asp-route-id="@insurance.Id">@insurance.PolicyType</a>
-                        </td>
-                        <td>
-                            @insurance.PremiumAmount
-                        </td>
-                        <td>
+                        <th>@Localizer["InsuranceType"]</th>
+                        <th>@Localizer["InsuranceAmount"]</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                @foreach (var insurance in ViewBag.Insurances)
+                {
+                        <tr>
+                            <td>
+                                <a asp-controller="Insurances" asp-action="Details" asp-route-id="@insurance.Id">
+                                @insurance.PolicyType
+                                </a>
+                            </td>
+                            <td>@insurance.PremiumAmount</td>
+                            <td>
                             @if (User.IsInRole(UserRoles.Admin))
                             {
-                                <span>
-                                    <a asp-controller="Insurances" asp-action="Delete" asp-route-id="@insurance.Id" class="btn btn-danger">Odstranit</a>
-                                    <a asp-controller="Insurances" asp-action="Edit" asp-route-id="@insurance.Id" class="btn btn-warning">Editovat</a>
-                                </span>
+                                        <span>
+                                            <a asp-controller="Insurances" asp-action="Delete" asp-route-id="@insurance.Id" class="btn btn-danger">@Localizer["DeleteButton"]</a>
+                                            <a asp-controller="Insurances" asp-action="Edit" asp-route-id="@insurance.Id" class="btn btn-warning">@Localizer["EditButton"]</a>
+                                        </span>
                             }
-                        </td>
-                    </tr>
+                            </td>
+                        </tr>
                 }
-            </ul>
-            </tbody>
-        </table>
-    </div>
+                </tbody>
+            </table>
+        </div>
 }
 else
 {
-    <p>Žádné pojistky nenalezeny.</p>
+        <p>@Localizer["NoInsurancesFound"]</p>
 }
+
 @if (User.IsInRole(UserRoles.Admin))
 {
-    <div class="text-center mt-4">
-        <a asp-controller="Insurances" asp-action="Create" asp-route-insuredPersonId="@Model?.Id" class="btn btn-success">Přidat pojištění</a>
-        <a asp-action="Edit" asp-route-id="@Model?.Id" class="btn btn-warning">Editovat pojištěnce</a>
-        <a asp-action="Delete" asp-route-id="@Model?.Id" class="btn btn-danger">Smazat pojištěnce</a>
-        <a asp-action="Index">Zpátky na seznam</a>
-    </div>
+        <div class="text-center mt-4">
+            <a asp-controller="Insurances" asp-action="Create" asp-route-insuredPersonId="@Model?.Id" class="btn btn-success">@Localizer["AddInsuranceButton"]</a>
+            <a asp-action="Edit" asp-route-id="@Model?.Id" class="btn btn-warning">@Localizer["EditInsuredPersonButton"]</a>
+            <a asp-action="Delete" asp-route-id="@Model?.Id" class="btn btn-danger">@Localizer["DeleteInsuredPersonButton"]</a>
+            <a asp-action="Index">@Localizer["BackToList"]</a>
+        </div>
 }

@@ -1,66 +1,69 @@
 ﻿@model IEnumerable<InsuranceViewModel>
+@using Microsoft.AspNetCore.Mvc.Localization
+@inject IViewLocalizer Localizer
 
 @{
-    ViewData["Title"] = "Seznam všech pojištění";
+    ViewData["Title"] = Localizer["InsuranceListTitle"];
 }
-
+@using X.PagedList.Mvc.Core; 
+@using X.PagedList; 
+<link href="/Content/PagedList.css" rel="stylesheet" type="text/css" />
 
 <div class="text-center mb-8">
-    <a asp-action="Create" class="btn btn-success">Vytvořit nové pojištění</a>
+    <a asp-action="Create" class="btn btn-success">@Localizer["CreateNewInsurance"]</a>
 </div>
 <table class="table">
     <thead>
         <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.InsuredPerson)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.PolicyType)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.StartDate)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.EndDate)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.PremiumAmount)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.CreatedDate)
-            </th>
+            <th>@Html.DisplayNameFor(model => model.InsuredPerson)</th>
+            <th>@Html.DisplayNameFor(model => model.PolicyType)</th>
+            <th>@Html.DisplayNameFor(model => model.StartDate)</th>
+            <th>@Html.DisplayNameFor(model => model.EndDate)</th>
+            <th>@Html.DisplayNameFor(model => model.PremiumAmount)</th>
+            <th>@Html.DisplayNameFor(model => model.CreatedDate)</th>
             <th></th>
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                <a href="~/InsuredPersons/Details/@Html.DisplayFor(modelItem => item.InsuredPerson.Id)">
-                    @Html.DisplayFor(modelItem => item.InsuredPerson.LastName) @Html.DisplayFor(modelItem => item.InsuredPerson.FirstName)
-                </a> 
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.PolicyType)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.StartDate)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.EndDate)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.PremiumAmount)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.CreatedDate)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.Id">Upravit</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">Podrobnosti</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Smazat</a>
-            </td>
-        </tr>
-}
+        @foreach (var insurance in ViewBag.OnePageOfInsurances)
+        {
+                <tr>
+                    <td>
+                        <a href="~/InsuredPersons/Details/@insurance.InsuredPerson.Id">
+                        @insurance.InsuredPerson.LastName @insurance.InsuredPerson.FirstName
+                        </a> 
+                    </td>
+                    <td>@insurance.PolicyType</td>
+                    <td>@insurance.StartDate.ToShortDateString()</td>
+                    <td>@insurance.EndDate.ToShortDateString()</td>
+                    <td>@insurance.PremiumAmount</td>
+                    <td>@insurance.CreatedDate.ToShortDateString()</td>
+                    <td>
+                        <a asp-action="Edit" asp-route-id="@insurance.Id">@Localizer["EditButton"]</a> |
+                        <a asp-action="Details" asp-route-id="@insurance.Id"> @Localizer["DetailsButton"]</a> |
+                        <a asp-action="Delete" asp-route-id="@insurance.Id">@Localizer["DeleteButton"]</a>
+                    </td>
+                </tr>
+        }
     </tbody>
 </table>
+@{
+    var previousText = Localizer["Previous"].Value;
+    var nextText = Localizer["Next"].Value;
+}
+
+<div class="pagination justify-content-center">
+    @Html.PagedListPager(
+                (IPagedList)ViewBag.OnePageOfInsurances,
+                page => Url.Action("Index", new { page = page }),
+                new PagedListRenderOptions
+        {
+            UlElementClasses = new[] { "pagination" },
+            LiElementClasses = new[] { "page-item" },
+            PageClasses = new[] { "page-link" },
+            LinkToPreviousPageFormat = previousText,
+            LinkToNextPageFormat = nextText
+        }
+            )
+</div>
+

@@ -1,4 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using ITnetworkProjekt.Resources;
+
 
 namespace ITnetworkProjekt.Models
 {
@@ -43,6 +45,7 @@ namespace ITnetworkProjekt.Models
 
         [MaxLength(450)]
         public string? UserId { get; set; } = "";
-        public virtual ICollection<Insurance>? Insurances { get; set; }
+
+        public List<int>? InsuranceIds { get; set; }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using NuGet.Protocol.Core.Types;
 
 namespace ITnetworkProjekt.Models
 {
@@ -14,7 +15,7 @@ namespace ITnetworkProjekt.Models
         public DateTime CreatedDate { get; set; } = DateTime.Now;
         public string SocialSecurityNumber { get; set; } = "";
         public string? UserId { get; set; } = "";
-        public virtual ICollection<Insurance>? Insurances { get; set; }
+        public List<int>? InsuranceIds { get; set; }
     }
 }
 

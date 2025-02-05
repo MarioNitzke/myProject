@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel.DataAnnotations;
+using ITnetworkProjekt.Resources;
 
 namespace ITnetworkProjekt.Models
 {

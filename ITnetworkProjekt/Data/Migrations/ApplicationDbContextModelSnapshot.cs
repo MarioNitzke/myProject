@@ -34,7 +34,6 @@ namespace ITnetworkProjekt.Data.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<DateTime?>("EndDate")
-                        .IsRequired()
                         .HasColumnType("datetime2");
 
                     b.Property<int>("InsuredPersonID")
@@ -45,12 +44,9 @@ namespace ITnetworkProjekt.Data.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<decimal?>("PremiumAmount")
-                        .IsRequired()
-                        .HasPrecision(18, 2)
                         .HasColumnType("decimal(18,2)");
 
                     b.Property<DateTime?>("StartDate")
-                        .IsRequired()
                         .HasColumnType("datetime2");
 
                     b.HasKey("Id");
@@ -76,7 +72,6 @@ namespace ITnetworkProjekt.Data.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<DateTime?>("DateOfBirth")
-                        .IsRequired()
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Email")
@@ -85,6 +80,9 @@ namespace ITnetworkProjekt.Data.Migrations
 
                     b.Property<string>("FirstName")
                         .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("InsuranceIds")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("LastName")
@@ -97,12 +95,10 @@ namespace ITnetworkProjekt.Data.Migrations
 
                     b.Property<string>("SocialSecurityNumber")
                         .IsRequired()
-                        .HasMaxLength(11)
-                        .HasColumnType("nvarchar(11)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("UserId")
-                        .HasMaxLength(450)
-                        .HasColumnType("nvarchar(450)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
@@ -310,7 +306,7 @@ namespace ITnetworkProjekt.Data.Migrations
             modelBuilder.Entity("ITnetworkProjekt.Models.Insurance", b =>
                 {
                     b.HasOne("ITnetworkProjekt.Models.InsuredPerson", "InsuredPerson")
-                        .WithMany("Insurances")
+                        .WithMany()
                         .HasForeignKey("InsuredPersonID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -368,14 +364,7 @@ namespace ITnetworkProjekt.Data.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
-
-            modelBuilder.Entity("ITnetworkProjekt.Models.InsuredPerson", b =>
-                {
-                    b.Navigation("Insurances");
-                });
 #pragma warning restore 612, 618
         }
     }
 }
-
-

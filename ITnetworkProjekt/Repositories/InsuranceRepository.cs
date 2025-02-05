@@ -5,15 +5,17 @@ using ITnetworkProjekt.Interfaces;
 using ITnetworkProjekt.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.Build.Construction;
 using Microsoft.EntityFrameworkCore;
 
 namespace ITnetworkProjekt.Repositories
 {
-    public class InsuranceRepository(ApplicationDbContext dbContext) : BaseRepository<Insurance>(dbContext), IInsuranceRepository
+    public class InsuranceRepository(IDbContextFactory<ApplicationDbContext> dbContext) : BaseRepository<Insurance>(dbContext), IInsuranceRepository
     {
         //FindById Insurance with InsuredPerson
         public new async Task<Insurance?> FindById(int id)
         {
+            using var dbContext = this.dbContext.CreateDbContext();
             var insurance = await dbContext.Insurance
                 .AsNoTracking()
                 .FirstOrDefaultAsync(p => p.Id == id);
@@ -35,6 +37,7 @@ namespace ITnetworkProjekt.Repositories
         //GetAll Insurance with InsuredPersons
         public new async Task<List<Insurance>> GetAll()
         {
+            using var dbContext = this.dbContext.CreateDbContext();
             var insurances = await dbContext.Insurance.AsNoTracking().ToListAsync();
             var insuredPersons = await dbContext.InsuredPerson.AsNoTracking().ToListAsync();
 
@@ -46,8 +49,18 @@ namespace ITnetworkProjekt.Repositories
             return insurances;
         }
 
+        public async Task<List<Insurance>> GetInsurancesByIdsAsync(List<int> insuranceIds)
+        {
+            using var dbContext = this.dbContext.CreateDbContext();
+            return await dbContext.Insurance
+                .AsNoTracking()
+                .Where(i => insuranceIds.Contains(i.Id))
+                .ToListAsync();
+        }
+
         public async Task<int> GetInsuredPersonIdOfCurrentUserAsync(string userId)
         {
+            using var dbContext = this.dbContext.CreateDbContext();
             return await dbContext.InsuredPerson
                 .Where(m => m.UserId == userId)
                 .Select(m => m.Id)
@@ -56,6 +69,7 @@ namespace ITnetworkProjekt.Repositories
 
         public async Task<List<InsuredPerson>> GetInsuredPersonsAsync(int? selectedId = null)
         {
+            using var dbContext = this.dbContext.CreateDbContext();
             var insuredPerson = dbContext.InsuredPerson.AsQueryable();
 
             if (selectedId.HasValue)

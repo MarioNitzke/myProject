@@ -1,57 +1,59 @@
 ﻿@model ITnetworkProjekt.Models.InsuranceViewModel
+@using Microsoft.AspNetCore.Mvc.Localization
+@inject IViewLocalizer Localizer
 
 @{
-    ViewData["Title"] = "Podrobnosti";
+    ViewData["Title"] = Localizer["DetailsTitle"];
 }
 
 <div>
-    <h4>Pojištění</h4>
+    <h4>@Localizer["InsuranceHeader"]</h4>
     <hr />
     <dl class="row">
-        <dt class = "col-sm-2">
+        <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.InsuredPerson)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10">
             <a href="~/InsuredPersons/Details/@Html.DisplayFor(model => model.InsuredPerson.Id)">
-            @Html.DisplayFor(model => model.InsuredPerson.FirstName) @Html.DisplayFor(model => model.InsuredPerson.LastName)
+                @Html.DisplayFor(model => model.InsuredPerson.FirstName) @Html.DisplayFor(model => model.InsuredPerson.LastName)
             </a> 
         </dd>
-        <dt class = "col-sm-2">
+        <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.PolicyType)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10">
             @Html.DisplayFor(model => model.PolicyType)
         </dd>
-        <dt class = "col-sm-2">
+        <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.StartDate)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10">
             @Html.DisplayFor(model => model.StartDate)
         </dd>
-        <dt class = "col-sm-2">
+        <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.EndDate)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10">
             @Html.DisplayFor(model => model.EndDate)
         </dd>
-        <dt class = "col-sm-2">
+        <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.PremiumAmount)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10">
             @Html.DisplayFor(model => model.PremiumAmount)
         </dd>
-        <dt class = "col-sm-2">
+        <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.CreatedDate)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10">
             @Html.DisplayFor(model => model.CreatedDate)
         </dd>
     </dl>
 </div>
 <div class="text-end">
     @if (User.IsInRole(UserRoles.Admin))
-{
-    <span><a asp-action="Edit" asp-route-id="@Model?.Id" class="btn btn-success">Upravit</a> |</span>
-}
-    <a asp-action="Index">Zpátky na seznam</a>
+    {
+            <span><a asp-action="Edit" asp-route-id="@Model?.Id" class="btn btn-success">@Localizer["EditButton"]</a> |</span>
+    }
+    <a asp-action="Index">@Localizer["BackToList"]</a>
 </div>

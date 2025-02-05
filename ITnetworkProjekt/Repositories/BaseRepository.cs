@@ -5,16 +5,16 @@ using Microsoft.EntityFrameworkCore.ChangeTracking;
 
 namespace ITnetworkProjekt.Repositories
 {
-    public abstract class BaseRepository<TEntity>(ApplicationDbContext dbContext) : IBaseRepository<TEntity> where TEntity : class
+    public abstract class BaseRepository<TEntity>(IDbContextFactory<ApplicationDbContext> dbContext) : IBaseRepository<TEntity> where TEntity : class
     {
-        private readonly ApplicationDbContext dbContext = dbContext;
-        private readonly DbSet<TEntity> dbSet = dbContext.Set<TEntity>();
-
+        protected readonly IDbContextFactory<ApplicationDbContext> dbContext = dbContext;
+ 
         public async Task Delete(TEntity entity)
         {
+            using var dbContext = this.dbContext.CreateDbContext();
             try
             {
-                dbSet.Remove(entity);
+                dbContext.Set<TEntity>().Remove(entity);
                 await dbContext.SaveChangesAsync();
             }
             catch
@@ -31,26 +31,30 @@ namespace ITnetworkProjekt.Repositories
 
         public async Task<TEntity?> FindById(int id)
         {
-            return await dbSet.FindAsync(id);
+            using var dbContext = this.dbContext.CreateDbContext();
+            return await dbContext.Set<TEntity>().FindAsync(id);
         }
 
         public async Task<List<TEntity>> GetAll()
         {
-            return await dbSet.ToListAsync();
+            using var dbContext = this.dbContext.CreateDbContext();
+            return await dbContext.Set<TEntity>().ToListAsync();
         }
 
         public async Task<TEntity> Insert(TEntity entity)
         {
-            EntityEntry<TEntity> entry = dbSet.Add(entity);
+            using var dbContext = this.dbContext.CreateDbContext();
+            var entry = dbContext.Set<TEntity>().Add(entity);
             await dbContext.SaveChangesAsync();
             return entry.Entity;
         }
 
         public async Task<TEntity> Update(TEntity entity)
         {
+            using var dbContext = this.dbContext.CreateDbContext();
             try
             {
-                EntityEntry<TEntity> entry = dbSet.Update(entity);
+                var entry = dbContext.Set<TEntity>().Update(entity);
                 await dbContext.SaveChangesAsync();
                 return entry.Entity;
             }

@@ -1,15 +1,29 @@
 ﻿@model IEnumerable<ITnetworkProjekt.Models.InsuredPersonViewModel>
+@using ITnetworkProjekt.Resources
+@using Microsoft.AspNetCore.Mvc.Localization
+@using Microsoft.Extensions.Localization
+@using Microsoft.AspNetCore.Localization
 
-@{
-    ViewData["Title"] = "Seznam pojištěnců";
-}
+@inject IViewLocalizer Localizer
+@inject IStringLocalizer<SharedResource> SharedLocalizer
+
+
 @using X.PagedList.Mvc.Core; 
 @using X.PagedList; 
+
+@{
+    ViewData["Title"] = Localizer["InsuredPersonListTitle"];
+}
+
 <link href="/Content/PagedList.css" rel="stylesheet" type="text/css" />
 
 <div class="text-center">
     <p>
-        <a asp-action="Create" class="btn btn-success">Vytvořit nového pojištěnce</a>
+    <p>@SharedLocalizer["EditButton"]</p>
+    <p>@SharedLocalizer["EditButton"].Value</p>
+    <p>@SharedLocalizer.GetString("EditButton")</p>
+   
+        <a asp-action="Create" class="btn btn-success">@Localizer["CreateNewInsuredPerson"]</a>
     </p>
 </div>
 
@@ -34,14 +48,14 @@
                         @insuredPerson.FirstName @insuredPerson.LastName
                         </a>
                     </td>
-                    <td>@insuredPerson.DateOfBirth</td>
+                    <td>@insuredPerson.DateOfBirth?.ToShortDateString()</td>
                     <td>@insuredPerson.SocialSecurityNumber</td>
                     <td>@insuredPerson.PhoneNumber</td>
                     <td>@insuredPerson.Email</td>
                     <td>@insuredPerson.Address</td>
                     <td>
-                        <a asp-action="Edit" asp-route-id="@insuredPerson.Id" class="btn btn-warning">Editovat</a>
-                        <a asp-action="Delete" asp-route-id="@insuredPerson.Id" class="btn btn-danger">Smazat</a>
+                        <a asp-action="Edit" asp-route-id="@insuredPerson.Id" class="btn btn-warning">@SharedLocalizer["EditButton"]</a>
+                        <a asp-action="Delete" asp-route-id="@insuredPerson.Id" class="btn btn-danger">@Localizer["DeleteButton"]</a>
                     </td>
                 </tr>
         }
@@ -49,6 +63,11 @@
 </table>
 
 <div class="pagination justify-content-center">
+    @{
+        var previousText = Localizer["DebugTestKey"].Value;
+        var nextText = SharedLocalizer["Next"].Value;
+    }
+
     @Html.PagedListPager(
                 (IPagedList)ViewBag.OnePageOfInsuredPersons,
                 page => Url.Action("Index", new { page = page }),
@@ -57,8 +76,8 @@
             UlElementClasses = new[] { "pagination" },
             LiElementClasses = new[] { "page-item" },
             PageClasses = new[] { "page-link" },
-            LinkToPreviousPageFormat = "Předchozí",
-            LinkToNextPageFormat = "Další"
+            LinkToPreviousPageFormat = previousText,
+            LinkToNextPageFormat = nextText
         }
             )
 </div>

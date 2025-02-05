@@ -70,13 +70,18 @@ namespace ITnetworkProjekt.Managers
                 return mapper.Map<InsuranceViewModel?>(insurance);
             }
 
-            var currentUserId = await insuranceRepository.GetInsuredPersonIdOfCurrentUserAsync(userManager.GetUserId(user));
-            if (currentUserId == null) return null;
+            int? currentUserId = await insuranceRepository.GetInsuredPersonIdOfCurrentUserAsync(userManager.GetUserId(user));
+            if (currentUserId is null) return null;
 
-            insurance = await insuranceRepository.FindById(currentUserId);
-            return mapper.Map<InsuranceViewModel?>(insurance);
+            insurance = await insuranceRepository.FindById(id);
+            if (insurance is not null && insurance.InsuredPersonID == currentUserId)
+            {
+                return mapper.Map<InsuranceViewModel?>(insurance);
+            }else
+            {
+                return null;
+            }
         }
-
 
         public async Task<SelectList> GetInsuredPersonSelectListAsync(int? selectedId = null)
         {
@@ -90,6 +95,12 @@ namespace ITnetworkProjekt.Managers
                 .ToList();
 
             return new SelectList(list, "Id", "FullName", selectedId);
+        }
+
+        public async Task<List<InsuranceViewModel>> GetInsurancesByIdsAsync(List<int> insuranceIds)
+        {
+            List<Insurance>? insurances = await insuranceRepository.GetInsurancesByIdsAsync(insuranceIds);
+            return mapper.Map<List<InsuranceViewModel>>(insurances);
         }
 
     }
