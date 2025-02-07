@@ -79,5 +79,11 @@ namespace ITnetworkProjekt.Managers
             return null;
         }
 
+        public async Task<InsuredPersonViewModel?> GetInsuredPersonByEmailAndSSNAsync(string email, string ssn)
+        {
+            InsuredPerson? insuredPerson = await insuredPersonRepository.FindByEmailAndSSNAsync(email, ssn);
+            return mapper.Map<InsuredPersonViewModel?>(insuredPerson);
+        }
+
     }
 }

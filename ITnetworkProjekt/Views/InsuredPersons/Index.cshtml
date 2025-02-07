@@ -1,77 +1,76 @@
 ﻿@model IEnumerable<ITnetworkProjekt.Models.InsuredPersonViewModel>
-@using ITnetworkProjekt.Resources
 @using Microsoft.AspNetCore.Mvc.Localization
 @using Microsoft.Extensions.Localization
-@using Microsoft.AspNetCore.Localization
-
 @inject IViewLocalizer Localizer
 @inject IStringLocalizer<SharedResource> SharedLocalizer
 
-
-@using X.PagedList.Mvc.Core; 
-@using X.PagedList; 
+@using X.PagedList.Mvc.Core;
+@using X.PagedList;
 
 @{
     ViewData["Title"] = Localizer["InsuredPersonListTitle"];
 }
 
-<link href="/Content/PagedList.css" rel="stylesheet" type="text/css" />
+<link href="/Content/PagedList.css" rel="stylesheet" type="text/css"/>
 
 <div class="text-center">
     <p>
-    <p>@SharedLocalizer["EditButton"]</p>
-    <p>@SharedLocalizer["EditButton"].Value</p>
-    <p>@SharedLocalizer.GetString("EditButton")</p>
-   
         <a asp-action="Create" class="btn btn-success">@Localizer["CreateNewInsuredPerson"]</a>
     </p>
 </div>
 
 <table class="table align-middle">
     <thead>
-        <tr>
-            <th>@Html.DisplayNameFor(model => model.FirstName)</th>
-            <th>@Html.DisplayNameFor(model => model.DateOfBirth)</th>
-            <th>@Html.DisplayNameFor(model => model.SocialSecurityNumber)</th>
-            <th>@Html.DisplayNameFor(model => model.PhoneNumber)</th>
-            <th>@Html.DisplayNameFor(model => model.Email)</th>
-            <th>@Html.DisplayNameFor(model => model.Address)</th>
-            <th></th>
-        </tr>
+    <tr>
+        <th>@Html.DisplayNameFor(model => model.FirstName)</th>
+        <th>@Html.DisplayNameFor(model => model.DateOfBirth)</th>
+        <th>@Html.DisplayNameFor(model => model.SocialSecurityNumber)</th>
+        <th>@Html.DisplayNameFor(model => model.PhoneNumber)</th>
+        <th>@Html.DisplayNameFor(model => model.Email)</th>
+        <th>@Html.DisplayNameFor(model => model.Address)</th>
+        <th></th>
+    </tr>
     </thead>
     <tbody>
+    @if (ViewBag.OnePageOfInsuredPersons != null)
+    {
         @foreach (var insuredPerson in ViewBag.OnePageOfInsuredPersons)
         {
-                <tr>
-                    <td>
-                        <a asp-action="Details" asp-route-id="@insuredPerson.Id">
+            <tr>
+                <td>
+                    <a asp-action="Details" asp-route-id="@insuredPerson.Id">
                         @insuredPerson.FirstName @insuredPerson.LastName
-                        </a>
-                    </td>
-                    <td>@insuredPerson.DateOfBirth?.ToShortDateString()</td>
-                    <td>@insuredPerson.SocialSecurityNumber</td>
-                    <td>@insuredPerson.PhoneNumber</td>
-                    <td>@insuredPerson.Email</td>
-                    <td>@insuredPerson.Address</td>
-                    <td>
-                        <a asp-action="Edit" asp-route-id="@insuredPerson.Id" class="btn btn-warning">@SharedLocalizer["EditButton"]</a>
-                        <a asp-action="Delete" asp-route-id="@insuredPerson.Id" class="btn btn-danger">@Localizer["DeleteButton"]</a>
-                    </td>
-                </tr>
+                    </a>
+                </td>
+                <td>@insuredPerson.DateOfBirth?.ToShortDateString()</td>
+                <td>@insuredPerson.SocialSecurityNumber</td>
+                <td>@insuredPerson.PhoneNumber</td>
+                <td>@insuredPerson.Email</td>
+                <td>@insuredPerson.Address</td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@insuredPerson.Id" class="btn btn-warning">@SharedLocalizer["EditButton"]</a>
+                    <a asp-action="Delete" asp-route-id="@insuredPerson.Id" class="btn btn-danger">@SharedLocalizer["DeleteButton"]</a>
+                </td>
+            </tr>
         }
+    }
+    else
+    {
+        <p class="text-warning">@SharedLocalizer["LoadingError"]</p>
+    }
     </tbody>
 </table>
 
 <div class="pagination justify-content-center">
     @{
-        var previousText = Localizer["DebugTestKey"].Value;
+        var previousText = SharedLocalizer["Previous"].Value;
         var nextText = SharedLocalizer["Next"].Value;
     }
 
     @Html.PagedListPager(
-                (IPagedList)ViewBag.OnePageOfInsuredPersons,
-                page => Url.Action("Index", new { page = page }),
-                new PagedListRenderOptions
+        (IPagedList)ViewBag.OnePageOfInsuredPersons,
+        page => Url.Action("Index", new { page = page }),
+        new PagedListRenderOptions
         {
             UlElementClasses = new[] { "pagination" },
             LiElementClasses = new[] { "page-item" },
@@ -79,5 +78,5 @@
             LinkToPreviousPageFormat = previousText,
             LinkToNextPageFormat = nextText
         }
-            )
+    )
 </div>

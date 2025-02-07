@@ -120,22 +120,7 @@
   <data name="CreateNewInsurance" xml:space="preserve">
     <value>Vytvořit nové pojištění</value>
   </data>
-  <data name="DeleteButton" xml:space="preserve">
-    <value>Smazat</value>
-  </data>
-  <data name="DetailsButton" xml:space="preserve">
-    <value>Podrobnosti</value>
-  </data>
-  <data name="EditButton" xml:space="preserve">
-    <value>Upravit</value>
-  </data>
   <data name="InsuranceListTitle" xml:space="preserve">
     <value>Seznam všech pojištění</value>
-  </data>
-  <data name="Next" xml:space="preserve">
-    <value>Další</value>
-  </data>
-  <data name="Previous" xml:space="preserve">
-    <value>Předchozí</value>
   </data>
 </root>

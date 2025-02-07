@@ -1,0 +1,51 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="EmailLabel" xml:space="preserve">
+    <value>Email</value>
+  </data>
+  <data name="EmailRequired" xml:space="preserve">
+    <value>Vyplňte emailovou adresu</value>
+  </data>
+  <data name="InvalidEmail" xml:space="preserve">
+    <value>Neplatná emailová adresa</value>
+  </data>
+  <data name="SocialSecurityNumberLabel" xml:space="preserve">
+    <value>Rodné číslo:</value>
+  </data>
+  <data name="SocialSecurityNumberRequired" xml:space="preserve">
+    <value>Vyplňte rodné číslo</value>
+  </data>
+  <data name="InvalidSocialSecurityNumber" xml:space="preserve">
+    <value>Neplatné rodné číslo.</value>
+  </data>
+  <data name="PasswordLabel" xml:space="preserve">
+    <value>Heslo</value>
+  </data>
+  <data name="PasswordRequired" xml:space="preserve">
+    <value>Vyplňte heslo</value>
+  </data>
+  <data name="PasswordLength" xml:space="preserve">
+    <value>Heslo musí mít délku alespoň 8 a nejvíc 100 znaků.</value>
+  </data>
+  <data name="ConfirmPasswordLabel" xml:space="preserve">
+    <value>Potvrzení hesla</value>
+  </data>
+  <data name="ConfirmPasswordRequired" xml:space="preserve">
+    <value>Vyplňte heslo</value>
+  </data>
+  <data name="PasswordMismatch" xml:space="preserve">
+    <value>Zadaná hesla se musí shodovat.</value>
+  </data>
+</root>

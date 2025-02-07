@@ -117,14 +117,8 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="BackToList" xml:space="preserve">
-    <value>Zpátky na seznam</value>
-  </data>
   <data name="DetailsTitle" xml:space="preserve">
     <value>Podrobnosti</value>
-  </data>
-  <data name="EditButton" xml:space="preserve">
-    <value>Upravit</value>
   </data>
   <data name="InsuranceHeader" xml:space="preserve">
     <value>Pojištění</value>

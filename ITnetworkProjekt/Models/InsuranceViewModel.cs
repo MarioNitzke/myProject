@@ -1,7 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel.DataAnnotations;
-using ITnetworkProjekt.Resources;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace ITnetworkProjekt.Models
 {
@@ -9,36 +8,43 @@ namespace ITnetworkProjekt.Models
     {
         public int Id { get; set; }
 
-        [Required(ErrorMessage = "Vyberte pojistitele")]
-        [Display(Name = "Pojistitel:")]
+        [Required(ErrorMessageResourceType = typeof(Resources.Models.InsuranceViewModelResources),
+            ErrorMessageResourceName = "InsuredPersonIdRequired")]
+        [Display(Name = "InsuredPersonIdLabel", ResourceType = typeof(Resources.Models.InsuranceViewModelResources))]
         public int InsuredPersonID { get; set; }
-        [Display(Name = "Pojistitel:")]
+
+        [Display(Name = "InsuredPersonIdLabel", ResourceType = typeof(Resources.Models.InsuranceViewModelResources))]
         [ForeignKey(nameof(InsuredPersonID))]
         public InsuredPerson? InsuredPerson { get; set; }
 
-        [Required(ErrorMessage = "Vyplňte typ pojištění")]
-        [Display(Name = "Typ pojištění:")]
+        [Required(ErrorMessageResourceType = typeof(Resources.Models.InsuranceViewModelResources),
+            ErrorMessageResourceName = "PolicyTypeRequired")]
+        [Display(Name = "PolicyTypeLabel", ResourceType = typeof(Resources.Models.InsuranceViewModelResources))]
         public string PolicyType { get; set; } = "";
 
-        [Required(ErrorMessage = "Vyplňte datum začátek od:")]
+        [Required(ErrorMessageResourceType = typeof(Resources.Models.InsuranceViewModelResources),
+            ErrorMessageResourceName = "StartDateRequired")]
         [DataType(DataType.Date)]
         [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
-        [Display(Name = "Začátek od:")]
+        [Display(Name = "StartDateLabel", ResourceType = typeof(Resources.Models.InsuranceViewModelResources))]
         public DateTime? StartDate { get; set; }
 
-        [Required(ErrorMessage = "Vyplňte datum konec do")]
+        [Required(ErrorMessageResourceType = typeof(Resources.Models.InsuranceViewModelResources),
+            ErrorMessageResourceName = "EndDateRequired")]
         [DataType(DataType.Date)]
         [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
-        [Display(Name = "Konec do:")]
+        [Display(Name = "EndDateLabel", ResourceType = typeof(Resources.Models.InsuranceViewModelResources))]
         public DateTime? EndDate { get; set; }
 
-        [Required(ErrorMessage = "Vyplňte částku pojištění")]
-        [Display(Name = "Pojistná částka:")]
+        [Required(ErrorMessageResourceType = typeof(Resources.Models.InsuranceViewModelResources),
+            ErrorMessageResourceName = "PremiumAmountRequired")]
+        [Display(Name = "PremiumAmountLabel", ResourceType = typeof(Resources.Models.InsuranceViewModelResources))]
         [Precision(18, 2)]
-        [Range(0, 999999.99, ErrorMessage = "Zadejte hodnotu mezi 0 a 999999.99.")]
+        [Range(0, 999999.99, ErrorMessageResourceType = typeof(Resources.Models.InsuranceViewModelResources),
+            ErrorMessageResourceName = "PremiumAmountRange")]
         public decimal? PremiumAmount { get; set; }
 
-        [Display(Name = "Datum vytvoření:")]
+        [Display(Name = "CreatedDateLabel", ResourceType = typeof(Resources.Models.InsuranceViewModelResources))]
         public DateTime CreatedDate { get; set; } = DateTime.Now;
     }
 }

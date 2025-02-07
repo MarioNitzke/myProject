@@ -1,8 +1,12 @@
-﻿@{
-    ViewData["Title"] = "PojištěníApp";
+﻿@using Microsoft.AspNetCore.Mvc.Localization
+@inject IViewLocalizer Localizer
+
+@{
+    ViewData["Title"] = Localizer["IndexTitle"];
 }
 
 <div class="text-center">
-    <p>Vítejte v aplikaci PojištěníApp. Pro otevření funkci se musíte 
-        <a asp-controller="Account" asp-action="Login">příhlásit</a>.</p>
+	<p>
+		@Localizer["WelcomeMessage1"]<a asp-controller="Account" asp-action="Login">@Localizer["WelcomeMessage2"]</a>
+	</p>
 </div>

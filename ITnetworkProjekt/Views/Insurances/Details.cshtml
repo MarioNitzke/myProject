@@ -1,14 +1,16 @@
 ﻿@model ITnetworkProjekt.Models.InsuranceViewModel
 @using Microsoft.AspNetCore.Mvc.Localization
+@using Microsoft.Extensions.Localization
 @inject IViewLocalizer Localizer
+@inject IStringLocalizer<SharedResource> SharedLocalizer
 
 @{
     ViewData["Title"] = Localizer["DetailsTitle"];
 }
 
 <div>
-    <h4>@Localizer["InsuranceHeader"]</h4>
-    <hr />
+    <h4>@SharedLocalizer["InsuranceHeader"]</h4>
+    <hr/>
     <dl class="row">
         <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.InsuredPerson)
@@ -16,7 +18,7 @@
         <dd class="col-sm-10">
             <a href="~/InsuredPersons/Details/@Html.DisplayFor(model => model.InsuredPerson.Id)">
                 @Html.DisplayFor(model => model.InsuredPerson.FirstName) @Html.DisplayFor(model => model.InsuredPerson.LastName)
-            </a> 
+            </a>
         </dd>
         <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.PolicyType)
@@ -53,7 +55,7 @@
 <div class="text-end">
     @if (User.IsInRole(UserRoles.Admin))
     {
-            <span><a asp-action="Edit" asp-route-id="@Model?.Id" class="btn btn-success">@Localizer["EditButton"]</a> |</span>
+        <span><a asp-action="Edit" asp-route-id="@Model?.Id" class="btn btn-success">@SharedLocalizer["EditButton"]</a> |</span>
     }
-    <a asp-action="Index">@Localizer["BackToList"]</a>
+    <a asp-action="Index">@SharedLocalizer["BackToList"]</a>
 </div>

@@ -1,6 +1,9 @@
-﻿@model string
+﻿@using Microsoft.AspNetCore.Mvc.Localization
+@inject IViewLocalizer Localizer
+@model string
+
 @{
-    ViewData["Title"] = "Přístup odepřen";
+    ViewData["Title"] = Localizer["AccessDeniedTitle"];
 }
 
-<p>Nemáte oprávnění k přístupu na tuto stránku.</p>
+<p>@Localizer["AccessDeniedMessage"]</p>

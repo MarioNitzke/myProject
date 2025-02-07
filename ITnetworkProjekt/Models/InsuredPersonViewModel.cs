@@ -1,50 +1,61 @@
-﻿using System.ComponentModel.DataAnnotations;
-using ITnetworkProjekt.Resources;
-
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace ITnetworkProjekt.Models
 {
     public class InsuredPersonViewModel
     {
         public int Id { get; set; }
-        [Required(ErrorMessage = "Vyplňte jméno")]
-        [Display(Name = "Jméno:")]
+
+        [Required(ErrorMessageResourceType = typeof(Resources.Models.InsuredPersonViewModelResources),
+            ErrorMessageResourceName = "FirstNameRequired")]
+        [Display(Name = "FirstNameLabel", ResourceType = typeof(Resources.Models.InsuredPersonViewModelResources))]
         public string FirstName { get; set; } = "";
 
-        [Required(ErrorMessage = "Vyplňte příjmení")]
-        [Display(Name = "Příjmení:")]
+        [Required(ErrorMessageResourceType = typeof(Resources.Models.InsuredPersonViewModelResources),
+            ErrorMessageResourceName = "LastNameRequired")]
+        [Display(Name = "LastNameLabel", ResourceType = typeof(Resources.Models.InsuredPersonViewModelResources))]
         public string LastName { get; set; } = "";
 
-        [Required(ErrorMessage = "Vyplňte datum narození:")]
+        [Required(ErrorMessageResourceType = typeof(Resources.Models.InsuredPersonViewModelResources),
+            ErrorMessageResourceName = "DateOfBirthRequired")]
         [DataType(DataType.Date)]
         [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
-        [Display(Name = "Datum narození:")]
+        [Display(Name = "DateOfBirthLabel", ResourceType = typeof(Resources.Models.InsuredPersonViewModelResources))]
         public DateTime? DateOfBirth { get; set; }
 
-        [Required(ErrorMessage = "Vyplňte telefonní číslo")]
-        [Display(Name = "Telefonní číslo:")]
+        [Required(ErrorMessageResourceType = typeof(Resources.Models.InsuredPersonViewModelResources),
+            ErrorMessageResourceName = "PhoneNumberRequired")]
+        [Display(Name = "PhoneNumberLabel", ResourceType = typeof(Resources.Models.InsuredPersonViewModelResources))]
         public string PhoneNumber { get; set; } = "";
 
-        [Required(ErrorMessage = "Vyplňte emailovou adresu")]
-        [EmailAddress(ErrorMessage = "Neplatná emailová adresa")]
-        [Display(Name = "Email")]
+        [Required(ErrorMessageResourceType = typeof(Resources.Models.InsuredPersonViewModelResources),
+            ErrorMessageResourceName = "EmailRequired")]
+        [EmailAddress(ErrorMessageResourceType = typeof(Resources.Models.InsuredPersonViewModelResources),
+            ErrorMessageResourceName = "InvalidEmail")]
+        [Display(Name = "EmailLabel", ResourceType = typeof(Resources.Models.InsuredPersonViewModelResources))]
         public string Email { get; set; } = "";
 
-        [Required(ErrorMessage = "Vyplňte adresu")]
-        [Display(Name = "Adresa:")]
+        [Required(ErrorMessageResourceType = typeof(Resources.Models.InsuredPersonViewModelResources),
+            ErrorMessageResourceName = "AddressRequired")]
+        [Display(Name = "AddressLabel", ResourceType = typeof(Resources.Models.InsuredPersonViewModelResources))]
         public string Address { get; set; } = "";
 
-        [Display(Name = "Datum vytvoření")]
+        [Display(Name = "CreatedDateLabel", ResourceType = typeof(Resources.Models.InsuredPersonViewModelResources))]
         public DateTime CreatedDate { get; set; } = DateTime.Now;
 
-        [Required(ErrorMessage = "Vyplňte rodné číslo")]
-        [Display(Name = "Rodné číslo:")]
+        [Required(ErrorMessageResourceType = typeof(Resources.Models.InsuredPersonViewModelResources),
+            ErrorMessageResourceName = "SocialSecurityNumberRequired")]
+        [Display(Name = "SocialSecurityNumberLabel",
+            ResourceType = typeof(Resources.Models.InsuredPersonViewModelResources))]
         [StringLength(11)]
-        [RegularExpression(@"^\s*\d{6}/\d{4}\s*$", ErrorMessage = "Neplatné rodné číslo.")]
+        [RegularExpression(@"^\s*\d{6}/\d{4}\s*$",
+            ErrorMessageResourceType = typeof(Resources.Models.InsuredPersonViewModelResources),
+            ErrorMessageResourceName = "InvalidSocialSecurityNumber")]
         public string SocialSecurityNumber { get; set; } = "";
 
-        [MaxLength(450)]
-        public string? UserId { get; set; } = "";
+        [MaxLength(450)] public string? UserId { get; set; } = "";
 
         public List<int>? InsuranceIds { get; set; }
     }

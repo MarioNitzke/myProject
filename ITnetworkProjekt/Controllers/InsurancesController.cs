@@ -8,7 +8,8 @@ using X.PagedList.Extensions;
 namespace ITnetworkProjekt.Controllers
 {
     [Authorize]
-    public class InsurancesController(InsuranceManager insuranceManager, InsuredPersonManager insuredPersonManager) : Controller
+    public class InsurancesController(InsuranceManager insuranceManager, InsuredPersonManager insuredPersonManager)
+        : Controller
     {
         private readonly InsuranceManager insuranceManager = insuranceManager;
         private readonly InsuredPersonManager insuredPersonManager = insuredPersonManager;
@@ -57,7 +58,8 @@ namespace ITnetworkProjekt.Controllers
                 var insuredPerson = await insuredPersonManager.FindInsuredPersonById(insuredPersonId.Value);
                 if (insuredPerson != null)
                 {
-                    ViewBag.InsuredPersonID = await insuranceManager.GetInsuredPersonSelectListAsync(insuredPersonId.Value);
+                    ViewBag.InsuredPersonID =
+                        await insuranceManager.GetInsuredPersonSelectListAsync(insuredPersonId.Value);
                     ViewBag.PersonName = await insuredPersonManager.GetPersonNameById(insuredPersonId.Value);
                     insurance.InsuredPersonID = insuredPersonId.Value;
                 }
@@ -71,7 +73,8 @@ namespace ITnetworkProjekt.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create(int? insuredPersonId,
-            [Bind("Id,InsuredPersonID,PolicyType,StartDate,EndDate,PremiumAmount,CreatedDate")] InsuranceViewModel insurance)
+            [Bind("Id,InsuredPersonID,PolicyType,StartDate,EndDate,PremiumAmount,CreatedDate")]
+            InsuranceViewModel insurance)
         {
             if (ModelState.IsValid)
             {
@@ -97,6 +100,7 @@ namespace ITnetworkProjekt.Controllers
             {
                 return NotFound();
             }
+
             ViewBag.InsuredPersonID = await insuranceManager.GetInsuredPersonSelectListAsync();
             return View(insurance);
         }
@@ -104,7 +108,9 @@ namespace ITnetworkProjekt.Controllers
         // POST: Insurances/Edit
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,InsuredPersonID,PolicyType,StartDate,EndDate,PremiumAmount,CreatedDate")] InsuranceViewModel insurance)
+        public async Task<IActionResult> Edit(int id,
+            [Bind("Id,InsuredPersonID,PolicyType,StartDate,EndDate,PremiumAmount,CreatedDate")]
+            InsuranceViewModel insurance)
         {
             if (id != insurance.Id)
             {
@@ -116,6 +122,7 @@ namespace ITnetworkProjekt.Controllers
                 var updatedInsurance = await insuranceManager.UpdateInsurance(insurance);
                 return updatedInsurance is null ? NotFound() : RedirectToAction(nameof(Index));
             }
+
             ViewBag.InsuredPersonID = await insuranceManager.GetInsuredPersonSelectListAsync();
             return View(insurance);
         }
@@ -148,5 +155,3 @@ namespace ITnetworkProjekt.Controllers
         }
     }
 }
-
-

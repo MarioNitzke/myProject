@@ -1,59 +1,88 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
-  <PropertyGroup>
-    <TargetFramework>net8.0</TargetFramework>
-    <Nullable>enable</Nullable>
-    <ImplicitUsings>enable</ImplicitUsings>
-    <UserSecretsId>aspnet-ITnetworkProjekt-15c283c4-aace-4017-aeee-b81c68427c2f</UserSecretsId>
-  </PropertyGroup>
+	<PropertyGroup>
+		<TargetFramework>net8.0</TargetFramework>
+		<Nullable>enable</Nullable>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<UserSecretsId>aspnet-ITnetworkProjekt-15c283c4-aace-4017-aeee-b81c68427c2f</UserSecretsId>
+	</PropertyGroup>
 
-  <ItemGroup>
-    <Compile Remove="wwwroot\NewFolder\**" />
-    <Content Remove="wwwroot\NewFolder\**" />
-    <EmbeddedResource Remove="wwwroot\NewFolder\**" />
-    <None Remove="wwwroot\NewFolder\**" />
-  </ItemGroup>
+	<ItemGroup>
+		<Compile Remove="wwwroot\NewFolder\**" />
+		<Content Remove="wwwroot\NewFolder\**" />
+		<EmbeddedResource Remove="wwwroot\NewFolder\**" />
+		<None Remove="wwwroot\NewFolder\**" />
+	</ItemGroup>
 
-  <ItemGroup>
-    <Compile Remove="Views\Home\Index1.cshtml.cs" />
-  </ItemGroup>
+	<ItemGroup>
+		<Compile Remove="Views\Home\Index1.cshtml.cs" />
+	</ItemGroup>
 
-  <ItemGroup>
-    <Content Remove="Views\Home\Index1.cshtml" />
-  </ItemGroup>
+	<ItemGroup>
+		<Content Remove="Views\Home\Index1.cshtml" />
+	</ItemGroup>
 
-  <ItemGroup>
-    <PackageReference Include="AutoMapper" Version="13.0.1" />
-    <PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="8.0.11" />
-    <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="8.0.11" />
-    <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="8.0.11" />
-    <PackageReference Include="Microsoft.AspNetCore.Localization" Version="2.3.0" />
-    <PackageReference Include="Microsoft.AspNetCore.Mvc.Localization" Version="2.3.0" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="8.0.11" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="8.0.11" />
-    <PackageReference Include="Microsoft.Extensions.Localization" Version="9.0.1" />
-    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="8.0.7" />
-    <PackageReference Include="X.PagedList.Mvc.Core" Version="10.5.7" />
-  </ItemGroup>
+	<ItemGroup>
+		<PackageReference Include="AutoMapper" Version="13.0.1" />
+		<PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="8.0.11" />
+		<PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="8.0.11" />
+		<PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="8.0.11" />
+		<PackageReference Include="Microsoft.AspNetCore.Localization" Version="2.3.0" />
+		<PackageReference Include="Microsoft.AspNetCore.Mvc.Localization" Version="2.3.0" />
+		<PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="8.0.11" />
+		<PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="8.0.11" />
+		<PackageReference Include="Microsoft.Extensions.Localization" Version="9.0.1" />
+		<PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="8.0.7" />
+		<PackageReference Include="X.PagedList.Mvc.Core" Version="10.5.7" />
+	</ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Resources\Models\" />
-    <Folder Include="wwwroot\images\" />
-  </ItemGroup>
+	<ItemGroup>
+		<Folder Include="wwwroot\images\" />
+	</ItemGroup>
 
-  <ItemGroup>
-    <Compile Update="Resources\SharedResource.Designer.cs">
-      <DesignTime>True</DesignTime>
-      <AutoGen>True</AutoGen>
-      <DependentUpon>SharedResource.resx</DependentUpon>
-    </Compile>
-  </ItemGroup>
+	<ItemGroup>
+	  <Compile Update="Resources\Models\InsuranceViewModelResources.Designer.cs">
+	    <DesignTime>True</DesignTime>
+	    <AutoGen>True</AutoGen>
+	    <DependentUpon>InsuranceViewModelResources.resx</DependentUpon>
+	  </Compile>
+	  <Compile Update="Resources\Models\InsuredPersonViewModelResources.Designer.cs">
+	    <DesignTime>True</DesignTime>
+	    <AutoGen>True</AutoGen>
+	    <DependentUpon>InsuredPersonViewModelResources.resx</DependentUpon>
+	  </Compile>
+	  <Compile Update="Resources\Models\LoginViewModelResources.Designer.cs">
+	    <DesignTime>True</DesignTime>
+	    <AutoGen>True</AutoGen>
+	    <DependentUpon>LoginViewModelResources.resx</DependentUpon>
+	  </Compile>
+	  <Compile Update="Resources\Models\RegisterViewModelResources.Designer.cs">
+	    <DesignTime>True</DesignTime>
+	    <AutoGen>True</AutoGen>
+	    <DependentUpon>RegisterViewModelResources.resx</DependentUpon>
+	  </Compile>
+	</ItemGroup>
 
-  <ItemGroup>
-    <EmbeddedResource Update="Resources\SharedResource.resx">
-      <Generator>PublicResXFileCodeGenerator</Generator>
-      <LastGenOutput>SharedResource.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
-  </ItemGroup>
+	<ItemGroup>
+	  <EmbeddedResource Update="Resources\Models\InsuranceViewModelResources.resx">
+	    <Generator>PublicResXFileCodeGenerator</Generator>
+	    <LastGenOutput>InsuranceViewModelResources.Designer.cs</LastGenOutput>
+	  </EmbeddedResource>
+	  <EmbeddedResource Update="Resources\Models\InsuredPersonViewModelResources.resx">
+	    <Generator>PublicResXFileCodeGenerator</Generator>
+	    <LastGenOutput>InsuredPersonViewModelResources.Designer.cs</LastGenOutput>
+	  </EmbeddedResource>
+	  <EmbeddedResource Update="Resources\Models\LoginViewModelResources.resx">
+	    <Generator>PublicResXFileCodeGenerator</Generator>
+	    <LastGenOutput>LoginViewModelResources.Designer.cs</LastGenOutput>
+	  </EmbeddedResource>
+	  <EmbeddedResource Update="Resources\Models\RegisterViewModelResources.resx">
+	    <Generator>PublicResXFileCodeGenerator</Generator>
+	    <LastGenOutput>RegisterViewModelResources.Designer.cs</LastGenOutput>
+	  </EmbeddedResource>
+	  <EmbeddedResource Update="Resources\SharedResource.resx">
+	    <Generator></Generator>
+	  </EmbeddedResource>
+	</ItemGroup>
 
 </Project>

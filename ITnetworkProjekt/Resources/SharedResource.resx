@@ -117,10 +117,82 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="AboutAppLink" xml:space="preserve">
+    <value>O aplikaci....</value>
+    <comment>_Layout</comment>
+  </data>
+  <data name="AppName" xml:space="preserve">
+    <value>PojištěníApp</value>
+    <comment>_Layout</comment>
+  </data>
+  <data name="BackToList" xml:space="preserve">
+    <value>Zpátky na seznam</value>
+  </data>
+  <data name="CreateButton" xml:space="preserve">
+    <value>Vytvořit</value>
+  </data>
+  <data name="DeleteButton" xml:space="preserve">
+    <value>Smazat</value>
+  </data>
+  <data name="DetailsButton" xml:space="preserve">
+    <value>Podrobnosti</value>
+  </data>
   <data name="EditButton" xml:space="preserve">
     <value>Upravit</value>
   </data>
+  <data name="EventsLink" xml:space="preserve">
+    <value>Údalosti</value>
+    <comment>_Layout</comment>
+  </data>
+  <data name="Footer" xml:space="preserve">
+    <value>ITNetwork projekt vytvořil ©Nitzke Mario </value>
+    <comment>_Layout</comment>
+  </data>
+  <data name="InsuranceHeader" xml:space="preserve">
+    <value>Pojištění</value>
+  </data>
+  <data name="InsurancesLink" xml:space="preserve">
+    <value>Pojištění</value>
+    <comment>_Layout</comment>
+  </data>
+  <data name="InsuredPersonHeader" xml:space="preserve">
+    <value>Pojištěnec</value>
+  </data>
+  <data name="InsuredPersonNotFound" xml:space="preserve">
+    <value>Pojištěnec s tímto emailem a rodným číslem nebyl nalezen. Zkuste to prosím znovu.</value>
+    <comment>AccountController</comment>
+  </data>
+  <data name="InsuredPersonsLink" xml:space="preserve">
+    <value>Pojištěnci</value>
+    <comment>_Layout</comment>
+  </data>
+  <data name="LoadingError" xml:space="preserve">
+    <value>Nastala chyba při načítání dat. Zkuste to znovu později.</value>
+    <comment>catch exception </comment>
+  </data>
+  <data name="LoginLink" xml:space="preserve">
+    <value>Přihlásit</value>
+    <comment>_LoginPartial</comment>
+  </data>
+  <data name="LogoutLink" xml:space="preserve">
+    <value>Odhlásit</value>
+    <comment>_LoginPartial</comment>
+  </data>
   <data name="Next" xml:space="preserve">
     <value>Další</value>
+  </data>
+  <data name="Previous" xml:space="preserve">
+    <value>Předchozí</value>
+  </data>
+  <data name="RegisterLink" xml:space="preserve">
+    <value>Registrace</value>
+    <comment>_LoginPartial</comment>
+  </data>
+  <data name="SaveButton" xml:space="preserve">
+    <value>Uložit</value>
+  </data>
+  <data name="WelcomeUserMessage" xml:space="preserve">
+    <value>Vítej </value>
+    <comment>_LoginPartial</comment>
   </data>
 </root>

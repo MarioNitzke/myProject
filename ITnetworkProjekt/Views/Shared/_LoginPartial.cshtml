@@ -1,4 +1,6 @@
 ﻿@using Microsoft.AspNetCore.Identity
+@using Microsoft.Extensions.Localization
+@inject IStringLocalizer<SharedResource> SharedLocalizer
 @inject SignInManager<IdentityUser> SignInManager
 @inject UserManager<IdentityUser> UserManager
 
@@ -6,21 +8,21 @@
     @if (SignInManager.IsSignedIn(User))
     {
         <li>
-            <a  asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">Vítej @User.Identity?.Name!</a>
+            <a asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">@SharedLocalizer["WelcomeUserMessage"]@User.Identity?.Name!</a>
         </li>
         <li>
-                <form asp-controller="Account" asp-action="Logout">
-                <button type="submit">Odhlásit</button>
+            <form asp-controller="Account" asp-action="Logout">
+                <button type="submit">@SharedLocalizer["LogoutLink"]</button>
             </form>
         </li>
     }
     else
     {
         <li>
-            <a asp-controller="Account" asp-action="Register">Registrovat</a>
+            <a asp-controller="Account" asp-action="Register">@SharedLocalizer["RegisterLink"]</a>
         </li>
         <li>
-            <a asp-controller="Account" asp-action="Login">Příhlásit</a>
+            <a asp-controller="Account" asp-action="Login">@SharedLocalizer["LoginLink"]</a>
         </li>
     }
 </ul>

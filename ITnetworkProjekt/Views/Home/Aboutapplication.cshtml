@@ -1,38 +1,8 @@
-﻿@{
-    ViewData["Title"] = "O aplikaci";
+﻿@using Microsoft.AspNetCore.Mvc.Localization
+@inject IViewLocalizer Localizer
+
+@{
+    ViewData["Title"] = Localizer["AboutAppTitle"];
 }
 
-<p>Když zvládneš vytvořit aplikaci podle tohoto zadání, výrazně si zvýšíš svoji úspěšnost na pohovorech a hledání zaměstnání ti pak zabere jen zlomek času.</p>
-    <p>Naprogramuj webovou aplikaci pro evidenci pojištěných událostí.</p>
-
-    <h2>Minimální požadavky ke splnění</h2>
-    <ul>
-        <li>Aplikace obsahuje kompletní správu (CRUD) pojištěných (např. „Jan Novák“) a jejich pojištění (např. „pojištění bytu“):
-            <ul>
-                <li>Vytvoření pojištěného</li>
-                <li>Vytvoření pojištění</li>
-                <li>Zobrazení detailu pojištěného včetně jeho pojištění</li>
-                <li>Zobrazení detailu pojištění</li>
-                <li>Zobrazení seznamu pojištěných</li>
-                <li>Odstranění pojištěného včetně všech jeho pojištění</li>
-                <li>Odstranění pojištění</li>
-                <li>Editace pojištěného</li>
-                <li>Editace pojištění</li>
-            </ul>
-        </li>
-        <li>Dané entity jsou uloženy v SQL databázi</li>
-        <li>Aplikace je naprogramována podle dobrých praktik a je plně responzivní</li>
-    </ul>
-
-    <h2>Doporučené rozšíření</h2>
-    <ul>
-        <li>Aplikace podporuje uživatelské role (pojištěný, administrátor), navrhni a implementuj, kdo vidí a může editovat jaká data</li>
-        <li>Aplikace eviduje pojistné události, rovněž pomocí kompletní správy (CRUD)</li>
-    </ul>
-
-    <h2>Expertní rozšíření</h2>
-    <ul>
-        <li>Aplikace podporuje rozlišení pojistníků (těch, kdo platí pojištění) a pojištěných (těch, na koho se pojištění vztahuje). 
-            Místo zavedení 2 databázových tabulek se zamysli nad řešením přes výčtový typ (enum).</li>
-        <li>Aplikace generuje statistiky ve formě reportů</li>
-    </ul>
+@Localizer["AboutAppText"]

@@ -7,9 +7,10 @@ using ITnetworkProjekt.Managers;
 using ITnetworkProjekt.Repositories;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
-using ITnetworkProjekt.Resources;
 using Microsoft.AspNetCore.Mvc.Razor;
 using Microsoft.Extensions.Localization;
+
+
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -53,15 +54,6 @@ builder.Services.AddControllersWithViews()
                 factory.Create(typeof(SharedResource));
         });
 
-
-// ✅ Nastavení podporovaných jazyků
-builder.Services.Configure<RequestLocalizationOptions>(options =>
-{
-    var supportedCultures = new[] { "cs", "en" };
-    options.DefaultRequestCulture = new RequestCulture("cs");
-    options.SupportedCultures = supportedCultures.Select(c => new CultureInfo(c)).ToList();
-    options.SupportedUICultures = supportedCultures.Select(c => new CultureInfo(c)).ToList();
-});
 
 var app = builder.Build();
 

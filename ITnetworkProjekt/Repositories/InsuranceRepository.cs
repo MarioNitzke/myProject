@@ -58,15 +58,6 @@ namespace ITnetworkProjekt.Repositories
                 .ToListAsync();
         }
 
-        public async Task<int> GetInsuredPersonIdOfCurrentUserAsync(string userId)
-        {
-            using var dbContext = this.dbContext.CreateDbContext();
-            return await dbContext.InsuredPerson
-                .Where(m => m.UserId == userId)
-                .Select(m => m.Id)
-                .FirstOrDefaultAsync();
-        }
-
         public async Task<List<InsuredPerson>> GetInsuredPersonsAsync(int? selectedId = null)
         {
             using var dbContext = this.dbContext.CreateDbContext();

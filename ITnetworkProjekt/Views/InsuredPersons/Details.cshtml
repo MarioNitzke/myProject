@@ -1,13 +1,15 @@
 ﻿@model ITnetworkProjekt.Models.InsuredPersonViewModel
 @using Microsoft.AspNetCore.Mvc.Localization
+@using Microsoft.Extensions.Localization
 @inject IViewLocalizer Localizer
+@inject IStringLocalizer<SharedResource> SharedLocalizer
 
 @{
     ViewData["Title"] = Localizer["DetailsTitle"];
 }
 
 <div class="mb-4">
-    <h3>@Localizer["InsuredPersonHeader"]</h3>
+    <h3>@SharedLocalizer["InsuredPersonHeader"]</h3>
     <table class="table align-middle">
         <thead>
         <tr>
@@ -38,51 +40,51 @@
 
 @if (ViewBag.Insurances != null && ViewBag.Insurances.Count > 0)
 {
-        <div class="mb-10">
-            <table class="table align-middle">
-                <thead>
-                    <tr>
-                        <th>@Localizer["InsuranceType"]</th>
-                        <th>@Localizer["InsuranceAmount"]</th>
-                        <th></th>
-                    </tr>
-                </thead>
-                <tbody>
-                @foreach (var insurance in ViewBag.Insurances)
-                {
-                        <tr>
-                            <td>
-                                <a asp-controller="Insurances" asp-action="Details" asp-route-id="@insurance.Id">
-                                @insurance.PolicyType
-                                </a>
-                            </td>
-                            <td>@insurance.PremiumAmount</td>
-                            <td>
-                            @if (User.IsInRole(UserRoles.Admin))
-                            {
-                                        <span>
-                                            <a asp-controller="Insurances" asp-action="Delete" asp-route-id="@insurance.Id" class="btn btn-danger">@Localizer["DeleteButton"]</a>
-                                            <a asp-controller="Insurances" asp-action="Edit" asp-route-id="@insurance.Id" class="btn btn-warning">@Localizer["EditButton"]</a>
-                                        </span>
-                            }
-                            </td>
-                        </tr>
-                }
-                </tbody>
-            </table>
-        </div>
+    <div class="mb-10">
+        <table class="table align-middle">
+            <thead>
+            <tr>
+                <th>@Localizer["InsuranceType"]</th>
+                <th>@Localizer["InsuranceAmount"]</th>
+                <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            @foreach (var insurance in ViewBag.Insurances)
+            {
+                <tr>
+                    <td>
+                        <a asp-controller="Insurances" asp-action="Details" asp-route-id="@insurance.Id">
+                            @insurance.PolicyType
+                        </a>
+                    </td>
+                    <td>@insurance.PremiumAmount</td>
+                    <td>
+                        @if (User.IsInRole(UserRoles.Admin))
+                        {
+                            <span>
+                                <a asp-controller="Insurances" asp-action="Delete" asp-route-id="@insurance.Id" class="btn btn-danger">@SharedLocalizer["DeleteButton"]</a>
+                                <a asp-controller="Insurances" asp-action="Edit" asp-route-id="@insurance.Id" class="btn btn-warning">@SharedLocalizer["EditButton"]</a>
+                            </span>
+                        }
+                    </td>
+                </tr>
+            }
+            </tbody>
+        </table>
+    </div>
 }
 else
 {
-        <p>@Localizer["NoInsurancesFound"]</p>
+    <p>@Localizer["NoInsurancesFound"]</p>
 }
 
 @if (User.IsInRole(UserRoles.Admin))
 {
-        <div class="text-center mt-4">
-            <a asp-controller="Insurances" asp-action="Create" asp-route-insuredPersonId="@Model?.Id" class="btn btn-success">@Localizer["AddInsuranceButton"]</a>
-            <a asp-action="Edit" asp-route-id="@Model?.Id" class="btn btn-warning">@Localizer["EditInsuredPersonButton"]</a>
-            <a asp-action="Delete" asp-route-id="@Model?.Id" class="btn btn-danger">@Localizer["DeleteInsuredPersonButton"]</a>
-            <a asp-action="Index">@Localizer["BackToList"]</a>
-        </div>
+    <div class="text-center mt-4">
+        <a asp-controller="Insurances" asp-action="Create" asp-route-insuredPersonId="@Model?.Id" class="btn btn-success">@Localizer["AddInsuranceButton"]</a>
+        <a asp-action="Edit" asp-route-id="@Model?.Id" class="btn btn-warning">@Localizer["EditInsuredPersonButton"]</a>
+        <a asp-action="Delete" asp-route-id="@Model?.Id" class="btn btn-danger">@Localizer["DeleteInsuredPersonButton"]</a>
+        <a asp-action="Index">@SharedLocalizer["BackToList"]</a>
+    </div>
 }

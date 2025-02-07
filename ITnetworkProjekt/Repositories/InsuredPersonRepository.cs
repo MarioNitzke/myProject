@@ -2,11 +2,22 @@
 using ITnetworkProjekt.Interfaces;
 using ITnetworkProjekt.Models;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Internal;
 
 namespace ITnetworkProjekt.Repositories
 {
-    public class InsuredPersonRepository(IDbContextFactory<ApplicationDbContext> dbContext) : BaseRepository<InsuredPerson>(dbContext), IInsuredPersonRepository
+    public class InsuredPersonRepository(IDbContextFactory<ApplicationDbContext> dbContext) : BaseRepository<InsuredPerson>(dbContext),
+        IInsuredPersonRepository
     {
+        public async Task<InsuredPerson?> FindByEmailAndSSNAsync(string email, string ssn)
+        {
+            using var dbContext = this.dbContext.CreateDbContext();
+            var insuredPerson = await dbContext.InsuredPerson
+                .FirstOrDefaultAsync(m =>
+                    (m.Email == email && m.SocialSecurityNumber == ssn));
+            return insuredPerson;
+        }
+
         //FindById InsuredPerson with his InsuranceIds
         public new async Task<InsuredPerson?> FindById(int id)
         {
@@ -34,15 +45,6 @@ namespace ITnetworkProjekt.Repositories
                 .FirstOrDefaultAsync();
 
             return insuredPerson;
-        }
-
-        public async Task<int> GetInsuredPersonIdOfCurrentUserAsync(string userId)
-        {
-            using var dbContext = this.dbContext.CreateDbContext();
-            return await dbContext.InsuredPerson
-                .Where(m => m.UserId == userId)
-                .Select(m => m.Id)
-                .FirstOrDefaultAsync();
         }
     }
 }

@@ -8,7 +8,8 @@ using ITnetworkProjekt.Managers;
 namespace ITnetworkProjekt.Controllers
 {
     [Authorize]
-    public class InsuredPersonsController(InsuredPersonManager insuredPersonManager, InsuranceManager insuranceManager) : Controller
+    public class InsuredPersonsController(InsuredPersonManager insuredPersonManager, InsuranceManager insuranceManager)
+        : Controller
     {
         private readonly InsuredPersonManager insuredPersonManager = insuredPersonManager;
         private readonly InsuranceManager insuranceManager = insuranceManager;
@@ -53,7 +54,7 @@ namespace ITnetworkProjekt.Controllers
 
             var insurances = await insuranceManager.GetInsurancesByIdsAsync(insuredPerson.InsuranceIds);
             ViewBag.Insurances = insurances;
-      
+
             return View(insuredPerson);
         }
 
@@ -68,13 +69,16 @@ namespace ITnetworkProjekt.Controllers
         [Authorize(Roles = UserRoles.Admin)]
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,FirstName,LastName,DateOfBirth,PhoneNumber,Email,Address,CreatedDate,SocialSecurityNumber")] InsuredPersonViewModel insuredPerson)
+        public async Task<IActionResult> Create(
+            [Bind("Id,FirstName,LastName,DateOfBirth,PhoneNumber,Email,Address,CreatedDate,SocialSecurityNumber")]
+            InsuredPersonViewModel insuredPerson)
         {
             if (ModelState.IsValid)
             {
                 await insuredPersonManager.AddInsuredPerson(insuredPerson);
                 return RedirectToAction(nameof(Index));
             }
+
             return View(insuredPerson);
         }
 
@@ -92,6 +96,7 @@ namespace ITnetworkProjekt.Controllers
             {
                 return NotFound();
             }
+
             return View(insuredPerson);
         }
 
@@ -99,7 +104,9 @@ namespace ITnetworkProjekt.Controllers
         [Authorize(Roles = UserRoles.Admin)]
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,FirstName,LastName,DateOfBirth,PhoneNumber,Email,Address,CreatedDate,SocialSecurityNumber")] InsuredPersonViewModel insuredPerson)
+        public async Task<IActionResult> Edit(int id,
+            [Bind("Id,FirstName,LastName,DateOfBirth,PhoneNumber,Email,Address,CreatedDate,SocialSecurityNumber")]
+            InsuredPersonViewModel insuredPerson)
         {
             if (id != insuredPerson.Id)
             {
@@ -111,6 +118,7 @@ namespace ITnetworkProjekt.Controllers
                 var updatedInsuredPerson = await insuredPersonManager.UpdateInsuredPerson(insuredPerson);
                 return updatedInsuredPerson is null ? NotFound() : RedirectToAction(nameof(Index));
             }
+
             return View(insuredPerson);
         }
 
@@ -144,5 +152,3 @@ namespace ITnetworkProjekt.Controllers
         }
     }
 }
-
-

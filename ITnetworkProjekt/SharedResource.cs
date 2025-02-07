@@ -1,4 +1,4 @@
-﻿namespace ITnetworkProjekt.Resources
+﻿namespace ITnetworkProjekt
 {
     public partial class SharedResource
     {

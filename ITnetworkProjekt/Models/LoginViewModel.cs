@@ -4,19 +4,20 @@ namespace ITnetworkProjekt.Models
 {
     public class LoginViewModel
     {
-        [Required(ErrorMessage = "Vyplňte emailovou adresu")]
-        [EmailAddress(ErrorMessage = "Neplatná emailová adresa")]
-        [Display(Name = "Email")]
+        [Required(ErrorMessageResourceType = typeof(Resources.Models.LoginViewModelResources),
+            ErrorMessageResourceName = "EmailRequired")]
+        [EmailAddress(ErrorMessageResourceType = typeof(Resources.Models.LoginViewModelResources),
+            ErrorMessageResourceName = "InvalidEmail")]
+        [Display(Name = "EmailLabel", ResourceType = typeof(Resources.Models.LoginViewModelResources))]
         public string Email { get; set; } = "";
 
-        [Required(ErrorMessage = "Vyplňte heslo")]
+        [Required(ErrorMessageResourceType = typeof(Resources.Models.LoginViewModelResources),
+            ErrorMessageResourceName = "PasswordRequired")]
         [DataType(DataType.Password)]
-        [Display(Name = "Heslo")]
+        [Display(Name = "PasswordLabel", ResourceType = typeof(Resources.Models.LoginViewModelResources))]
         public string Password { get; set; } = "";
 
-        [Display(Name = "Pamatuj si mě")]
+        [Display(Name = "RememberMeLabel", ResourceType = typeof(Resources.Models.LoginViewModelResources))]
         public bool RememberMe { get; set; }
     }
 }
-
-

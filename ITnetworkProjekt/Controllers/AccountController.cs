@@ -1,8 +1,11 @@
-﻿using ITnetworkProjekt.Data;
+﻿using System.Diagnostics;
+using ITnetworkProjekt.Data;
+using ITnetworkProjekt.Managers;
 using ITnetworkProjekt.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Localization;
 
 namespace ITnetworkProjekt.Controllers
 {
@@ -10,19 +13,21 @@ namespace ITnetworkProjekt.Controllers
     {
         private readonly UserManager<IdentityUser> userManager;
         private readonly SignInManager<IdentityUser> signInManager;
-        private readonly IDbContextFactory<ApplicationDbContext> contextFactory;
+        private readonly InsuredPersonManager insuredPersonManager;
+        private readonly IStringLocalizer<AccountController> localizer;
 
-        public AccountController
-        (
-            IDbContextFactory<ApplicationDbContext> contextFactory,
+        public AccountController(
+            InsuredPersonManager insuredPersonManager,
             UserManager<IdentityUser> userManager,
-            SignInManager<IdentityUser> signInManager
-        )
+            SignInManager<IdentityUser> signInManager,
+            IStringLocalizer<AccountController> localizer)
         {
-            this.contextFactory = contextFactory ?? throw new ArgumentNullException(nameof(contextFactory));
-            this.userManager = userManager;
-            this.signInManager = signInManager;
+            this.insuredPersonManager = insuredPersonManager ?? throw new ArgumentNullException(nameof(insuredPersonManager));
+            this.userManager = userManager ?? throw new ArgumentNullException(nameof(userManager));
+            this.signInManager = signInManager ?? throw new ArgumentNullException(nameof(signInManager));
+            this.localizer = localizer ?? throw new ArgumentNullException(nameof(localizer));
         }
+
         private IActionResult RedirectToLocal(string? returnUrl)
         {
             if (Url.IsLocalUrl(returnUrl))
@@ -51,11 +56,9 @@ namespace ITnetworkProjekt.Controllers
                 if (result.Succeeded)
                     return RedirectToLocal(returnUrl);
 
-                ModelState.AddModelError("Login error", "Neplatné přihlašovací údaje.");
+                ModelState.AddModelError("Login error", localizer["InvalidLoginInformations"]);
                 return View(model);
             }
-
-            // Pokud byly odeslány neplatné údaje, vrátíme uživatele k přihlašovacímu formuláři
             return View(model);
         }
 
@@ -65,7 +68,6 @@ namespace ITnetworkProjekt.Controllers
             return View();
         }
 
-
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Register(RegisterViewModel model, string? returnUrl = null)
@@ -74,13 +76,11 @@ namespace ITnetworkProjekt.Controllers
 
             if (ModelState.IsValid)
             {
-                using var _context = await contextFactory.CreateDbContextAsync();
-                //Zkouším najít inusuredPerson pomoci email a RČ
-                var insuredPerson = await _context.InsuredPerson
-                .FirstOrDefaultAsync(m => (m.Email == model.Email && m.SocialSecurityNumber == model.SocialSecurityNumber));
+                InsuredPersonViewModel? insuredPerson = await insuredPersonManager.GetInsuredPersonByEmailAndSSNAsync(model.Email, model.SocialSecurityNumber);
+
                 if (insuredPerson == null)
                 {
-                    ModelState.AddModelError("", "Pojištěnec s tímto e-mailem a rodným číslem nebyl nalezen.");
+                    ModelState.AddModelError("", localizer["InsuredPersonNotFound"]);
                     return View(model);
                 }
 
@@ -90,10 +90,7 @@ namespace ITnetworkProjekt.Controllers
                 if (result.Succeeded)
                 {
                     insuredPerson.UserId = user.Id;
-
-                    // Update UserId v insuredPerson 
-                    _context.InsuredPerson.Update(insuredPerson);
-                    await _context.SaveChangesAsync();
+                    await insuredPersonManager.UpdateInsuredPerson(insuredPerson);
 
                     await signInManager.SignInAsync(user, isPersistent: false);
                     return RedirectToLocal(returnUrl);
@@ -104,7 +101,6 @@ namespace ITnetworkProjekt.Controllers
                     ModelState.AddModelError(error.Code, error.Description);
                 }
             }
-
             return View(model);
         }
 
@@ -119,9 +115,5 @@ namespace ITnetworkProjekt.Controllers
             ViewData["ReturnUrl"] = returnUrl;
             return View();
         }
-
-
     }
 }
-
-
