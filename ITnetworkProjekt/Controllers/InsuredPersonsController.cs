@@ -7,21 +7,14 @@ using ITnetworkProjekt.Managers;
 namespace ITnetworkProjekt.Controllers
 {
     [Authorize]
-    public class InsuredPersonsController : Controller
+    public class InsuredPersonsController(
+        InsuredPersonManager insuredPersonManager,
+        InsuranceManager insuranceManager,
+        ILogger<InsuredPersonsController> logger) : Controller
     {
-        private readonly InsuredPersonManager _insuredPersonManager;
-        private readonly InsuranceManager _insuranceManager;
-        private readonly ILogger<InsuredPersonsController> _logger;
-
-        public InsuredPersonsController(
-            InsuredPersonManager insuredPersonManager,
-            InsuranceManager insuranceManager,
-            ILogger<InsuredPersonsController> logger)
-        {
-            _insuredPersonManager = insuredPersonManager;
-            _insuranceManager = insuranceManager;
-            _logger = logger;
-        }
+        private readonly InsuredPersonManager _insuredPersonManager = insuredPersonManager;
+        private readonly InsuranceManager _insuranceManager = insuranceManager;
+        private readonly ILogger<InsuredPersonsController> _logger = logger;
 
         // GET: InsuredPersons/Index with PagedList
         public async Task<IActionResult> Index(int? page)

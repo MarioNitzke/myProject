@@ -4,18 +4,12 @@ using Microsoft.EntityFrameworkCore;
 
 namespace ITnetworkProjekt.Repositories
 {
-    public abstract class BaseRepository<TEntity> : IBaseRepository<TEntity> where TEntity : class
+    public abstract class BaseRepository<TEntity>(
+        IDbContextFactory<ApplicationDbContext> dbContext,
+        ILogger<BaseRepository<TEntity>> logger) : IBaseRepository<TEntity> where TEntity : class
     {
-        private readonly ILogger<BaseRepository<TEntity>> _logger;
-        private readonly IDbContextFactory<ApplicationDbContext> _dbContext;
-
-        protected BaseRepository(
-            IDbContextFactory<ApplicationDbContext> dbContext,
-            ILogger<BaseRepository<TEntity>> logger)
-        {
-            _dbContext = dbContext;
-            _logger = logger;
-        }
+        private readonly ILogger<BaseRepository<TEntity>> _logger = logger;
+        private readonly IDbContextFactory<ApplicationDbContext> _dbContext = dbContext;
 
         public async Task Delete(TEntity entity)
         {

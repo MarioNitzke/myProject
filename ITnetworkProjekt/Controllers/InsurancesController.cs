@@ -7,21 +7,14 @@ using X.PagedList.Extensions;
 namespace ITnetworkProjekt.Controllers
 {
     [Authorize]
-    public class InsurancesController : Controller
+    public class InsurancesController(
+        InsuranceManager insuranceManager,
+        InsuredPersonManager insuredPersonManager,
+        ILogger<InsurancesController> logger) : Controller
     {
-        private readonly InsuranceManager _insuranceManager;
-        private readonly InsuredPersonManager _insuredPersonManager;
-        private readonly ILogger<InsurancesController> _logger;
-
-        public InsurancesController(
-            InsuranceManager insuranceManager,
-            InsuredPersonManager insuredPersonManager,
-            ILogger<InsurancesController> logger)
-        {
-            _insuranceManager = insuranceManager;
-            _insuredPersonManager = insuredPersonManager;
-            _logger = logger;
-        }
+        private readonly InsuranceManager _insuranceManager = insuranceManager;
+        private readonly InsuredPersonManager _insuredPersonManager = insuredPersonManager;
+        private readonly ILogger<InsurancesController> _logger = logger;
 
         // GET: Insurances/Index
         [Authorize(Roles = UserRoles.Admin)]

@@ -6,28 +6,18 @@ using Microsoft.Extensions.Localization;
 
 namespace ITnetworkProjekt.Controllers
 {
-    public class AccountController : Controller
+    public class AccountController(
+        InsuredPersonManager insuredPersonManager,
+        UserManager<IdentityUser> userManager,
+        SignInManager<IdentityUser> signInManager,
+        IStringLocalizer<AccountController> localizer,
+        ILogger<AccountController> logger) : Controller
     {
-        private readonly InsuredPersonManager _insuredPersonManager;
-        private readonly UserManager<IdentityUser> _userManager;
-        private readonly SignInManager<IdentityUser> _signInManager;
-        private readonly IStringLocalizer<AccountController> _localizer;
-        private readonly ILogger<AccountController> _logger;
-
-        public AccountController(
-            InsuredPersonManager insuredPersonManager,
-            UserManager<IdentityUser> userManager,
-            SignInManager<IdentityUser> signInManager,
-            IStringLocalizer<AccountController> localizer,
-            ILogger<AccountController> logger)
-        {
-            _insuredPersonManager = insuredPersonManager;
-            _userManager = userManager;
-            _signInManager = signInManager;
-            _localizer = localizer;
-            _logger = logger;
-        }
-    
+        private readonly InsuredPersonManager _insuredPersonManager = insuredPersonManager;
+        private readonly UserManager<IdentityUser> _userManager = userManager;
+        private readonly SignInManager<IdentityUser> _signInManager = signInManager;
+        private readonly IStringLocalizer<AccountController> _localizer = localizer;
+        private readonly ILogger<AccountController> _logger = logger;
 
         private IActionResult RedirectToLocal(string? returnUrl)
         {

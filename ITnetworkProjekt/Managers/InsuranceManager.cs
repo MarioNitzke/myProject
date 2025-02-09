@@ -7,24 +7,16 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace ITnetworkProjekt.Managers
 {
-    public class InsuranceManager
+    public class InsuranceManager(
+        IInsuranceRepository insuranceRepository,
+        IMapper mapper,
+        UserManager<IdentityUser> userManager,
+        ILogger<InsuranceManager> logger)
     {
-        private readonly IInsuranceRepository _insuranceRepository;
-        private readonly IMapper _mapper;
-        private readonly UserManager<IdentityUser> _userManager;
-        private readonly ILogger<InsuranceManager> _logger;
-
-        public InsuranceManager(
-            IInsuranceRepository insuranceRepository,
-            IMapper mapper,
-            UserManager<IdentityUser> userManager,
-            ILogger<InsuranceManager> logger)
-        {
-            _insuranceRepository = insuranceRepository;
-            _mapper = mapper;
-            _userManager = userManager;
-            _logger = logger;
-        }
+        private readonly IInsuranceRepository _insuranceRepository = insuranceRepository;
+        private readonly IMapper _mapper = mapper;
+        private readonly UserManager<IdentityUser> _userManager = userManager;
+        private readonly ILogger<InsuranceManager> _logger = logger;
 
         public async Task<InsuranceViewModel?> FindInsuranceById(int id)
         {

@@ -6,24 +6,16 @@ using Microsoft.AspNetCore.Identity;
 
 namespace ITnetworkProjekt.Managers
 {
-    public class InsuredPersonManager
+    public class InsuredPersonManager(
+        IInsuredPersonRepository insuredPersonRepository,
+        IMapper mapper,
+        UserManager<IdentityUser> userManager,
+        ILogger<InsuredPersonManager> logger)
     {
-        private readonly IInsuredPersonRepository _insuredPersonRepository;
-        private readonly IMapper _mapper;
-        private readonly UserManager<IdentityUser> _userManager;
-        private readonly ILogger<InsuredPersonManager> _logger;
-
-        public InsuredPersonManager(
-            IInsuredPersonRepository insuredPersonRepository,
-            IMapper mapper,
-            UserManager<IdentityUser> userManager,
-            ILogger<InsuredPersonManager> logger)
-        {
-            _insuredPersonRepository = insuredPersonRepository;
-            _mapper = mapper;
-            _userManager = userManager;
-            _logger = logger;
-        }
+        private readonly IInsuredPersonRepository _insuredPersonRepository = insuredPersonRepository;
+        private readonly IMapper _mapper = mapper;
+        private readonly UserManager<IdentityUser> _userManager = userManager;
+        private readonly ILogger<InsuredPersonManager> _logger = logger;
 
         public async Task<InsuredPersonViewModel?> FindInsuredPersonById(int id)
         {

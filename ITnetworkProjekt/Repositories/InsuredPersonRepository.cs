@@ -5,18 +5,12 @@ using Microsoft.EntityFrameworkCore;
 
 namespace ITnetworkProjekt.Repositories
 {
-    public class InsuredPersonRepository : BaseRepository<InsuredPerson>, IInsuredPersonRepository
+    public class InsuredPersonRepository(
+        IDbContextFactory<ApplicationDbContext> dbContext,
+        ILogger<InsuredPersonRepository> logger) : BaseRepository<InsuredPerson>(dbContext, logger), IInsuredPersonRepository
     {
-        private readonly ILogger<InsuredPersonRepository> _logger;
-        private readonly IDbContextFactory<ApplicationDbContext> _dbContext;
-
-        public InsuredPersonRepository(
-            IDbContextFactory<ApplicationDbContext> dbContext,
-            ILogger<InsuredPersonRepository> logger) : base(dbContext, logger)
-        {
-            _dbContext = dbContext;
-            _logger = logger;
-        }
+        private readonly ILogger<InsuredPersonRepository> _logger = logger;
+        private readonly IDbContextFactory<ApplicationDbContext> _dbContext = dbContext;
 
         public async Task<InsuredPerson?> FindByEmailAndSocialSecurityNumberAsync(string email,
             string socialSecurityNumber)
