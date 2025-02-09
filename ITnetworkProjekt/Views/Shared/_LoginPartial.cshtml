@@ -2,7 +2,6 @@
 @using Microsoft.Extensions.Localization
 @inject IStringLocalizer<SharedResource> SharedLocalizer
 @inject SignInManager<IdentityUser> SignInManager
-@inject UserManager<IdentityUser> UserManager
 
 <ul>
     @if (SignInManager.IsSignedIn(User))

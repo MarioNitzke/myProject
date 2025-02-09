@@ -11,10 +11,10 @@ namespace ITnetworkProjekt.Models
         [Required(ErrorMessageResourceType = typeof(Resources.Models.InsuranceViewModelResources),
             ErrorMessageResourceName = "InsuredPersonIdRequired")]
         [Display(Name = "InsuredPersonIdLabel", ResourceType = typeof(Resources.Models.InsuranceViewModelResources))]
-        public int InsuredPersonID { get; set; }
+        public int InsuredPersonId { get; set; }
 
         [Display(Name = "InsuredPersonIdLabel", ResourceType = typeof(Resources.Models.InsuranceViewModelResources))]
-        [ForeignKey(nameof(InsuredPersonID))]
+        [ForeignKey(nameof(InsuredPersonId))]
         public InsuredPerson? InsuredPerson { get; set; }
 
         [Required(ErrorMessageResourceType = typeof(Resources.Models.InsuranceViewModelResources),

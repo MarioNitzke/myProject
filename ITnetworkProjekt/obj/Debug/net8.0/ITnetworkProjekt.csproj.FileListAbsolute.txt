@@ -261,6 +261,7 @@ C:\Users\nitzk\source\repos\MarioNitzke\my-first\ITnetworkProjekt\ITnetworkProje
 C:\Users\nitzk\source\repos\MarioNitzke\my-first\ITnetworkProjekt\ITnetworkProjekt\bin\Debug\net8.0\runtimes\win\lib\net7.0\System.Security.Cryptography.ProtectedData.dll
 C:\Users\nitzk\source\repos\MarioNitzke\my-first\ITnetworkProjekt\ITnetworkProjekt\bin\Debug\net8.0\runtimes\win\lib\net7.0\System.Windows.Extensions.dll
 C:\Users\nitzk\source\repos\MarioNitzke\my-first\ITnetworkProjekt\ITnetworkProjekt\obj\Debug\net8.0\ITnetworkProjekt.csproj.AssemblyReference.cache
+C:\Users\nitzk\source\repos\MarioNitzke\my-first\ITnetworkProjekt\ITnetworkProjekt\obj\Debug\net8.0\ITnetworkProjekt.Resources.Controllers.AccountController.resources
 C:\Users\nitzk\source\repos\MarioNitzke\my-first\ITnetworkProjekt\ITnetworkProjekt\obj\Debug\net8.0\ITnetworkProjekt.Resources.Models.InsuranceViewModelResources.resources
 C:\Users\nitzk\source\repos\MarioNitzke\my-first\ITnetworkProjekt\ITnetworkProjekt\obj\Debug\net8.0\ITnetworkProjekt.Resources.Models.InsuredPersonViewModelResources.resources
 C:\Users\nitzk\source\repos\MarioNitzke\my-first\ITnetworkProjekt\ITnetworkProjekt\obj\Debug\net8.0\ITnetworkProjekt.Resources.Models.LoginViewModelResources.resources
@@ -294,9 +295,7 @@ C:\Users\nitzk\source\repos\MarioNitzke\my-first\ITnetworkProjekt\ITnetworkProje
 C:\Users\nitzk\source\repos\MarioNitzke\my-first\ITnetworkProjekt\ITnetworkProjekt\obj\Debug\net8.0\ITnetworkProjekt.RazorAssemblyInfo.cs
 C:\Users\nitzk\source\repos\MarioNitzke\my-first\ITnetworkProjekt\ITnetworkProjekt\obj\Debug\net8.0\ITnetworkProjekt.sourcelink.json
 C:\Users\nitzk\source\repos\MarioNitzke\my-first\ITnetworkProjekt\ITnetworkProjekt\obj\Debug\net8.0\cs\ITnetworkProjekt.resources.dll
-C:\Users\nitzk\source\repos\MarioNitzke\my-first\ITnetworkProjekt\ITnetworkProjekt\obj\Debug\net8.0\scopedcss\Views\Shared\_Layout.cshtml.rz.scp.css
 C:\Users\nitzk\source\repos\MarioNitzke\my-first\ITnetworkProjekt\ITnetworkProjekt\obj\Debug\net8.0\scopedcss\bundle\ITnetworkProjekt.styles.css
-C:\Users\nitzk\source\repos\MarioNitzke\my-first\ITnetworkProjekt\ITnetworkProjekt\obj\Debug\net8.0\scopedcss\projectbundle\ITnetworkProjekt.bundle.scp.css
 C:\Users\nitzk\source\repos\MarioNitzke\my-first\ITnetworkProjekt\ITnetworkProjekt\obj\Debug\net8.0\staticwebassets.build.json
 C:\Users\nitzk\source\repos\MarioNitzke\my-first\ITnetworkProjekt\ITnetworkProjekt\obj\Debug\net8.0\staticwebassets.development.json
 C:\Users\nitzk\source\repos\MarioNitzke\my-first\ITnetworkProjekt\ITnetworkProjekt\obj\Debug\net8.0\staticwebassets.build.endpoints.json
@@ -306,11 +305,10 @@ C:\Users\nitzk\source\repos\MarioNitzke\my-first\ITnetworkProjekt\ITnetworkProje
 C:\Users\nitzk\source\repos\MarioNitzke\my-first\ITnetworkProjekt\ITnetworkProjekt\obj\Debug\net8.0\staticwebassets\msbuild.buildMultiTargeting.ITnetworkProjekt.props
 C:\Users\nitzk\source\repos\MarioNitzke\my-first\ITnetworkProjekt\ITnetworkProjekt\obj\Debug\net8.0\staticwebassets\msbuild.buildTransitive.ITnetworkProjekt.props
 C:\Users\nitzk\source\repos\MarioNitzke\my-first\ITnetworkProjekt\ITnetworkProjekt\obj\Debug\net8.0\staticwebassets.pack.json
+C:\Users\nitzk\source\repos\MarioNitzke\my-first\ITnetworkProjekt\ITnetworkProjekt\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt
 C:\Users\nitzk\source\repos\MarioNitzke\my-first\ITnetworkProjekt\ITnetworkProjekt\obj\Debug\net8.0\ITnetwor.761F6E55.Up2Date
 C:\Users\nitzk\source\repos\MarioNitzke\my-first\ITnetworkProjekt\ITnetworkProjekt\obj\Debug\net8.0\ITnetworkProjekt.dll
 C:\Users\nitzk\source\repos\MarioNitzke\my-first\ITnetworkProjekt\ITnetworkProjekt\obj\Debug\net8.0\refint\ITnetworkProjekt.dll
 C:\Users\nitzk\source\repos\MarioNitzke\my-first\ITnetworkProjekt\ITnetworkProjekt\obj\Debug\net8.0\ITnetworkProjekt.pdb
 C:\Users\nitzk\source\repos\MarioNitzke\my-first\ITnetworkProjekt\ITnetworkProjekt\obj\Debug\net8.0\ITnetworkProjekt.genruntimeconfig.cache
 C:\Users\nitzk\source\repos\MarioNitzke\my-first\ITnetworkProjekt\ITnetworkProjekt\obj\Debug\net8.0\ref\ITnetworkProjekt.dll
-C:\Users\nitzk\source\repos\MarioNitzke\my-first\ITnetworkProjekt\ITnetworkProjekt\obj\Debug\net8.0\ITnetworkProjekt.Resources.Controllers.AccountController.resources
-C:\Users\nitzk\source\repos\MarioNitzke\my-first\ITnetworkProjekt\ITnetworkProjekt\obj\Debug\net8.0\cs\ITnetworkProjekt.resources.cs

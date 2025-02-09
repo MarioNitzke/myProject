@@ -1,17 +1,14 @@
 ﻿@model IEnumerable<ITnetworkProjekt.Models.InsuredPersonViewModel>
 @using Microsoft.AspNetCore.Mvc.Localization
 @using Microsoft.Extensions.Localization
-@inject IViewLocalizer Localizer
-@inject IStringLocalizer<SharedResource> SharedLocalizer
-
 @using X.PagedList.Mvc.Core;
 @using X.PagedList;
+@inject IViewLocalizer Localizer
+@inject IStringLocalizer<SharedResource> SharedLocalizer
 
 @{
     ViewData["Title"] = Localizer["InsuredPersonListTitle"];
 }
-
-<link href="/Content/PagedList.css" rel="stylesheet" type="text/css"/>
 
 <div class="text-center">
     <p>

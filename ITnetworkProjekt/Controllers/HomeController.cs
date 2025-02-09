@@ -1,21 +1,18 @@
 ﻿using System.Diagnostics;
 using ITnetworkProjekt.Models;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
 
 namespace ITnetworkProjekt.Controllers
 {
     public class HomeController(ILogger<HomeController> logger) : Controller
     {
-        private readonly ILogger<HomeController> logger = logger ?? throw new ArgumentNullException(nameof(logger));
-
         public IActionResult Index()
         {
             logger.LogInformation("User accessed the homepage.");
             return View();
         }
 
-        public IActionResult Aboutapplication()
+        public IActionResult AboutApplication()
         {
             logger.LogInformation("User accessed the About Application page.");
             return View();

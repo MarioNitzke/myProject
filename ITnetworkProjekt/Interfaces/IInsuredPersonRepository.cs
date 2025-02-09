@@ -4,6 +4,6 @@ namespace ITnetworkProjekt.Interfaces
 {
     public interface IInsuredPersonRepository : IBaseRepository<InsuredPerson>
     {
-        Task<InsuredPerson?> FindByEmailAndSSNAsync(string email, string ssn);
+        Task<InsuredPerson?> FindByEmailAndSocialSecurityNumberAsync(string email, string socialSecurityNumber);
     }
 }

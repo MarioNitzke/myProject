@@ -120,4 +120,7 @@
   <data name="DeleteConfirmation" xml:space="preserve">
     <value>Jste si jistí, že chcete smazat tohohle pojištěnce?</value>
   </data>
+  <data name="DeleteTitle" xml:space="preserve">
+    <value>Smazání pojištěnce</value>
+  </data>
 </root>

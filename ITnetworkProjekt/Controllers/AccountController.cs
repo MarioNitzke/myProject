@@ -1,27 +1,33 @@
-﻿using System.Diagnostics;
-using ITnetworkProjekt.Data;
-using ITnetworkProjekt.Managers;
+﻿using ITnetworkProjekt.Managers;
 using ITnetworkProjekt.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Localization;
-using Microsoft.Extensions.Logging;
 
 namespace ITnetworkProjekt.Controllers
 {
-    public class AccountController(
-        InsuredPersonManager insuredPersonManager,
-        UserManager<IdentityUser> userManager,
-        SignInManager<IdentityUser> signInManager,
-        IStringLocalizer<AccountController> localizer,
-        ILogger<AccountController> logger) : Controller
+    public class AccountController : Controller
     {
-        private readonly UserManager<IdentityUser> userManager = userManager ?? throw new ArgumentNullException(nameof(userManager));
-        private readonly SignInManager<IdentityUser> signInManager = signInManager ?? throw new ArgumentNullException(nameof(signInManager));
-        private readonly InsuredPersonManager insuredPersonManager = insuredPersonManager ?? throw new ArgumentNullException(nameof(insuredPersonManager));
-        private readonly IStringLocalizer<AccountController> localizer = localizer ?? throw new ArgumentNullException(nameof(localizer));
-        private readonly ILogger<AccountController> logger = logger ?? throw new ArgumentNullException(nameof(logger));
+        private readonly InsuredPersonManager _insuredPersonManager;
+        private readonly UserManager<IdentityUser> _userManager;
+        private readonly SignInManager<IdentityUser> _signInManager;
+        private readonly IStringLocalizer<AccountController> _localizer;
+        private readonly ILogger<AccountController> _logger;
+
+        public AccountController(
+            InsuredPersonManager insuredPersonManager,
+            UserManager<IdentityUser> userManager,
+            SignInManager<IdentityUser> signInManager,
+            IStringLocalizer<AccountController> localizer,
+            ILogger<AccountController> logger)
+        {
+            _insuredPersonManager = insuredPersonManager;
+            _userManager = userManager;
+            _signInManager = signInManager;
+            _localizer = localizer;
+            _logger = logger;
+        }
+    
 
         private IActionResult RedirectToLocal(string? returnUrl)
         {
@@ -33,7 +39,7 @@ namespace ITnetworkProjekt.Controllers
 
         public IActionResult Login(string? returnUrl = null)
         {
-            logger.LogInformation("User opened login page.");
+            _logger.LogInformation("User opened login page.");
             ViewData["ReturnUrl"] = returnUrl;
             return View();
         }
@@ -43,31 +49,31 @@ namespace ITnetworkProjekt.Controllers
         public async Task<IActionResult> Login(LoginViewModel model, string? returnUrl = null)
         {
             ViewData["ReturnUrl"] = returnUrl;
-            logger.LogInformation("User attempted to log in with email {Email}.", model.Email);
+            _logger.LogInformation("User attempted to log in with email {Email}.", model.Email);
 
             if (ModelState.IsValid)
             {
-                Microsoft.AspNetCore.Identity.SignInResult result =
-                    await signInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, false);
+                var result =
+                    await _signInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, false);
 
                 if (result.Succeeded)
                 {
-                    logger.LogInformation("User {Email} successfully logged in.", model.Email);
+                    _logger.LogInformation("User {Email} successfully logged in.", model.Email);
                     return RedirectToLocal(returnUrl);
                 }
 
-                logger.LogWarning("Failed login attempt for email {Email}.", model.Email);
-                ModelState.AddModelError("Login error", localizer["InvalidLoginInformations"]);
+                _logger.LogWarning("Failed login attempt for email {Email}.", model.Email);
+                ModelState.AddModelError("Login error", _localizer["InvalidLoginInformations"]);
                 return View(model);
             }
 
-            logger.LogWarning("Login attempt failed due to invalid model state.");
+            _logger.LogWarning("Login attempt failed due to invalid model state.");
             return View(model);
         }
 
         public IActionResult Register(string? returnUrl = null)
         {
-            logger.LogInformation("User opened registration page.");
+            _logger.LogInformation("User opened registration page.");
             ViewData["ReturnUrl"] = returnUrl;
             return View();
         }
@@ -77,41 +83,41 @@ namespace ITnetworkProjekt.Controllers
         public async Task<IActionResult> Register(RegisterViewModel model, string? returnUrl = null)
         {
             ViewData["ReturnUrl"] = returnUrl;
-            logger.LogInformation("User attempted to register with email {Email} and socialsecretnumber {SocialSecurityNumber}.", model.Email, model.SocialSecurityNumber);
+            _logger.LogInformation("User attempted to register with email {Email} and socialsecretnumber {SocialSecurityNumber}.", model.Email, model.SocialSecurityNumber);
 
             if (ModelState.IsValid)
             {
-                InsuredPersonViewModel? insuredPerson = await insuredPersonManager.GetInsuredPersonByEmailAndSSNAsync(model.Email, model.SocialSecurityNumber);
+                InsuredPersonViewModel? insuredPerson = await _insuredPersonManager.GetInsuredPersonByEmailAndSocialSecurityNumberAsync(model.Email, model.SocialSecurityNumber);
 
                 if (insuredPerson == null)
                 {
-                    logger.LogWarning("Registration failed: insured person with email {Email} and socialsecretnumber {SocialSecurityNumber} not found.", model.Email, model.SocialSecurityNumber);
-                    ModelState.AddModelError("", localizer["InsuredPersonNotFound"]);
+                    _logger.LogWarning("Registration failed: insured person with email {Email} and socialsecretnumber {SocialSecurityNumber} not found.", model.Email, model.SocialSecurityNumber);
+                    ModelState.AddModelError("", _localizer["InsuredPersonNotFound"]);
                     return View(model);
                 }
 
                 IdentityUser user = new IdentityUser { UserName = model.Email, Email = model.Email };
-                IdentityResult result = await userManager.CreateAsync(user, model.Password);
+                IdentityResult result = await _userManager.CreateAsync(user, model.Password);
 
                 if (result.Succeeded)
                 {
                     insuredPerson.UserId = user.Id;
-                    await insuredPersonManager.UpdateInsuredPerson(insuredPerson);
+                    await _insuredPersonManager.UpdateInsuredPerson(insuredPerson);
 
-                    logger.LogInformation("User {Email} successfully registered and linked to insured person {InsuredPersonId}.", model.Email, insuredPerson.Id);
-                    await signInManager.SignInAsync(user, isPersistent: false);
+                    _logger.LogInformation("User {Email} successfully registered and linked to insured person {InsuredPersonId}.", model.Email, insuredPerson.Id);
+                    await _signInManager.SignInAsync(user, isPersistent: false);
                     return RedirectToLocal(returnUrl);
                 }
 
                 foreach (IdentityError error in result.Errors)
                 {
-                    logger.LogError("Error during registration for {Email}: {Error}", model.Email, error.Description);
+                    _logger.LogError("Error during registration for {Email}: {Error}", model.Email, error.Description);
                     ModelState.AddModelError(error.Code, error.Description);
                 }
             }
             else
             {
-                logger.LogWarning("Registration failed for {Email} due to invalid model state.", model.Email);
+                _logger.LogWarning("Registration failed for {Email} due to invalid model state.", model.Email);
             }
 
             return View(model);
@@ -119,14 +125,14 @@ namespace ITnetworkProjekt.Controllers
 
         public async Task<IActionResult> Logout()
         {
-            logger.LogInformation("User logged out.");
-            await signInManager.SignOutAsync();
+            _logger.LogInformation("User logged out.");
+            await _signInManager.SignOutAsync();
             return RedirectToLocal(null);
         }
 
-        public IActionResult AccessDenied(string returnUrl = null)
+        public IActionResult AccessDenied(string? returnUrl = null)
         {
-            logger.LogWarning("Access denied. Redirecting user.");
+            _logger.LogWarning("Access denied. Redirecting user.");
             ViewData["ReturnUrl"] = returnUrl;
             return View();
         }

@@ -1,8 +1,4 @@
-﻿using System.Collections;
-using System.Security.Claims;
-using ITnetworkProjekt.Models;
-using Microsoft.AspNetCore.Mvc.Rendering;
-using Microsoft.EntityFrameworkCore;
+﻿using ITnetworkProjekt.Models;
 
 namespace ITnetworkProjekt.Interfaces
 {

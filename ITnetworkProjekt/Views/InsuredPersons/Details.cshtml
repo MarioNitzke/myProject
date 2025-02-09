@@ -14,7 +14,7 @@
         <thead>
         <tr>
             <td rowspan="4" class="col-2">
-                <img src="~/images/avatar.png"/>
+                <img alt="Avatar image" src="~/images/avatar.png"/>
             </td>
             <td colspan="2">
                 <h4>@Html.DisplayFor(model => model.FirstName) @Html.DisplayFor(model => model.LastName)</h4>
@@ -82,9 +82,9 @@ else
 @if (User.IsInRole(UserRoles.Admin))
 {
     <div class="text-center mt-4">
-        <a asp-controller="Insurances" asp-action="Create" asp-route-insuredPersonId="@Model?.Id" class="btn btn-success">@Localizer["AddInsuranceButton"]</a>
-        <a asp-action="Edit" asp-route-id="@Model?.Id" class="btn btn-warning">@Localizer["EditInsuredPersonButton"]</a>
-        <a asp-action="Delete" asp-route-id="@Model?.Id" class="btn btn-danger">@Localizer["DeleteInsuredPersonButton"]</a>
+        <a asp-controller="Insurances" asp-action="Create" asp-route-insuredPersonId="@Model.Id" class="btn btn-success">@Localizer["AddInsuranceButton"]</a>
+        <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-warning">@Localizer["EditInsuredPersonButton"]</a>
+        <a asp-action="Delete" asp-route-id="@Model.Id" class="btn btn-danger">@Localizer["DeleteInsuredPersonButton"]</a>
         <a asp-action="Index">@SharedLocalizer["BackToList"]</a>
     </div>
 }

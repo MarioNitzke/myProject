@@ -1,10 +1,6 @@
 {
   "Files": [
     {
-      "Id": "C:\\Users\\nitzk\\source\\repos\\MarioNitzke\\my-first\\ITnetworkProjekt\\ITnetworkProjekt\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\ITnetworkProjekt.bundle.scp.css",
-      "PackagePath": "staticwebassets\\ITnetworkProjekt.ukwzdrtb90.bundle.scp.css"
-    },
-    {
       "Id": "C:\\Users\\nitzk\\source\\repos\\MarioNitzke\\my-first\\ITnetworkProjekt\\ITnetworkProjekt\\wwwroot\\css\\site.css",
       "PackagePath": "staticwebassets\\css\\site.css"
     },

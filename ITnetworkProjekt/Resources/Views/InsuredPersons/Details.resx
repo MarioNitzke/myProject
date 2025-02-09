@@ -138,4 +138,7 @@
   <data name="InsuranceType" xml:space="preserve">
     <value>Typ pojištění</value>
   </data>
+  <data name="NoInsurancesFound" xml:space="preserve">
+    <value>Nebylo nalezeno žádné pojištění.</value>
+  </data>
 </root>

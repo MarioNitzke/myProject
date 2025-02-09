@@ -12,17 +12,17 @@ body {
     min-width: 960px;
 }
 
-    body > header {
-        height: 65px;
-        width: 100%;
-        background: #343a40;
-        color: white;
-        display: flex;
-        justify-content: space-evenly;
-        position: fixed;
-        z-index: 10;
-        top: 0;
-    }
+body > header {
+    height: 65px;
+    width: 100%;
+    background: #343a40;
+    color: white;
+    display: flex;
+    justify-content: space-evenly;
+    position: fixed;
+    z-index: 10;
+    top: 0;
+}
 
 a:hover {
     color: currentColor;
@@ -37,16 +37,16 @@ a:hover {
     background-size: 40px 40px;
 }
 
-    #logo > * {
-        margin: 0 0 0 50px;
-    }
+#logo > * {
+    margin: 0 0 0 50px;
+}
 
-    #logo h1 {
-        font-weight: normal;
-        font-size: 1.5em;
-        line-height: 1.2em;
-        color: white;
-    }
+#logo h1 {
+    font-weight: normal;
+    font-size: 1.5em;
+    line-height: 1.2em;
+    color: white;
+}
 
 a {
     text-decoration: none;
@@ -64,23 +64,23 @@ nav ul {
     height: 100%;
 }
 
-    nav ul li {
-        padding: 0 5px;
-        margin: 0 5px;
-        font-size: 1em;
-        line-height: 4.3em;
-    }
+nav ul li {
+    padding: 0 5px;
+    margin: 0 5px;
+    font-size: 1em;
+    line-height: 4.3em;
+}
 
-    nav ul a {
-        color: #b7b7b7;
-        padding: 8px 0;
-        text-decoration: none;
-    }
+nav ul a {
+    color: #b7b7b7;
+    padding: 8px 0;
+    text-decoration: none;
+}
 
-        nav ul a:hover,
-        .aktivni a {
-            color: white;
-        }
+nav ul a:hover,
+.aktivni a {
+    color: white;
+}
 
 
 .login-bar ul {
@@ -88,16 +88,15 @@ nav ul {
     margin: 25px;
 }
 
-    .login-bar ul li {
-        margin-left: 15px;
-    }
+.login-bar ul li {
+    margin-left: 15px;
+}
 
 .login-bar button {
     all: unset;
     text-decoration: none;
     cursor: pointer;
 }
-
 
 
 article {
@@ -107,31 +106,31 @@ article {
 }
 
 
-    article h1 {
-        margin: 0;
-        font-size: 2.3em;
-        font-weight: bold;
-        width: max-content;
-        border-bottom: 4px solid #000000;
-    }
+article h1 {
+    margin: 0;
+    font-size: 2.3em;
+    font-weight: bold;
+    width: max-content;
+    border-bottom: 4px solid #000000;
+}
 
-    article h2 {
-        font-size: 2em;
-    }
+article h2 {
+    font-size: 2em;
+}
 
-    article header {
-        height: 80px;
-    }
+article header {
+    height: 80px;
+}
 
-    article section p {
-        margin-bottom: 1.5em;
-        line-height: 1.8em;
-    }
+article section p {
+    margin-bottom: 1.5em;
+    line-height: 1.8em;
+}
 
-    article section a {
-        color: #0d6efd;
-       
-    }
+article section a {
+    color: #0d6efd;
+
+}
 
 footer {
     box-sizing: border-box;
@@ -142,10 +141,10 @@ footer {
     padding: 20px 0 0 0;
 }
 
-    footer a {
-        color: white;
-        text-decoration: none;
-    }
+footer a {
+    color: white;
+    text-decoration: none;
+}
 
 
 .cistic {

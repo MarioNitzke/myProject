@@ -5,35 +5,43 @@ using Microsoft.EntityFrameworkCore;
 
 namespace ITnetworkProjekt.Repositories
 {
-    public class InsuredPersonRepository(IDbContextFactory<ApplicationDbContext> dbContext, 
-        ILogger<InsuredPersonRepository> logger) : BaseRepository<InsuredPerson>(dbContext, logger),
-        IInsuredPersonRepository
+    public class InsuredPersonRepository : BaseRepository<InsuredPerson>, IInsuredPersonRepository
     {
-        private readonly ILogger<InsuredPersonRepository> logger = logger ?? throw new ArgumentNullException(nameof(logger));
+        private readonly ILogger<InsuredPersonRepository> _logger;
+        private readonly IDbContextFactory<ApplicationDbContext> _dbContext;
 
-        public async Task<InsuredPerson?> FindByEmailAndSSNAsync(string email, string ssn)
+        public InsuredPersonRepository(
+            IDbContextFactory<ApplicationDbContext> dbContext,
+            ILogger<InsuredPersonRepository> logger) : base(dbContext, logger)
         {
-            logger.LogInformation("Finding insured person with email {Email} and SSN {SSN}.", email, ssn);
-            using var dbContext = this.dbContext.CreateDbContext();
+            _dbContext = dbContext;
+            _logger = logger;
+        }
+
+        public async Task<InsuredPerson?> FindByEmailAndSocialSecurityNumberAsync(string email,
+            string socialSecurityNumber)
+        {
+            _logger.LogInformation("Finding insured person with email {Email} and SSN {SSN}.", email, socialSecurityNumber);
+            using var dbContext = _dbContext.CreateDbContext();
             var insuredPerson = await dbContext.InsuredPerson
                 .FirstOrDefaultAsync(m =>
-                    (m.Email == email && m.SocialSecurityNumber == ssn));
-            if(insuredPerson is null)
+                    m.Email == email && m.SocialSecurityNumber == socialSecurityNumber);
+            if (insuredPerson is null)
             {
-                logger.LogWarning("Insured person with email {Email} and SSN {SSN} not found.", email, ssn);
+                _logger.LogWarning("Insured person with email {Email} and SSN {SSN} not found.", email, socialSecurityNumber);
                 return null;
             }
-            
-            logger.LogInformation("Found insured person with email {Email} and SSN {SSN}.", email, ssn);
+
+            _logger.LogInformation("Found insured person with email {Email} and SSN {SSN}.", email, socialSecurityNumber);
             return insuredPerson;
         }
 
-        //FindById InsuredPerson with his InsuranceIds
+        // FindById InsuredPerson with his InsuranceIds
         public new async Task<InsuredPerson?> FindById(int id)
         {
-            logger.LogInformation("Finding insured person with ID {InsuredPersonId}.", id);
+            _logger.LogInformation("Finding insured person with ID {InsuredPersonId}.", id);
 
-            using var dbContext = this.dbContext.CreateDbContext();
+            using var dbContext = _dbContext.CreateDbContext();
             var insuredPerson = await dbContext.InsuredPerson
                 .AsNoTracking()
                 .Where(p => p.Id == id)
@@ -50,19 +58,19 @@ namespace ITnetworkProjekt.Repositories
                     PhoneNumber = p.PhoneNumber,
                     CreatedDate = p.CreatedDate,
                     InsuranceIds = dbContext.Insurance
-                        .Where(i => i.InsuredPersonID == p.Id)
+                        .Where(i => i.InsuredPersonId == p.Id)
                         .Select(i => i.Id)
                         .ToList()
                 })
                 .FirstOrDefaultAsync();
 
-            if(insuredPerson is null)
+            if (insuredPerson is null)
             {
-                logger.LogWarning("Insured person with ID {InsuredPersonId} not found.", id);
+                _logger.LogWarning("Insured person with ID {InsuredPersonId} not found.", id);
                 return null;
             }
 
-            logger.LogInformation("Found insured person with ID {InsuredPersonId}.", id);
+            _logger.LogInformation("Found insured person with ID {InsuredPersonId}.", id);
             return insuredPerson;
         }
     }
