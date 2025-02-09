@@ -10,11 +10,8 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Mvc.Razor;
 using Microsoft.Extensions.Localization;
 
-
-
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection")
     ?? throw new InvalidOperationException("Connection string 'DefaultConnection' not found.");
 
@@ -26,7 +23,6 @@ builder.Services.AddDbContextFactory<ApplicationDbContext>(options =>
 
 builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
-// Login informations
 builder.Services.AddIdentity<IdentityUser, IdentityRole>(options =>
 {
     options.Password.RequiredLength = 8;
@@ -42,8 +38,12 @@ builder.Services.AddScoped<InsuranceManager>();
 builder.Services.AddScoped<IInsuredPersonRepository, InsuredPersonRepository>();
 builder.Services.AddScoped<InsuredPersonManager>();
 
-//     @SharedResource.ResourceManager.GetString("EditButton")
-
+builder.Services.AddLogging(logging =>
+{
+    logging.ClearProviders();
+    logging.AddConsole(); 
+    logging.AddDebug();   
+});
 
 builder.Services.AddLocalization(options => options.ResourcesPath = "Resources");
 
@@ -57,7 +57,6 @@ builder.Services.AddControllersWithViews()
 
 var app = builder.Build();
 
-// ✅ Použití lokalizace
 app.UseRequestLocalization();
 
 if (app.Environment.IsDevelopment())

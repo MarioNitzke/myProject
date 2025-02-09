@@ -1,8 +1,4 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
-using System.ComponentModel.DataAnnotations;
-using Microsoft.EntityFrameworkCore;
-
-namespace ITnetworkProjekt.Models
+﻿namespace ITnetworkProjekt.Models
 {
     public class Insurance
     {

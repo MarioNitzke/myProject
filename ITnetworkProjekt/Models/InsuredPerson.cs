@@ -1,7 +1,4 @@
-﻿using System.ComponentModel.DataAnnotations;
-using NuGet.Protocol.Core.Types;
-
-namespace ITnetworkProjekt.Models
+﻿namespace ITnetworkProjekt.Models
 {
     public class InsuredPerson
     {
