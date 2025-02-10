@@ -105,8 +105,8 @@ namespace ITnetworkProjekt.Repositories
 
             using var dbContext = _dbContext.CreateDbContext();
             var personId = await dbContext.InsuredPerson
-                .Where(m => m.UserId == userId)
-                .Select(m => m.Id)
+                .Where(person => person.UserId == userId)
+                .Select(person => person.Id)
                 .FirstOrDefaultAsync();
             if (personId == 0)
             {
