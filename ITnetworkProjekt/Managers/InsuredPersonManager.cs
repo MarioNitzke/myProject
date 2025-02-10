@@ -124,7 +124,7 @@ namespace ITnetworkProjekt.Managers
         public async Task<InsuredPersonViewModel?> GetInsuredPersonByEmailAndSocialSecurityNumberAsync(string email,
             string socialSecurityNumber)
         {
-            _logger.LogInformation("Getting insured person by email and SSN.");
+            _logger.LogInformation("Getting insured person by email and socialSecurityNumber.");
 
             var insuredPerson = await _insuredPersonRepository.FindByEmailAndSocialSecurityNumberAsync(email, socialSecurityNumber);
             if (insuredPerson != null)
