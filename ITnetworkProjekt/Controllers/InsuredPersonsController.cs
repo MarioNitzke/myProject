@@ -61,7 +61,6 @@ namespace ITnetworkProjekt.Controllers
             }
 
             var insuredPerson = await _insuredPersonManager.FindInsuredPersonById(id.Value);
-
             if (insuredPerson == null)
             {
                 _logger.LogWarning("Insured person with ID {InsuredPersonId} not found.", id);

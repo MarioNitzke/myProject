@@ -21,7 +21,7 @@ namespace ITnetworkProjekt.Managers
         {
             _logger.LogInformation("Finding insured person with ID {InsuredPersonId}.", id);
             var insuredPerson = await _insuredPersonRepository.FindById(id);
-            if (insuredPerson is null)
+            if (insuredPerson == null)
             {
                 _logger.LogWarning("Insured person with ID {InsuredPersonId} not found.", id);
                 return null;
@@ -78,7 +78,7 @@ namespace ITnetworkProjekt.Managers
             _logger.LogInformation("Attempting to remove insured person with ID {InsuredPersonId}.", id);
             var insuredPerson = await _insuredPersonRepository.FindById(id);
 
-            if (insuredPerson is not null)
+            if (insuredPerson != null)
             {
                 await _insuredPersonRepository.Delete(insuredPerson);
                 _logger.LogInformation("Insured person with ID {InsuredPersonId} removed.", id);
@@ -127,7 +127,7 @@ namespace ITnetworkProjekt.Managers
             _logger.LogInformation("Getting insured person by email and SSN.");
 
             var insuredPerson = await _insuredPersonRepository.FindByEmailAndSocialSecurityNumberAsync(email, socialSecurityNumber);
-            if (insuredPerson is not null)
+            if (insuredPerson != null)
             {
                 _logger.LogInformation("Successfully found insured person with email: {Email} and socialSecurityNumber: {Snn}", email,
                     socialSecurityNumber);

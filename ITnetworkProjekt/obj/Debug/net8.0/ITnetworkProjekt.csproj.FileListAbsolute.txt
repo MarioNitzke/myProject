@@ -305,10 +305,10 @@ C:\Users\nitzk\source\repos\MarioNitzke\my-first\ITnetworkProjekt\ITnetworkProje
 C:\Users\nitzk\source\repos\MarioNitzke\my-first\ITnetworkProjekt\ITnetworkProjekt\obj\Debug\net8.0\staticwebassets\msbuild.buildMultiTargeting.ITnetworkProjekt.props
 C:\Users\nitzk\source\repos\MarioNitzke\my-first\ITnetworkProjekt\ITnetworkProjekt\obj\Debug\net8.0\staticwebassets\msbuild.buildTransitive.ITnetworkProjekt.props
 C:\Users\nitzk\source\repos\MarioNitzke\my-first\ITnetworkProjekt\ITnetworkProjekt\obj\Debug\net8.0\staticwebassets.pack.json
-C:\Users\nitzk\source\repos\MarioNitzke\my-first\ITnetworkProjekt\ITnetworkProjekt\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt
 C:\Users\nitzk\source\repos\MarioNitzke\my-first\ITnetworkProjekt\ITnetworkProjekt\obj\Debug\net8.0\ITnetwor.761F6E55.Up2Date
 C:\Users\nitzk\source\repos\MarioNitzke\my-first\ITnetworkProjekt\ITnetworkProjekt\obj\Debug\net8.0\ITnetworkProjekt.dll
 C:\Users\nitzk\source\repos\MarioNitzke\my-first\ITnetworkProjekt\ITnetworkProjekt\obj\Debug\net8.0\refint\ITnetworkProjekt.dll
 C:\Users\nitzk\source\repos\MarioNitzke\my-first\ITnetworkProjekt\ITnetworkProjekt\obj\Debug\net8.0\ITnetworkProjekt.pdb
 C:\Users\nitzk\source\repos\MarioNitzke\my-first\ITnetworkProjekt\ITnetworkProjekt\obj\Debug\net8.0\ITnetworkProjekt.genruntimeconfig.cache
 C:\Users\nitzk\source\repos\MarioNitzke\my-first\ITnetworkProjekt\ITnetworkProjekt\obj\Debug\net8.0\ref\ITnetworkProjekt.dll
+C:\Users\nitzk\source\repos\MarioNitzke\my-first\ITnetworkProjekt\ITnetworkProjekt\obj\Debug\net8.0\cs\ITnetworkProjekt.resources.cs

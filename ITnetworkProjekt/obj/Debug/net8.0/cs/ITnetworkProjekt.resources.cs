@@ -10,15 +10,14 @@
 using System;
 using System.Reflection;
 
-[assembly: Microsoft.AspNetCore.Identity.UI.UIFrameworkAttribute("Bootstrap5")]
-[assembly: Microsoft.Extensions.Configuration.UserSecrets.UserSecretsIdAttribute("aspnet-ITnetworkProjekt-15c283c4-aace-4017-aeee-b81c68427c2f")]
 [assembly: System.Reflection.AssemblyCompanyAttribute("ITnetworkProjekt")]
-[assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
+[assembly: System.Reflection.AssemblyCopyrightAttribute(" ")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
 [assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+2f5dda2fd3fb38a6d3942f2d60e9e7f14a693c9f")]
 [assembly: System.Reflection.AssemblyProductAttribute("ITnetworkProjekt")]
 [assembly: System.Reflection.AssemblyTitleAttribute("ITnetworkProjekt")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
+[assembly: System.Reflection.AssemblyCultureAttribute("cs")]
 
 // Vygenerované třídou WriteCodeFragment nástroje MSBuild
 

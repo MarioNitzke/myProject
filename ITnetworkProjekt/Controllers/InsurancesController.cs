@@ -20,7 +20,7 @@ namespace ITnetworkProjekt.Controllers
         [Authorize(Roles = UserRoles.Admin)]
         public async Task<IActionResult> Index(int? page)
         {
-            _logger.LogInformation("User accessed the insurance list (page {Page}).", page ?? 1);
+            _logger.LogInformation("Admin accessed the insurance list (page {Page}).", page ?? 1);
 
             var insurances = await _insuranceManager.GetAllInsurances();
             var onePageOfInsurances = insurances.ToPagedList(page ?? 1, 4);

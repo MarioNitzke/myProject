@@ -142,7 +142,7 @@ namespace ITnetworkProjekt.Managers
 
             return new SelectList(list, "Id", "FullName", selectedId);
         }
-
+        
         public async Task<List<InsuranceViewModel>?> GetInsurancesByIdsAsync(List<int> insuranceIds)
         {
             _logger.LogInformation("Fetching insurances by list of IDs.");
