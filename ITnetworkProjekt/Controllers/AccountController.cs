@@ -1,5 +1,8 @@
-﻿using ITnetworkProjekt.Managers;
+﻿using ITnetworkProjekt.Data.Entities;
+using ITnetworkProjekt.Features.Common.Commands;
+using ITnetworkProjekt.Features.InsuredPersons.Queries;
 using ITnetworkProjekt.Models;
+using MediatR;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Localization;
@@ -7,18 +10,12 @@ using Microsoft.Extensions.Localization;
 namespace ITnetworkProjekt.Controllers
 {
     public class AccountController(
-        InsuredPersonManager insuredPersonManager,
         UserManager<IdentityUser> userManager,
         SignInManager<IdentityUser> signInManager,
         IStringLocalizer<AccountController> localizer,
+        IMediator mediator,
         ILogger<AccountController> logger) : Controller
     {
-        private readonly InsuredPersonManager _insuredPersonManager = insuredPersonManager;
-        private readonly UserManager<IdentityUser> _userManager = userManager;
-        private readonly SignInManager<IdentityUser> _signInManager = signInManager;
-        private readonly IStringLocalizer<AccountController> _localizer = localizer;
-        private readonly ILogger<AccountController> _logger = logger;
-
         private IActionResult RedirectToLocal(string? returnUrl)
         {
             if (Url.IsLocalUrl(returnUrl))
@@ -29,7 +26,7 @@ namespace ITnetworkProjekt.Controllers
 
         public IActionResult Login(string? returnUrl = null)
         {
-            _logger.LogInformation("User opened login page.");
+            logger.LogInformation("User opened login page.");
             ViewData["ReturnUrl"] = returnUrl;
             return View();
         }
@@ -39,31 +36,31 @@ namespace ITnetworkProjekt.Controllers
         public async Task<IActionResult> Login(LoginViewModel model, string? returnUrl = null)
         {
             ViewData["ReturnUrl"] = returnUrl;
-            _logger.LogInformation("User attempted to log in with email {Email}.", model.Email);
+            logger.LogInformation("User attempted to log in with email {Email}.", model.Email);
 
             if (ModelState.IsValid)
             {
                 var result =
-                    await _signInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, false);
+                    await signInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, false);
 
                 if (result.Succeeded)
                 {
-                    _logger.LogInformation("User {Email} successfully logged in.", model.Email);
+                    logger.LogInformation("User {Email} successfully logged in.", model.Email);
                     return RedirectToLocal(returnUrl);
                 }
 
-                _logger.LogWarning("Failed login attempt for email {Email}.", model.Email);
-                ModelState.AddModelError("Login error", _localizer["InvalidLoginInformations"]);
+                logger.LogWarning("Failed login attempt for email {Email}.", model.Email);
+                ModelState.AddModelError("Login error", localizer["InvalidLoginInformations"]);
                 return View(model);
             }
 
-            _logger.LogWarning("Login attempt failed due to invalid model state.");
+            logger.LogWarning("Login attempt failed due to invalid model state.");
             return View(model);
         }
 
         public IActionResult Register(string? returnUrl = null)
         {
-            _logger.LogInformation("User opened registration page.");
+            logger.LogInformation("User opened registration page.");
             ViewData["ReturnUrl"] = returnUrl;
             return View();
         }
@@ -73,41 +70,53 @@ namespace ITnetworkProjekt.Controllers
         public async Task<IActionResult> Register(RegisterViewModel model, string? returnUrl = null)
         {
             ViewData["ReturnUrl"] = returnUrl;
-            _logger.LogInformation("User attempted to register with email {Email} and socialsecretnumber {SocialSecurityNumber}.", model.Email, model.SocialSecurityNumber);
+            logger.LogInformation(
+                "User attempted to register with email {Email} and socialsecretnumber {SocialSecurityNumber}.",
+                model.Email, model.SocialSecurityNumber);
 
             if (ModelState.IsValid)
             {
-                InsuredPersonViewModel? insuredPerson = await _insuredPersonManager.GetInsuredPersonByEmailAndSocialSecurityNumberAsync(model.Email, model.SocialSecurityNumber);
+                //InsuredPersonViewModel? insuredPerson = await insuredPersonManager.GetInsuredPersonByEmailAndSocialSecurityNumberAsync(model.Email, model.SocialSecurityNumber);
+
+                var query = new GetInsuredPersonByEmailAndSocialSecurityNumberQuery(model.Email,
+                    model.SocialSecurityNumber);
+                InsuredPersonViewModel? insuredPerson = await mediator.Send(query);
 
                 if (insuredPerson == null)
                 {
-                    _logger.LogWarning("Registration failed: insured person with email {Email} and socialsecretnumber {SocialSecurityNumber} not found.", model.Email, model.SocialSecurityNumber);
-                    ModelState.AddModelError("", _localizer["InsuredPersonNotFound"]);
+                    logger.LogWarning(
+                        "Registration failed: insured person with email {Email} and socialsecretnumber {SocialSecurityNumber} not found.",
+                        model.Email, model.SocialSecurityNumber);
+                    ModelState.AddModelError("", localizer["InsuredPersonNotFound"]);
                     return View(model);
                 }
 
                 IdentityUser user = new IdentityUser { UserName = model.Email, Email = model.Email };
-                IdentityResult result = await _userManager.CreateAsync(user, model.Password);
+                IdentityResult result = await userManager.CreateAsync(user, model.Password);
 
                 if (result.Succeeded)
                 {
                     insuredPerson.UserId = user.Id;
-                    await _insuredPersonManager.UpdateInsuredPerson(insuredPerson);
 
-                    _logger.LogInformation("User {Email} successfully registered and linked to insured person {InsuredPersonId}.", model.Email, insuredPerson.Id);
-                    await _signInManager.SignInAsync(user, isPersistent: false);
+                    var command = new UpdateEntityCommand<InsuredPerson, InsuredPersonViewModel>(insuredPerson);
+                    await mediator.Send(command);
+
+                    logger.LogInformation(
+                        "User {Email} successfully registered and linked to insured person {InsuredPersonId}.",
+                        model.Email, insuredPerson.Id);
+                    await signInManager.SignInAsync(user, isPersistent: false);
                     return RedirectToLocal(returnUrl);
                 }
 
                 foreach (IdentityError error in result.Errors)
                 {
-                    _logger.LogError("Error during registration for {Email}: {Error}", model.Email, error.Description);
+                    logger.LogError("Error during registration for {Email}: {Error}", model.Email, error.Description);
                     ModelState.AddModelError(error.Code, error.Description);
                 }
             }
             else
             {
-                _logger.LogWarning("Registration failed for {Email} due to invalid model state.", model.Email);
+                logger.LogWarning("Registration failed for {Email} due to invalid model state.", model.Email);
             }
 
             return View(model);
@@ -115,16 +124,21 @@ namespace ITnetworkProjekt.Controllers
 
         public async Task<IActionResult> Logout()
         {
-            _logger.LogInformation("User logged out.");
-            await _signInManager.SignOutAsync();
+            logger.LogInformation("User logged out.");
+            await signInManager.SignOutAsync();
             return RedirectToLocal(null);
         }
 
         public IActionResult AccessDenied(string? returnUrl = null)
         {
-            _logger.LogWarning("Access denied. Redirecting user.");
+            logger.LogWarning("Access denied. Redirecting user.");
             ViewData["ReturnUrl"] = returnUrl;
             return View();
+        }
+
+        public IActionResult TestError()
+        {
+            throw new Exception("Test exception");
         }
     }
 }

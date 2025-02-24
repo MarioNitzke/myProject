@@ -124,6 +124,15 @@ namespace ITnetworkProjekt.Resources.Models {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Email jíž někdo používá.
+        /// </summary>
+        public static string EmailUnique {
+            get {
+                return ResourceManager.GetString("EmailUnique", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Jméno:.
         /// </summary>
         public static string FirstNameLabel {
@@ -210,6 +219,15 @@ namespace ITnetworkProjekt.Resources.Models {
         public static string SocialSecurityNumberRequired {
             get {
                 return ResourceManager.GetString("SocialSecurityNumberRequired", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Rodné číslo jíž použito.
+        /// </summary>
+        public static string SocialSecurityNumberUnique {
+            get {
+                return ResourceManager.GetString("SocialSecurityNumberUnique", resourceCulture);
             }
         }
     }

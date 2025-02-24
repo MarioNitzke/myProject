@@ -1,0 +1,465 @@
+2025-02-24 15:18:33.717 +01:00 [INF] Starting up the application...
+2025-02-24 15:18:37.286 +01:00 [INF] Executed DbCommand (36ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2025-02-24 15:18:37.602 +01:00 [INF] Executed DbCommand (34ms) [Parameters=[@__normalizedEmail_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[NormalizedEmail] = @__normalizedEmail_0
+2025-02-24 15:18:37.696 +01:00 [INF] Executed DbCommand (2ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0
+2025-02-24 15:18:37.714 +01:00 [INF] Executed DbCommand (2ms) [Parameters=[@__normalizedRoleName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedRoleName_0
+2025-02-24 15:18:37.750 +01:00 [INF] Executed DbCommand (2ms) [Parameters=[@__p_0='?' (Size = 450), @__p_1='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[UserId], [a].[RoleId]
+FROM [AspNetUserRoles] AS [a]
+WHERE [a].[UserId] = @__p_0 AND [a].[RoleId] = @__p_1
+2025-02-24 15:18:37.790 +01:00 [INF] User profile is available. Using 'C:\Users\nitzk\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-02-24 15:18:38.077 +01:00 [INF] Now listening on: https://localhost:7049
+2025-02-24 15:18:38.079 +01:00 [INF] Now listening on: http://localhost:5067
+2025-02-24 15:18:38.157 +01:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-02-24 15:18:38.160 +01:00 [INF] Hosting environment: Development
+2025-02-24 15:18:38.161 +01:00 [INF] Content root path: C:\Users\nitzk\source\repos\MarioNitzke\my-first\ITnetworkProjekt\ITnetworkProjekt
+2025-02-24 15:18:38.744 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7049/ - null null
+2025-02-24 15:18:39.060 +01:00 [INF] Executing endpoint 'ITnetworkProjekt.Controllers.HomeController.Index (ITnetworkProjekt)'
+2025-02-24 15:18:39.086 +01:00 [INF] Route matched with {action = "Index", controller = "Home"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Index() on controller ITnetworkProjekt.Controllers.HomeController (ITnetworkProjekt).
+2025-02-24 15:18:39.099 +01:00 [INF] Executing action method ITnetworkProjekt.Controllers.HomeController.Index (ITnetworkProjekt) - Validation state: "Valid"
+2025-02-24 15:18:39.101 +01:00 [INF] User accessed the homepage.
+2025-02-24 15:18:39.108 +01:00 [INF] Executed action method ITnetworkProjekt.Controllers.HomeController.Index (ITnetworkProjekt), returned result Microsoft.AspNetCore.Mvc.ViewResult in 3.6462ms.
+2025-02-24 15:18:39.125 +01:00 [INF] Executing ViewResult, running view Index.
+2025-02-24 15:18:39.268 +01:00 [INF] Executed ViewResult - view Index executed in 145.6442ms.
+2025-02-24 15:18:39.273 +01:00 [INF] Executed action ITnetworkProjekt.Controllers.HomeController.Index (ITnetworkProjekt) in 182.6472ms
+2025-02-24 15:18:39.275 +01:00 [INF] Executed endpoint 'ITnetworkProjekt.Controllers.HomeController.Index (ITnetworkProjekt)'
+2025-02-24 15:18:39.290 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7049/ - 200 null text/html; charset=utf-8 570.4219ms
+2025-02-24 15:18:39.344 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7049/_framework/aspnetcore-browser-refresh.js - null null
+2025-02-24 15:18:39.356 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7049/_framework/aspnetcore-browser-refresh.js - 200 13784 application/javascript; charset=utf-8 12.2596ms
+2025-02-24 15:18:39.378 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7049/_vs/browserLink - null null
+2025-02-24 15:18:39.439 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7049/_vs/browserLink - 200 null text/javascript; charset=UTF-8 61.2168ms
+2025-02-24 15:18:41.315 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7049/InsuredPersons - null null
+2025-02-24 15:18:41.354 +01:00 [INF] Executing endpoint 'ITnetworkProjekt.Controllers.InsuredPersonsController.Index (ITnetworkProjekt)'
+2025-02-24 15:18:41.369 +01:00 [INF] Route matched with {action = "Index", controller = "InsuredPersons"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Index(System.Nullable`1[System.Int32]) on controller ITnetworkProjekt.Controllers.InsuredPersonsController (ITnetworkProjekt).
+2025-02-24 15:18:41.380 +01:00 [INF] Executing action method ITnetworkProjekt.Controllers.InsuredPersonsController.Index (ITnetworkProjekt) - Validation state: "Valid"
+2025-02-24 15:18:41.485 +01:00 [INF] Zahájení zpracování GetAllEntitiesQuery`2
+2025-02-24 15:18:41.513 +01:00 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [i].[Id], [i].[Address], [i].[CreatedDate], [i].[DateOfBirth], [i].[Email], [i].[FirstName], [i].[InsuranceIds], [i].[LastName], [i].[PhoneNumber], [i].[SocialSecurityNumber], [i].[UserId]
+FROM [InsuredPersons] AS [i]
+2025-02-24 15:18:41.561 +01:00 [INF] Dokončeno zpracování GetAllEntitiesQuery`2
+2025-02-24 15:18:41.600 +01:00 [INF] Admin displaying page 1 of insured persons.
+2025-02-24 15:18:41.602 +01:00 [INF] Executed action method ITnetworkProjekt.Controllers.InsuredPersonsController.Index (ITnetworkProjekt), returned result Microsoft.AspNetCore.Mvc.ViewResult in 219.533ms.
+2025-02-24 15:18:41.606 +01:00 [INF] Executing ViewResult, running view Index.
+2025-02-24 15:18:41.716 +01:00 [INF] Executed ViewResult - view Index executed in 111.2381ms.
+2025-02-24 15:18:41.724 +01:00 [INF] Executed action ITnetworkProjekt.Controllers.InsuredPersonsController.Index (ITnetworkProjekt) in 352.3832ms
+2025-02-24 15:18:41.726 +01:00 [INF] Executed endpoint 'ITnetworkProjekt.Controllers.InsuredPersonsController.Index (ITnetworkProjekt)'
+2025-02-24 15:18:41.731 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7049/InsuredPersons - 200 null text/html; charset=utf-8 416.2461ms
+2025-02-24 15:18:41.759 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7049/_vs/browserLink - null null
+2025-02-24 15:18:41.762 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7049/_framework/aspnetcore-browser-refresh.js - null null
+2025-02-24 15:18:41.767 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7049/_framework/aspnetcore-browser-refresh.js - 200 13784 application/javascript; charset=utf-8 4.6918ms
+2025-02-24 15:18:41.789 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7049/_vs/browserLink - 200 null text/javascript; charset=UTF-8 29.8045ms
+2025-02-24 15:35:17.436 +01:00 [INF] Starting up the application...
+2025-02-24 15:35:23.660 +01:00 [INF] Executed DbCommand (30ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2025-02-24 15:35:24.031 +01:00 [INF] Executed DbCommand (45ms) [Parameters=[@__normalizedEmail_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[NormalizedEmail] = @__normalizedEmail_0
+2025-02-24 15:35:24.172 +01:00 [INF] Executed DbCommand (5ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0
+2025-02-24 15:35:24.198 +01:00 [INF] Executed DbCommand (4ms) [Parameters=[@__normalizedRoleName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedRoleName_0
+2025-02-24 15:35:24.242 +01:00 [INF] Executed DbCommand (4ms) [Parameters=[@__p_0='?' (Size = 450), @__p_1='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[UserId], [a].[RoleId]
+FROM [AspNetUserRoles] AS [a]
+WHERE [a].[UserId] = @__p_0 AND [a].[RoleId] = @__p_1
+2025-02-24 15:35:24.290 +01:00 [INF] User profile is available. Using 'C:\Users\nitzk\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-02-24 15:35:24.616 +01:00 [INF] Now listening on: https://localhost:7049
+2025-02-24 15:35:24.617 +01:00 [INF] Now listening on: http://localhost:5067
+2025-02-24 15:35:24.696 +01:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-02-24 15:35:24.702 +01:00 [INF] Hosting environment: Development
+2025-02-24 15:35:24.703 +01:00 [INF] Content root path: C:\Users\nitzk\source\repos\MarioNitzke\my-first\ITnetworkProjekt\ITnetworkProjekt
+2025-02-24 15:35:26.345 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7049/ - null null
+2025-02-24 15:35:26.712 +01:00 [INF] Executing endpoint 'ITnetworkProjekt.Controllers.HomeController.Index (ITnetworkProjekt)'
+2025-02-24 15:35:26.736 +01:00 [INF] Route matched with {action = "Index", controller = "Home"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Index() on controller ITnetworkProjekt.Controllers.HomeController (ITnetworkProjekt).
+2025-02-24 15:35:26.749 +01:00 [INF] Executing action method ITnetworkProjekt.Controllers.HomeController.Index (ITnetworkProjekt) - Validation state: "Valid"
+2025-02-24 15:35:26.753 +01:00 [INF] User accessed the homepage.
+2025-02-24 15:35:26.760 +01:00 [INF] Executed action method ITnetworkProjekt.Controllers.HomeController.Index (ITnetworkProjekt), returned result Microsoft.AspNetCore.Mvc.ViewResult in 3.6702ms.
+2025-02-24 15:35:26.778 +01:00 [INF] Executing ViewResult, running view Index.
+2025-02-24 15:35:26.919 +01:00 [INF] Executed ViewResult - view Index executed in 146.7879ms.
+2025-02-24 15:35:26.923 +01:00 [INF] Executed action ITnetworkProjekt.Controllers.HomeController.Index (ITnetworkProjekt) in 183.487ms
+2025-02-24 15:35:26.925 +01:00 [INF] Executed endpoint 'ITnetworkProjekt.Controllers.HomeController.Index (ITnetworkProjekt)'
+2025-02-24 15:35:26.933 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7049/ - 200 null text/html; charset=utf-8 629.0555ms
+2025-02-24 15:35:27.082 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7049/_framework/aspnetcore-browser-refresh.js - null null
+2025-02-24 15:35:27.090 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7049/_vs/browserLink - null null
+2025-02-24 15:35:27.113 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7049/_framework/aspnetcore-browser-refresh.js - 200 13784 application/javascript; charset=utf-8 31.4281ms
+2025-02-24 15:35:27.160 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7049/_vs/browserLink - 200 null text/javascript; charset=UTF-8 69.6321ms
+2025-02-24 15:35:28.431 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7049/InsuredPersons - null null
+2025-02-24 15:35:28.460 +01:00 [INF] Executing endpoint 'ITnetworkProjekt.Controllers.InsuredPersonsController.Index (ITnetworkProjekt)'
+2025-02-24 15:35:28.471 +01:00 [INF] Route matched with {action = "Index", controller = "InsuredPersons"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Index(System.Nullable`1[System.Int32]) on controller ITnetworkProjekt.Controllers.InsuredPersonsController (ITnetworkProjekt).
+2025-02-24 15:35:28.481 +01:00 [INF] Executing action method ITnetworkProjekt.Controllers.InsuredPersonsController.Index (ITnetworkProjekt) - Validation state: "Valid"
+2025-02-24 15:35:28.620 +01:00 [INF] Zahájení zpracování GetAllEntitiesQuery`2
+2025-02-24 15:35:28.672 +01:00 [INF] Executed DbCommand (13ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [i].[Id], [i].[Address], [i].[CreatedDate], [i].[DateOfBirth], [i].[Email], [i].[FirstName], [i].[InsuranceIds], [i].[LastName], [i].[PhoneNumber], [i].[SocialSecurityNumber], [i].[UserId]
+FROM [InsuredPersons] AS [i]
+2025-02-24 15:35:28.723 +01:00 [INF] Dokončeno zpracování GetAllEntitiesQuery`2
+2025-02-24 15:35:28.765 +01:00 [INF] Admin displaying page 1 of insured persons.
+2025-02-24 15:35:28.767 +01:00 [INF] Executed action method ITnetworkProjekt.Controllers.InsuredPersonsController.Index (ITnetworkProjekt), returned result Microsoft.AspNetCore.Mvc.ViewResult in 284.4156ms.
+2025-02-24 15:35:28.772 +01:00 [INF] Executing ViewResult, running view Index.
+2025-02-24 15:35:28.911 +01:00 [INF] Executed ViewResult - view Index executed in 140.0537ms.
+2025-02-24 15:35:28.920 +01:00 [INF] Executed action ITnetworkProjekt.Controllers.InsuredPersonsController.Index (ITnetworkProjekt) in 445.6835ms
+2025-02-24 15:35:28.923 +01:00 [INF] Executed endpoint 'ITnetworkProjekt.Controllers.InsuredPersonsController.Index (ITnetworkProjekt)'
+2025-02-24 15:35:28.926 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7049/InsuredPersons - 200 null text/html; charset=utf-8 495.6374ms
+2025-02-24 15:35:28.972 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7049/_vs/browserLink - null null
+2025-02-24 15:35:28.975 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7049/_framework/aspnetcore-browser-refresh.js - null null
+2025-02-24 15:35:28.980 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7049/_framework/aspnetcore-browser-refresh.js - 200 13784 application/javascript; charset=utf-8 5.0948ms
+2025-02-24 15:35:28.985 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7049/_vs/browserLink - 200 null text/javascript; charset=UTF-8 13.32ms
+2025-02-24 15:35:30.899 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7049/InsuredPersons/Create - null null
+2025-02-24 15:35:30.936 +01:00 [INF] Executing endpoint 'ITnetworkProjekt.Controllers.InsuredPersonsController.Create (ITnetworkProjekt)'
+2025-02-24 15:35:30.940 +01:00 [INF] Route matched with {action = "Create", controller = "InsuredPersons"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Create() on controller ITnetworkProjekt.Controllers.InsuredPersonsController (ITnetworkProjekt).
+2025-02-24 15:35:30.943 +01:00 [INF] Executing action method ITnetworkProjekt.Controllers.InsuredPersonsController.Create (ITnetworkProjekt) - Validation state: "Valid"
+2025-02-24 15:35:30.945 +01:00 [INF] Admin accessed insured person creating page.
+2025-02-24 15:35:30.946 +01:00 [INF] Executed action method ITnetworkProjekt.Controllers.InsuredPersonsController.Create (ITnetworkProjekt), returned result Microsoft.AspNetCore.Mvc.ViewResult in 1.0774ms.
+2025-02-24 15:35:30.949 +01:00 [INF] Executing ViewResult, running view Create.
+2025-02-24 15:35:31.008 +01:00 [INF] Executed ViewResult - view Create executed in 60.0604ms.
+2025-02-24 15:35:31.010 +01:00 [INF] Executed action ITnetworkProjekt.Controllers.InsuredPersonsController.Create (ITnetworkProjekt) in 67.0504ms
+2025-02-24 15:35:31.011 +01:00 [INF] Executed endpoint 'ITnetworkProjekt.Controllers.InsuredPersonsController.Create (ITnetworkProjekt)'
+2025-02-24 15:35:31.013 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7049/InsuredPersons/Create - 200 null text/html; charset=utf-8 114.7791ms
+2025-02-24 15:35:31.056 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7049/_framework/aspnetcore-browser-refresh.js - null null
+2025-02-24 15:35:31.056 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7049/_vs/browserLink - null null
+2025-02-24 15:35:31.059 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7049/_framework/aspnetcore-browser-refresh.js - 200 13784 application/javascript; charset=utf-8 2.8668ms
+2025-02-24 15:35:31.070 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7049/_vs/browserLink - 200 null text/javascript; charset=UTF-8 14.2705ms
+2025-02-24 15:35:34.604 +01:00 [INF] Request starting HTTP/2 POST https://localhost:7049/InsuredPersons/Create - application/x-www-form-urlencoded 394
+2025-02-24 15:35:34.634 +01:00 [INF] Executing endpoint 'ITnetworkProjekt.Controllers.InsuredPersonsController.Create (ITnetworkProjekt)'
+2025-02-24 15:35:34.648 +01:00 [INF] Route matched with {action = "Create", controller = "InsuredPersons"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Create(ITnetworkProjekt.Models.InsuredPersonViewModel) on controller ITnetworkProjekt.Controllers.InsuredPersonsController (ITnetworkProjekt).
+2025-02-24 15:35:34.757 +01:00 [INF] Executed DbCommand (16ms) [Parameters=[@__email_0='?' (Size = 100)], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [InsuredPersons] AS [i]
+        WHERE [i].[Email] = @__email_0) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2025-02-24 15:35:34.766 +01:00 [INF] Executed DbCommand (2ms) [Parameters=[@__ssn_0='?' (Size = 11)], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [InsuredPersons] AS [i]
+        WHERE [i].[SocialSecurityNumber] = @__ssn_0) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2025-02-24 15:35:34.772 +01:00 [INF] Executing action method ITnetworkProjekt.Controllers.InsuredPersonsController.Create (ITnetworkProjekt) - Validation state: "Invalid"
+2025-02-24 15:35:34.774 +01:00 [INF] Insured person creation failed due to invalid model state.
+2025-02-24 15:35:34.775 +01:00 [INF] Executed action method ITnetworkProjekt.Controllers.InsuredPersonsController.Create (ITnetworkProjekt), returned result Microsoft.AspNetCore.Mvc.ViewResult in 1.6336ms.
+2025-02-24 15:35:34.777 +01:00 [INF] Executing ViewResult, running view Create.
+2025-02-24 15:35:34.783 +01:00 [INF] Executed ViewResult - view Create executed in 6.2997ms.
+2025-02-24 15:35:34.786 +01:00 [INF] Executed action ITnetworkProjekt.Controllers.InsuredPersonsController.Create (ITnetworkProjekt) in 135.0025ms
+2025-02-24 15:35:34.788 +01:00 [INF] Executed endpoint 'ITnetworkProjekt.Controllers.InsuredPersonsController.Create (ITnetworkProjekt)'
+2025-02-24 15:35:34.791 +01:00 [INF] Request finished HTTP/2 POST https://localhost:7049/InsuredPersons/Create - 200 null text/html; charset=utf-8 186.8662ms
+2025-02-24 15:35:34.837 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7049/_vs/browserLink - null null
+2025-02-24 15:35:34.841 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7049/_framework/aspnetcore-browser-refresh.js - null null
+2025-02-24 15:35:34.855 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7049/_framework/aspnetcore-browser-refresh.js - 200 13784 application/javascript; charset=utf-8 14.1852ms
+2025-02-24 15:35:34.874 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7049/_vs/browserLink - 200 null text/javascript; charset=UTF-8 38.3544ms
+2025-02-24 15:35:42.487 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7049/InsuredPersons/Create - null null
+2025-02-24 15:35:42.509 +01:00 [INF] Executing endpoint 'ITnetworkProjekt.Controllers.InsuredPersonsController.Create (ITnetworkProjekt)'
+2025-02-24 15:35:42.512 +01:00 [INF] Route matched with {action = "Create", controller = "InsuredPersons"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Create() on controller ITnetworkProjekt.Controllers.InsuredPersonsController (ITnetworkProjekt).
+2025-02-24 15:35:42.516 +01:00 [INF] Executing action method ITnetworkProjekt.Controllers.InsuredPersonsController.Create (ITnetworkProjekt) - Validation state: "Valid"
+2025-02-24 15:35:42.517 +01:00 [INF] Admin accessed insured person creating page.
+2025-02-24 15:35:42.518 +01:00 [INF] Executed action method ITnetworkProjekt.Controllers.InsuredPersonsController.Create (ITnetworkProjekt), returned result Microsoft.AspNetCore.Mvc.ViewResult in 0.7792ms.
+2025-02-24 15:35:42.519 +01:00 [INF] Executing ViewResult, running view Create.
+2025-02-24 15:35:42.523 +01:00 [INF] Executed ViewResult - view Create executed in 3.5576ms.
+2025-02-24 15:35:42.525 +01:00 [INF] Executed action ITnetworkProjekt.Controllers.InsuredPersonsController.Create (ITnetworkProjekt) in 9.1006ms
+2025-02-24 15:35:42.526 +01:00 [INF] Executed endpoint 'ITnetworkProjekt.Controllers.InsuredPersonsController.Create (ITnetworkProjekt)'
+2025-02-24 15:35:42.528 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7049/InsuredPersons/Create - 200 null text/html; charset=utf-8 41.106ms
+2025-02-24 15:35:42.571 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7049/_framework/aspnetcore-browser-refresh.js - null null
+2025-02-24 15:35:42.576 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7049/_framework/aspnetcore-browser-refresh.js - 200 13784 application/javascript; charset=utf-8 5.4667ms
+2025-02-24 15:40:00.390 +01:00 [INF] Starting up the application...
+2025-02-24 15:40:04.194 +01:00 [INF] Executed DbCommand (48ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2025-02-24 15:40:04.588 +01:00 [INF] Executed DbCommand (59ms) [Parameters=[@__normalizedEmail_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[NormalizedEmail] = @__normalizedEmail_0
+2025-02-24 15:40:04.721 +01:00 [INF] Executed DbCommand (3ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0
+2025-02-24 15:40:04.738 +01:00 [INF] Executed DbCommand (2ms) [Parameters=[@__normalizedRoleName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedRoleName_0
+2025-02-24 15:40:04.776 +01:00 [INF] Executed DbCommand (3ms) [Parameters=[@__p_0='?' (Size = 450), @__p_1='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[UserId], [a].[RoleId]
+FROM [AspNetUserRoles] AS [a]
+WHERE [a].[UserId] = @__p_0 AND [a].[RoleId] = @__p_1
+2025-02-24 15:40:04.818 +01:00 [INF] User profile is available. Using 'C:\Users\nitzk\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-02-24 15:40:05.108 +01:00 [INF] Now listening on: https://localhost:7049
+2025-02-24 15:40:05.110 +01:00 [INF] Now listening on: http://localhost:5067
+2025-02-24 15:40:05.200 +01:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-02-24 15:40:05.202 +01:00 [INF] Hosting environment: Development
+2025-02-24 15:40:05.203 +01:00 [INF] Content root path: C:\Users\nitzk\source\repos\MarioNitzke\my-first\ITnetworkProjekt\ITnetworkProjekt
+2025-02-24 15:40:06.583 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7049/ - null null
+2025-02-24 15:40:07.137 +01:00 [INF] Executing endpoint 'ITnetworkProjekt.Controllers.HomeController.Index (ITnetworkProjekt)'
+2025-02-24 15:40:07.182 +01:00 [INF] Route matched with {action = "Index", controller = "Home"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Index() on controller ITnetworkProjekt.Controllers.HomeController (ITnetworkProjekt).
+2025-02-24 15:40:07.203 +01:00 [INF] Executing action method ITnetworkProjekt.Controllers.HomeController.Index (ITnetworkProjekt) - Validation state: "Valid"
+2025-02-24 15:40:07.206 +01:00 [INF] User accessed the homepage.
+2025-02-24 15:40:07.215 +01:00 [INF] Executed action method ITnetworkProjekt.Controllers.HomeController.Index (ITnetworkProjekt), returned result Microsoft.AspNetCore.Mvc.ViewResult in 2.2953ms.
+2025-02-24 15:40:07.241 +01:00 [INF] Executing ViewResult, running view Index.
+2025-02-24 15:40:07.447 +01:00 [INF] Executed ViewResult - view Index executed in 215.5657ms.
+2025-02-24 15:40:07.450 +01:00 [INF] Executed action ITnetworkProjekt.Controllers.HomeController.Index (ITnetworkProjekt) in 262.6256ms
+2025-02-24 15:40:07.453 +01:00 [INF] Executed endpoint 'ITnetworkProjekt.Controllers.HomeController.Index (ITnetworkProjekt)'
+2025-02-24 15:40:07.465 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7049/ - 200 null text/html; charset=utf-8 973.2977ms
+2025-02-24 15:40:07.521 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7049/_framework/aspnetcore-browser-refresh.js - null null
+2025-02-24 15:40:07.552 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7049/_framework/aspnetcore-browser-refresh.js - 200 13784 application/javascript; charset=utf-8 31.9797ms
+2025-02-24 15:40:07.616 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7049/_vs/browserLink - null null
+2025-02-24 15:40:07.752 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7049/_vs/browserLink - 200 null text/javascript; charset=UTF-8 136.0985ms
+2025-02-24 15:40:19.183 +01:00 [INF] Starting up the application...
+2025-02-24 15:40:21.737 +01:00 [INF] Executed DbCommand (33ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2025-02-24 15:40:22.189 +01:00 [INF] Executed DbCommand (101ms) [Parameters=[@__normalizedEmail_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[NormalizedEmail] = @__normalizedEmail_0
+2025-02-24 15:40:22.306 +01:00 [INF] Executed DbCommand (3ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0
+2025-02-24 15:40:22.324 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[@__normalizedRoleName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedRoleName_0
+2025-02-24 15:40:22.358 +01:00 [INF] Executed DbCommand (2ms) [Parameters=[@__p_0='?' (Size = 450), @__p_1='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[UserId], [a].[RoleId]
+FROM [AspNetUserRoles] AS [a]
+WHERE [a].[UserId] = @__p_0 AND [a].[RoleId] = @__p_1
+2025-02-24 15:40:22.405 +01:00 [INF] User profile is available. Using 'C:\Users\nitzk\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-02-24 15:40:22.682 +01:00 [INF] Now listening on: https://localhost:7049
+2025-02-24 15:40:22.684 +01:00 [INF] Now listening on: http://localhost:5067
+2025-02-24 15:40:22.748 +01:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-02-24 15:40:22.750 +01:00 [INF] Hosting environment: Development
+2025-02-24 15:40:22.750 +01:00 [INF] Content root path: C:\Users\nitzk\source\repos\MarioNitzke\my-first\ITnetworkProjekt\ITnetworkProjekt
+2025-02-24 15:40:23.548 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7049/ - null null
+2025-02-24 15:40:23.874 +01:00 [INF] Executing endpoint 'ITnetworkProjekt.Controllers.HomeController.Index (ITnetworkProjekt)'
+2025-02-24 15:40:23.914 +01:00 [INF] Route matched with {action = "Index", controller = "Home"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Index() on controller ITnetworkProjekt.Controllers.HomeController (ITnetworkProjekt).
+2025-02-24 15:40:23.964 +01:00 [INF] Executing action method ITnetworkProjekt.Controllers.HomeController.Index (ITnetworkProjekt) - Validation state: "Valid"
+2025-02-24 15:40:23.968 +01:00 [INF] User accessed the homepage.
+2025-02-24 15:40:23.980 +01:00 [INF] Executed action method ITnetworkProjekt.Controllers.HomeController.Index (ITnetworkProjekt), returned result Microsoft.AspNetCore.Mvc.ViewResult in 6.7334ms.
+2025-02-24 15:40:24.008 +01:00 [INF] Executing ViewResult, running view Index.
+2025-02-24 15:40:24.209 +01:00 [INF] Executed ViewResult - view Index executed in 205.6951ms.
+2025-02-24 15:40:24.215 +01:00 [INF] Executed action ITnetworkProjekt.Controllers.HomeController.Index (ITnetworkProjekt) in 270.0665ms
+2025-02-24 15:40:24.217 +01:00 [INF] Executed endpoint 'ITnetworkProjekt.Controllers.HomeController.Index (ITnetworkProjekt)'
+2025-02-24 15:40:24.224 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7049/ - 200 null text/html; charset=utf-8 722.4899ms
+2025-02-24 15:40:24.270 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7049/_framework/aspnetcore-browser-refresh.js - null null
+2025-02-24 15:40:24.287 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7049/_framework/aspnetcore-browser-refresh.js - 200 13784 application/javascript; charset=utf-8 17.2607ms
+2025-02-24 15:40:24.302 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7049/_vs/browserLink - null null
+2025-02-24 15:40:24.396 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7049/_vs/browserLink - 200 null text/javascript; charset=UTF-8 94.7088ms
+2025-02-24 15:40:25.914 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7049/InsuredPersons - null null
+2025-02-24 15:40:25.957 +01:00 [INF] Executing endpoint 'ITnetworkProjekt.Controllers.InsuredPersonsController.Index (ITnetworkProjekt)'
+2025-02-24 15:40:25.973 +01:00 [INF] Route matched with {action = "Index", controller = "InsuredPersons"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Index(System.Nullable`1[System.Int32]) on controller ITnetworkProjekt.Controllers.InsuredPersonsController (ITnetworkProjekt).
+2025-02-24 15:40:25.988 +01:00 [INF] Executing action method ITnetworkProjekt.Controllers.InsuredPersonsController.Index (ITnetworkProjekt) - Validation state: "Valid"
+2025-02-24 15:40:26.109 +01:00 [INF] Zahájení zpracování GetAllEntitiesQuery`2
+2025-02-24 15:40:26.148 +01:00 [INF] Executed DbCommand (11ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [i].[Id], [i].[Address], [i].[CreatedDate], [i].[DateOfBirth], [i].[Email], [i].[FirstName], [i].[InsuranceIds], [i].[LastName], [i].[PhoneNumber], [i].[SocialSecurityNumber], [i].[UserId]
+FROM [InsuredPersons] AS [i]
+2025-02-24 15:40:26.196 +01:00 [INF] Dokončeno zpracování GetAllEntitiesQuery`2
+2025-02-24 15:40:26.236 +01:00 [INF] Admin displaying page 1 of insured persons.
+2025-02-24 15:40:26.238 +01:00 [INF] Executed action method ITnetworkProjekt.Controllers.InsuredPersonsController.Index (ITnetworkProjekt), returned result Microsoft.AspNetCore.Mvc.ViewResult in 248.5306ms.
+2025-02-24 15:40:26.243 +01:00 [INF] Executing ViewResult, running view Index.
+2025-02-24 15:40:26.387 +01:00 [INF] Executed ViewResult - view Index executed in 144.9065ms.
+2025-02-24 15:40:26.406 +01:00 [INF] Executed action ITnetworkProjekt.Controllers.InsuredPersonsController.Index (ITnetworkProjekt) in 427.9384ms
+2025-02-24 15:40:26.411 +01:00 [INF] Executed endpoint 'ITnetworkProjekt.Controllers.InsuredPersonsController.Index (ITnetworkProjekt)'
+2025-02-24 15:40:26.416 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7049/InsuredPersons - 200 null text/html; charset=utf-8 502.3679ms
+2025-02-24 15:40:26.417 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7049/_vs/browserLink - null null
+2025-02-24 15:40:26.426 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7049/_framework/aspnetcore-browser-refresh.js - null null
+2025-02-24 15:40:26.441 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7049/_framework/aspnetcore-browser-refresh.js - 200 13784 application/javascript; charset=utf-8 15.6348ms
+2025-02-24 15:40:26.459 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7049/_vs/browserLink - 200 null text/javascript; charset=UTF-8 42.4503ms
+2025-02-24 15:40:27.625 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7049/InsuredPersons/Create - null null
+2025-02-24 15:40:27.679 +01:00 [INF] Executing endpoint 'ITnetworkProjekt.Controllers.InsuredPersonsController.Create (ITnetworkProjekt)'
+2025-02-24 15:40:27.683 +01:00 [INF] Route matched with {action = "Create", controller = "InsuredPersons"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Create() on controller ITnetworkProjekt.Controllers.InsuredPersonsController (ITnetworkProjekt).
+2025-02-24 15:40:27.688 +01:00 [INF] Executing action method ITnetworkProjekt.Controllers.InsuredPersonsController.Create (ITnetworkProjekt) - Validation state: "Valid"
+2025-02-24 15:40:27.690 +01:00 [INF] Admin accessed insured person creating page.
+2025-02-24 15:40:27.691 +01:00 [INF] Executed action method ITnetworkProjekt.Controllers.InsuredPersonsController.Create (ITnetworkProjekt), returned result Microsoft.AspNetCore.Mvc.ViewResult in 0.9511ms.
+2025-02-24 15:40:27.694 +01:00 [INF] Executing ViewResult, running view Create.
+2025-02-24 15:40:27.766 +01:00 [INF] Executed ViewResult - view Create executed in 72.2626ms.
+2025-02-24 15:40:27.768 +01:00 [INF] Executed action ITnetworkProjekt.Controllers.InsuredPersonsController.Create (ITnetworkProjekt) in 80.5982ms
+2025-02-24 15:40:27.770 +01:00 [INF] Executed endpoint 'ITnetworkProjekt.Controllers.InsuredPersonsController.Create (ITnetworkProjekt)'
+2025-02-24 15:40:27.772 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7049/InsuredPersons/Create - 200 null text/html; charset=utf-8 147.3948ms
+2025-02-24 15:40:27.811 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7049/_framework/aspnetcore-browser-refresh.js - null null
+2025-02-24 15:40:27.811 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7049/_vs/browserLink - null null
+2025-02-24 15:40:27.814 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7049/_framework/aspnetcore-browser-refresh.js - 200 13784 application/javascript; charset=utf-8 3.6081ms
+2025-02-24 15:40:27.872 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7049/_vs/browserLink - 200 null text/javascript; charset=UTF-8 61.0256ms
+2025-02-24 15:40:30.593 +01:00 [INF] Request starting HTTP/2 POST https://localhost:7049/InsuredPersons/Create - application/x-www-form-urlencoded 394
+2025-02-24 15:40:30.611 +01:00 [INF] Executing endpoint 'ITnetworkProjekt.Controllers.InsuredPersonsController.Create (ITnetworkProjekt)'
+2025-02-24 15:40:30.628 +01:00 [INF] Route matched with {action = "Create", controller = "InsuredPersons"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Create(ITnetworkProjekt.Models.InsuredPersonViewModel) on controller ITnetworkProjekt.Controllers.InsuredPersonsController (ITnetworkProjekt).
+2025-02-24 15:40:30.767 +01:00 [INF] Executed DbCommand (20ms) [Parameters=[@__email_0='?' (Size = 100)], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [InsuredPersons] AS [i]
+        WHERE [i].[Email] = @__email_0) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2025-02-24 15:40:30.778 +01:00 [INF] Executed DbCommand (2ms) [Parameters=[@__ssn_0='?' (Size = 11)], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [InsuredPersons] AS [i]
+        WHERE [i].[SocialSecurityNumber] = @__ssn_0) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2025-02-24 15:40:30.784 +01:00 [INF] Executing action method ITnetworkProjekt.Controllers.InsuredPersonsController.Create (ITnetworkProjekt) - Validation state: "Invalid"
+2025-02-24 15:40:30.788 +01:00 [INF] Insured person creation failed due to invalid model state.
+2025-02-24 15:40:30.789 +01:00 [INF] Executed action method ITnetworkProjekt.Controllers.InsuredPersonsController.Create (ITnetworkProjekt), returned result Microsoft.AspNetCore.Mvc.ViewResult in 2.2653ms.
+2025-02-24 15:40:30.791 +01:00 [INF] Executing ViewResult, running view Create.
+2025-02-24 15:40:30.797 +01:00 [INF] Executed ViewResult - view Create executed in 5.5403ms.
+2025-02-24 15:40:30.799 +01:00 [INF] Executed action ITnetworkProjekt.Controllers.InsuredPersonsController.Create (ITnetworkProjekt) in 166.5797ms
+2025-02-24 15:40:30.802 +01:00 [INF] Executed endpoint 'ITnetworkProjekt.Controllers.InsuredPersonsController.Create (ITnetworkProjekt)'
+2025-02-24 15:40:30.804 +01:00 [INF] Request finished HTTP/2 POST https://localhost:7049/InsuredPersons/Create - 200 null text/html; charset=utf-8 211.3436ms
+2025-02-24 15:40:30.844 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7049/_vs/browserLink - null null
+2025-02-24 15:40:30.845 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7049/_framework/aspnetcore-browser-refresh.js - null null
+2025-02-24 15:40:30.855 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7049/_framework/aspnetcore-browser-refresh.js - 200 13784 application/javascript; charset=utf-8 9.948ms
+2025-02-24 15:40:30.866 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7049/_vs/browserLink - 200 null text/javascript; charset=UTF-8 23.2704ms
+2025-02-24 15:40:39.347 +01:00 [INF] Request starting HTTP/2 POST https://localhost:7049/InsuredPersons/Create - application/x-www-form-urlencoded 395
+2025-02-24 15:40:39.364 +01:00 [INF] Executing endpoint 'ITnetworkProjekt.Controllers.InsuredPersonsController.Create (ITnetworkProjekt)'
+2025-02-24 15:40:39.366 +01:00 [INF] Route matched with {action = "Create", controller = "InsuredPersons"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Create(ITnetworkProjekt.Models.InsuredPersonViewModel) on controller ITnetworkProjekt.Controllers.InsuredPersonsController (ITnetworkProjekt).
+2025-02-24 15:40:39.390 +01:00 [INF] Executed DbCommand (7ms) [Parameters=[@__email_0='?' (Size = 100)], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [InsuredPersons] AS [i]
+        WHERE [i].[Email] = @__email_0) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2025-02-24 15:40:39.398 +01:00 [INF] Executed DbCommand (2ms) [Parameters=[@__ssn_0='?' (Size = 11)], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [InsuredPersons] AS [i]
+        WHERE [i].[SocialSecurityNumber] = @__ssn_0) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2025-02-24 15:40:39.403 +01:00 [INF] Executing action method ITnetworkProjekt.Controllers.InsuredPersonsController.Create (ITnetworkProjekt) - Validation state: "Invalid"
+2025-02-24 15:40:39.405 +01:00 [INF] Insured person creation failed due to invalid model state.
+2025-02-24 15:40:39.406 +01:00 [INF] Executed action method ITnetworkProjekt.Controllers.InsuredPersonsController.Create (ITnetworkProjekt), returned result Microsoft.AspNetCore.Mvc.ViewResult in 1.2748ms.
+2025-02-24 15:40:39.409 +01:00 [INF] Executing ViewResult, running view Create.
+2025-02-24 15:40:39.416 +01:00 [INF] Executed ViewResult - view Create executed in 6.8095ms.
+2025-02-24 15:40:39.418 +01:00 [INF] Executed action ITnetworkProjekt.Controllers.InsuredPersonsController.Create (ITnetworkProjekt) in 47.6694ms
+2025-02-24 15:40:39.422 +01:00 [INF] Executed endpoint 'ITnetworkProjekt.Controllers.InsuredPersonsController.Create (ITnetworkProjekt)'
+2025-02-24 15:40:39.426 +01:00 [INF] Request finished HTTP/2 POST https://localhost:7049/InsuredPersons/Create - 200 null text/html; charset=utf-8 79.1232ms
+2025-02-24 15:40:39.476 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7049/_vs/browserLink - null null
+2025-02-24 15:40:39.477 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7049/_framework/aspnetcore-browser-refresh.js - null null
+2025-02-24 15:40:39.485 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7049/_framework/aspnetcore-browser-refresh.js - 200 13784 application/javascript; charset=utf-8 8.4116ms
+2025-02-24 15:40:39.494 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7049/_vs/browserLink - 200 null text/javascript; charset=UTF-8 18.1161ms
+2025-02-24 15:40:54.454 +01:00 [INF] Request starting HTTP/2 POST https://localhost:7049/InsuredPersons/Create - application/x-www-form-urlencoded 405
+2025-02-24 15:40:54.470 +01:00 [INF] Executing endpoint 'ITnetworkProjekt.Controllers.InsuredPersonsController.Create (ITnetworkProjekt)'
+2025-02-24 15:40:54.472 +01:00 [INF] Route matched with {action = "Create", controller = "InsuredPersons"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Create(ITnetworkProjekt.Models.InsuredPersonViewModel) on controller ITnetworkProjekt.Controllers.InsuredPersonsController (ITnetworkProjekt).
+2025-02-24 15:40:54.492 +01:00 [INF] Executed DbCommand (8ms) [Parameters=[@__email_0='?' (Size = 100)], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [InsuredPersons] AS [i]
+        WHERE [i].[Email] = @__email_0) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2025-02-24 15:40:54.500 +01:00 [INF] Executed DbCommand (3ms) [Parameters=[@__ssn_0='?' (Size = 11)], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [InsuredPersons] AS [i]
+        WHERE [i].[SocialSecurityNumber] = @__ssn_0) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2025-02-24 15:40:54.505 +01:00 [INF] Executing action method ITnetworkProjekt.Controllers.InsuredPersonsController.Create (ITnetworkProjekt) - Validation state: "Valid"
+2025-02-24 15:40:54.510 +01:00 [INF] Zahájení zpracování AddEntityCommand`2
+2025-02-24 15:40:54.701 +01:00 [INF] Executed DbCommand (35ms) [Parameters=[@p0='?' (Size = 200), @p1='?' (DbType = DateTime2), @p2='?' (DbType = DateTime2), @p3='?' (Size = 100), @p4='?' (Size = 50), @p5='?' (Size = 4000), @p6='?' (Size = 50), @p7='?' (Size = 20), @p8='?' (Size = 11), @p9='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [InsuredPersons] ([Address], [CreatedDate], [DateOfBirth], [Email], [FirstName], [InsuranceIds], [LastName], [PhoneNumber], [SocialSecurityNumber], [UserId])
+OUTPUT INSERTED.[Id]
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8, @p9);
+2025-02-24 15:40:54.724 +01:00 [INF] Dokončeno zpracování AddEntityCommand`2
+2025-02-24 15:40:54.726 +01:00 [INF] New insured person created with ID: 0.
+2025-02-24 15:40:54.728 +01:00 [INF] Executed action method ITnetworkProjekt.Controllers.InsuredPersonsController.Create (ITnetworkProjekt), returned result Microsoft.AspNetCore.Mvc.RedirectToActionResult in 220.8495ms.
+2025-02-24 15:40:54.730 +01:00 [INF] Executing RedirectResult, redirecting to /InsuredPersons.
+2025-02-24 15:40:54.731 +01:00 [INF] Executed action ITnetworkProjekt.Controllers.InsuredPersonsController.Create (ITnetworkProjekt) in 254.122ms
+2025-02-24 15:40:54.732 +01:00 [INF] Executed endpoint 'ITnetworkProjekt.Controllers.InsuredPersonsController.Create (ITnetworkProjekt)'
+2025-02-24 15:40:54.734 +01:00 [INF] Request finished HTTP/2 POST https://localhost:7049/InsuredPersons/Create - 302 0 null 279.8548ms
+2025-02-24 15:40:54.740 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7049/InsuredPersons - null null
+2025-02-24 15:40:54.752 +01:00 [INF] Executing endpoint 'ITnetworkProjekt.Controllers.InsuredPersonsController.Index (ITnetworkProjekt)'
+2025-02-24 15:40:54.753 +01:00 [INF] Route matched with {action = "Index", controller = "InsuredPersons"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Index(System.Nullable`1[System.Int32]) on controller ITnetworkProjekt.Controllers.InsuredPersonsController (ITnetworkProjekt).
+2025-02-24 15:40:54.755 +01:00 [INF] Executing action method ITnetworkProjekt.Controllers.InsuredPersonsController.Index (ITnetworkProjekt) - Validation state: "Valid"
+2025-02-24 15:40:54.758 +01:00 [INF] Zahájení zpracování GetAllEntitiesQuery`2
+2025-02-24 15:40:54.764 +01:00 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [i].[Id], [i].[Address], [i].[CreatedDate], [i].[DateOfBirth], [i].[Email], [i].[FirstName], [i].[InsuranceIds], [i].[LastName], [i].[PhoneNumber], [i].[SocialSecurityNumber], [i].[UserId]
+FROM [InsuredPersons] AS [i]
+2025-02-24 15:40:54.770 +01:00 [INF] Dokončeno zpracování GetAllEntitiesQuery`2
+2025-02-24 15:40:54.773 +01:00 [INF] Admin displaying page 1 of insured persons.
+2025-02-24 15:40:54.776 +01:00 [INF] Executed action method ITnetworkProjekt.Controllers.InsuredPersonsController.Index (ITnetworkProjekt), returned result Microsoft.AspNetCore.Mvc.ViewResult in 18.4495ms.
+2025-02-24 15:40:54.778 +01:00 [INF] Executing ViewResult, running view Index.
+2025-02-24 15:40:54.785 +01:00 [INF] Executed ViewResult - view Index executed in 6.5637ms.
+2025-02-24 15:40:54.787 +01:00 [INF] Executed action ITnetworkProjekt.Controllers.InsuredPersonsController.Index (ITnetworkProjekt) in 31.3761ms
+2025-02-24 15:40:54.789 +01:00 [INF] Executed endpoint 'ITnetworkProjekt.Controllers.InsuredPersonsController.Index (ITnetworkProjekt)'
+2025-02-24 15:40:54.790 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7049/InsuredPersons - 200 null text/html; charset=utf-8 50.9679ms
+2025-02-24 15:40:54.838 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7049/_vs/browserLink - null null
+2025-02-24 15:40:54.848 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7049/_framework/aspnetcore-browser-refresh.js - null null
+2025-02-24 15:40:54.873 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7049/_framework/aspnetcore-browser-refresh.js - 200 13784 application/javascript; charset=utf-8 24.9943ms
+2025-02-24 15:40:54.886 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7049/_vs/browserLink - 200 null text/javascript; charset=UTF-8 48.1513ms
+2025-02-24 15:40:56.240 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7049/InsuredPersons?page=3 - null null
+2025-02-24 15:40:56.264 +01:00 [INF] Executing endpoint 'ITnetworkProjekt.Controllers.InsuredPersonsController.Index (ITnetworkProjekt)'
+2025-02-24 15:40:56.268 +01:00 [INF] Route matched with {action = "Index", controller = "InsuredPersons"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Index(System.Nullable`1[System.Int32]) on controller ITnetworkProjekt.Controllers.InsuredPersonsController (ITnetworkProjekt).
+2025-02-24 15:40:56.275 +01:00 [INF] Executing action method ITnetworkProjekt.Controllers.InsuredPersonsController.Index (ITnetworkProjekt) - Validation state: "Valid"
+2025-02-24 15:40:56.281 +01:00 [INF] Zahájení zpracování GetAllEntitiesQuery`2
+2025-02-24 15:40:56.288 +01:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [i].[Id], [i].[Address], [i].[CreatedDate], [i].[DateOfBirth], [i].[Email], [i].[FirstName], [i].[InsuranceIds], [i].[LastName], [i].[PhoneNumber], [i].[SocialSecurityNumber], [i].[UserId]
+FROM [InsuredPersons] AS [i]
+2025-02-24 15:40:56.292 +01:00 [INF] Dokončeno zpracování GetAllEntitiesQuery`2
+2025-02-24 15:40:56.295 +01:00 [INF] Admin displaying page 3 of insured persons.
+2025-02-24 15:40:56.296 +01:00 [INF] Executed action method ITnetworkProjekt.Controllers.InsuredPersonsController.Index (ITnetworkProjekt), returned result Microsoft.AspNetCore.Mvc.ViewResult in 17.6738ms.
+2025-02-24 15:40:56.299 +01:00 [INF] Executing ViewResult, running view Index.
+2025-02-24 15:40:56.306 +01:00 [INF] Executed ViewResult - view Index executed in 6.5526ms.
+2025-02-24 15:40:56.308 +01:00 [INF] Executed action ITnetworkProjekt.Controllers.InsuredPersonsController.Index (ITnetworkProjekt) in 36.6003ms
+2025-02-24 15:40:56.312 +01:00 [INF] Executed endpoint 'ITnetworkProjekt.Controllers.InsuredPersonsController.Index (ITnetworkProjekt)'
+2025-02-24 15:40:56.313 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7049/InsuredPersons?page=3 - 200 null text/html; charset=utf-8 73.9673ms
+2025-02-24 15:40:56.355 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7049/_vs/browserLink - null null
+2025-02-24 15:40:56.404 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7049/_framework/aspnetcore-browser-refresh.js - null null
+2025-02-24 15:40:56.404 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7049/_vs/browserLink - 200 null text/javascript; charset=UTF-8 49.8658ms
+2025-02-24 15:40:56.407 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7049/_framework/aspnetcore-browser-refresh.js - 200 13784 application/javascript; charset=utf-8 30.8643ms
+2025-02-24 15:41:02.580 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7049/ - null null
+2025-02-24 15:41:02.595 +01:00 [INF] Executing endpoint 'ITnetworkProjekt.Controllers.HomeController.Index (ITnetworkProjekt)'
+2025-02-24 15:41:02.597 +01:00 [INF] Route matched with {action = "Index", controller = "Home"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Index() on controller ITnetworkProjekt.Controllers.HomeController (ITnetworkProjekt).
+2025-02-24 15:41:02.600 +01:00 [INF] Executing action method ITnetworkProjekt.Controllers.HomeController.Index (ITnetworkProjekt) - Validation state: "Valid"
+2025-02-24 15:41:02.601 +01:00 [INF] User accessed the homepage.
+2025-02-24 15:41:02.602 +01:00 [INF] Executed action method ITnetworkProjekt.Controllers.HomeController.Index (ITnetworkProjekt), returned result Microsoft.AspNetCore.Mvc.ViewResult in 0.7097ms.
+2025-02-24 15:41:02.603 +01:00 [INF] Executing ViewResult, running view Index.
+2025-02-24 15:41:02.605 +01:00 [INF] Executed ViewResult - view Index executed in 1.5174ms.
+2025-02-24 15:41:02.606 +01:00 [INF] Executed action ITnetworkProjekt.Controllers.HomeController.Index (ITnetworkProjekt) in 6.4264ms
+2025-02-24 15:41:02.607 +01:00 [INF] Executed endpoint 'ITnetworkProjekt.Controllers.HomeController.Index (ITnetworkProjekt)'
+2025-02-24 15:41:02.608 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7049/ - 200 null text/html; charset=utf-8 27.9501ms
+2025-02-24 15:41:02.648 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7049/_vs/browserLink - null null
+2025-02-24 15:41:02.658 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7049/_framework/aspnetcore-browser-refresh.js - null null
+2025-02-24 15:41:02.659 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7049/_vs/browserLink - 200 null text/javascript; charset=UTF-8 11.4298ms
+2025-02-24 15:41:02.664 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7049/_framework/aspnetcore-browser-refresh.js - 200 13784 application/javascript; charset=utf-8 6.9396ms
+2025-02-24 15:41:03.948 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7049/InsuredPersons - null null
+2025-02-24 15:41:03.961 +01:00 [INF] Executing endpoint 'ITnetworkProjekt.Controllers.InsuredPersonsController.Index (ITnetworkProjekt)'
+2025-02-24 15:41:03.962 +01:00 [INF] Route matched with {action = "Index", controller = "InsuredPersons"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Index(System.Nullable`1[System.Int32]) on controller ITnetworkProjekt.Controllers.InsuredPersonsController (ITnetworkProjekt).
+2025-02-24 15:41:03.964 +01:00 [INF] Executing action method ITnetworkProjekt.Controllers.InsuredPersonsController.Index (ITnetworkProjekt) - Validation state: "Valid"
+2025-02-24 15:41:03.967 +01:00 [INF] Zahájení zpracování GetAllEntitiesQuery`2
+2025-02-24 15:41:03.974 +01:00 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [i].[Id], [i].[Address], [i].[CreatedDate], [i].[DateOfBirth], [i].[Email], [i].[FirstName], [i].[InsuranceIds], [i].[LastName], [i].[PhoneNumber], [i].[SocialSecurityNumber], [i].[UserId]
+FROM [InsuredPersons] AS [i]
+2025-02-24 15:41:03.979 +01:00 [INF] Dokončeno zpracování GetAllEntitiesQuery`2
+2025-02-24 15:41:03.982 +01:00 [INF] Admin displaying page 1 of insured persons.
+2025-02-24 15:41:03.983 +01:00 [INF] Executed action method ITnetworkProjekt.Controllers.InsuredPersonsController.Index (ITnetworkProjekt), returned result Microsoft.AspNetCore.Mvc.ViewResult in 16.5738ms.
+2025-02-24 15:41:03.987 +01:00 [INF] Executing ViewResult, running view Index.
+2025-02-24 15:41:03.993 +01:00 [INF] Executed ViewResult - view Index executed in 6.0149ms.
+2025-02-24 15:41:03.994 +01:00 [INF] Executed action ITnetworkProjekt.Controllers.InsuredPersonsController.Index (ITnetworkProjekt) in 30.3275ms
+2025-02-24 15:41:03.996 +01:00 [INF] Executed endpoint 'ITnetworkProjekt.Controllers.InsuredPersonsController.Index (ITnetworkProjekt)'
+2025-02-24 15:41:03.999 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7049/InsuredPersons - 200 null text/html; charset=utf-8 51.1255ms
+2025-02-24 15:41:04.044 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7049/_vs/browserLink - null null
+2025-02-24 15:41:04.046 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7049/_framework/aspnetcore-browser-refresh.js - null null
+2025-02-24 15:41:04.055 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7049/_framework/aspnetcore-browser-refresh.js - 200 13784 application/javascript; charset=utf-8 9.1901ms
+2025-02-24 15:41:04.096 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7049/_vs/browserLink - 200 null text/javascript; charset=UTF-8 52.7417ms

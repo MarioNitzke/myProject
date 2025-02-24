@@ -1,6 +1,6 @@
-﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+﻿using ITnetworkProjekt.Data.Entities;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
-using ITnetworkProjekt.Models;
 
 namespace ITnetworkProjekt.Data
 {
@@ -10,11 +10,15 @@ namespace ITnetworkProjekt.Data
             : base(options)
         {
         }
-        public DbSet<ITnetworkProjekt.Models.Insurance> Insurance { get; set; } = default!;
-        public DbSet<ITnetworkProjekt.Models.InsuredPerson> InsuredPerson { get; set; } = default!;
 
+        public DbSet<Insurance> Insurance { get; set; } = default!;
+        public DbSet<InsuredPerson> InsuredPerson { get; set; } = default!;
 
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.ApplyConfigurationsFromAssembly(typeof(ApplicationDbContext).Assembly);
+
+            base.OnModelCreating(modelBuilder);
+        }
     }
 }
-
-

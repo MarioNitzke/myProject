@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using ITnetworkProjekt.Data.Entities;
 using ITnetworkProjekt.Models;
 
 namespace ITnetworkProjekt
